@@ -115,6 +115,27 @@ const ExtraOptions: React.FC = observer(() => {
             </span>
           </span>
         </div>
+        <div className="mt-2 mb-4">
+        <Toggle
+          checked={player.buffs.startAtZeroSoulStacks}
+          setChecked={(c) => store.updatePlayer({ buffs: { startAtZeroSoulStacks: c } })}
+          label={(
+            <>
+              <img src={soulreaper_axe.src} width={18} className="inline-block" alt="" />
+              {' '}
+              Start from 0 Soul Stacks
+              {' '}
+              <span
+                className="align-super underline decoration-dotted cursor-help text-xs text-gray-300"
+                data-tooltip-id="tooltip"
+                data-tooltip-content="Start the kill with zero Soul Stacks and build them up."
+              >
+                ?
+              </span>
+            </>
+          )}
+        />
+        </div>
       </div>
     </div>
 

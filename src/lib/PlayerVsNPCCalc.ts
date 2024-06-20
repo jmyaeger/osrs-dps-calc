@@ -51,6 +51,7 @@ import {
 import BaseCalc, { CalcOpts, InternalOpts } from '@/lib/BaseCalc';
 import { scaleMonsterHpOnly } from '@/lib/MonsterScaling';
 import { getRangedDamageType } from '@/types/PlayerCombatStyle';
+import { start } from 'repl';
 
 /**
  * Class for computing various player-vs-NPC metrics.
@@ -1220,22 +1221,51 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     // if the hit dist depends on hp, we'll have to recalculate it each time, so cache the results to not repeat work
     const recalcDistOnHp = PlayerVsNPCCalc.distIsCurrentHpDependent(this.player, this.monster);
     const hpHitDists = new Map<number, HitDistribution>();
-    hpHitDists.set(this.monster.skills.hp, dist);
-    if (recalcDistOnHp) {
-      for (let hp = 0; hp < this.monster.skills.hp; hp++) {
-        hpHitDists.set(hp, this.distAtHp(hp));
+    const startAtZeroSoulStacks = this.player.buffs.startAtZeroSoulStacks;
+    const hpHitDistsSoulStacks = new Map<number, Map<number, HitDistribution>>();
+    const hitDistsSoulStacks = new Map<number, HitDistribution>();
+    if (startAtZeroSoulStacks) {
+      for (let stacks = 0; stacks <=5; stacks++) {
+        this.player.buffs.soulreaperStacks = stacks;
+        hitDistsSoulStacks.set(stacks, this.getDistribution().singleHitsplat);
       }
     }
+    hpHitDists.set(this.monster.skills.hp, dist);
+
+    if (recalcDistOnHp) {
+      if (startAtZeroSoulStacks) {
+        for (let stacks = 0; stacks <=5; stacks++) {
+          this.player.buffs.soulreaperStacks = stacks;
+          const stackHitDists = new Map<number, HitDistribution>();
+          for (let hp = 0; hp < this.monster.skills.hp; hp++) {
+            stackHitDists.set(hp, this.distAtHp(hp));
+          }
+          hpHitDistsSoulStacks.set(stacks, stackHitDists);
+        }
+      } else {
+        for (let hp = 0; hp < this.monster.skills.hp; hp++) {
+          hpHitDists.set(hp, this.distAtHp(hp));
+        }
+      }
+    }
+
+    
 
     // 1. until the amount of hp values remaining above zero is more than our desired epsilon accuracy,
     //    or we reach the maximum iteration rounds
     for (let hit = 0; hit < (TTK_DIST_MAX_ITER_ROUNDS + 1) && epsilon >= TTK_DIST_EPSILON; hit++) {
       const nextHps = new Float64Array(this.monster.skills.hp + 1);
+      const stacks = Math.min(5, hit);
 
       // 3. for each possible hp value,
       for (const [hp, hpProb] of hps.entries()) {
+        let currDist: HitDistribution = new HitDistribution([]);
         // this is a bit of a hack, but idk if there's a better way
-        const currDist: HitDistribution = recalcDistOnHp ? hpHitDists.get(hp)! : dist;
+        if (startAtZeroSoulStacks) {
+          currDist = recalcDistOnHp ? hpHitDistsSoulStacks.get(stacks)!.get(hp)! : hitDistsSoulStacks.get(stacks)!;
+        } else {
+          currDist = recalcDistOnHp ? hpHitDists.get(hp)! : dist;
+        }
 
         // 4. for each damage amount possible,
         for (const h of currDist.hits) {

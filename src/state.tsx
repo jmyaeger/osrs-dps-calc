@@ -108,6 +108,7 @@ export const generateEmptyPlayer = (name?: string): Player => ({
     markOfDarknessSpell: false,
     forinthrySurge: false,
     soulreaperStacks: 0,
+    startAtZeroSoulStacks: false,
     usingSunfireRunes: false,
   },
   spell: null,

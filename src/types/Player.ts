@@ -104,6 +104,8 @@ export interface Player extends EquipmentStats {
      @see https://oldschool.runescape.wiki/w/Soulreaper_axe
      */
     soulreaperStacks: number;
+    // Option to start from 0 soulreaper stacks and build them in the first 5 attacks
+    startAtZeroSoulStacks: boolean;
     /**
      * Whether the Kandarin Hard Diary has been completed, which provides 10% increase for the enchanted bolt spec to activate.
      * @see https://oldschool.runescape.wiki/w/Kandarin_Diary#Hard
