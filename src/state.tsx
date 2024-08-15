@@ -655,9 +655,6 @@ class GlobalState implements State {
    * @param monster
    */
   updateMonster(monster: PartialDeep<Monster>) {
-    // If monster attributes were passed to this function, clear the existing ones
-    if (monster.attributes !== undefined) this.monster.attributes = [];
-
     // If the monster ID was changed, reset all the inputs.
     if (
       monster.id !== undefined
@@ -669,6 +666,28 @@ class GlobalState implements State {
         inputs: INITIAL_MONSTER_INPUTS,
       };
     }
+
+    // If the monster is a custom monster, transfer the stats of the previous monster
+    if (monster.id === -1 && this.monster.id !== -1) {
+      monster = {
+        ...monster,
+        size: this.monster.size,
+        speed: this.monster.speed,
+        style: this.monster.style,
+        skills: this.monster.skills,
+        offensive: this.monster.offensive,
+        defensive: this.monster.defensive,
+        attributes: this.monster.attributes,
+        weakness: this.monster.weakness,
+        inputs: {
+          ...INITIAL_MONSTER_INPUTS,
+          monsterCurrentHp: this.monster.skills.hp,
+        },
+      };
+    }
+
+    // If monster attributes were passed to this function, clear the existing ones
+    if (monster.attributes !== undefined) this.monster.attributes = [];
 
     this.monster = merge(this.monster, monster, (obj, src) => {
       // This check is to ensure that empty arrays always override existing arrays, even if they have values.
