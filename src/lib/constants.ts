@@ -413,6 +413,7 @@ export const ONE_HIT_MONSTERS: number[] = [
   7223, // Giant rat (Scurrius)
   8584, // Flower
   11193, // Flower (A Night at the Theatre)
+  11781, // Baboon
 ];
 
 /**

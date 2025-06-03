@@ -1203,6 +1203,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
+    if (this.wearing('Confliction gauntlets') && this.player.style.type === 'magic' && !this.player.equipment.weapon?.isTwoHanded) {
+      hitChance = this.track(DetailKey.PLAYER_ACCURACY_CONFLICTION_GAUNTLETS, BaseCalc.getConflictionGauntletsAccuracyRoll(atk, def));
+    }
+
     return this.track(DetailKey.PLAYER_ACCURACY_FINAL, hitChance);
   }
 
@@ -1936,7 +1940,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
    * Returns the average time-to-kill (in seconds) calculation.
    */
   public getTtk() {
-    return this.getHtk() * this.getExpectedAttackSpeed() * SECONDS_PER_TICK;
+    // return this.getHtk() * this.getExpectedAttackSpeed() * SECONDS_PER_TICK;
+    const ttkDist = this.getTtkDistribution();
+    let acc = 0;
+    for (const [ttk, prob] of ttkDist.entries()) {
+      acc += ttk * prob;
+    }
+    return acc * SECONDS_PER_TICK;
   }
 
   public getSpecDps(): number {
