@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "Jonathan Yaeger",
-  "homepage": "https://jmyaeger.github.io/osrs-dps-calc",
+  "homepage": "https://jmyaeger.github.io/osrs-dps-calc/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
