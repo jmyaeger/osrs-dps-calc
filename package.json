@@ -2,7 +2,8 @@
   "name": "osrs-dps",
   "version": "0.1.0",
   "private": true,
-  "author": "Jayden Bailey (https://weirdgloop.org)",
+  "author": "Jonathan Yaeger",
+  "homepage": "https://jmyaeger.github.io/osrs-dps-calc",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,7 +17,9 @@
     "analyse": "ANALYSE=true next build",
     "test": "jest",
     "cdn-docker": "yarn build-docker-scraper && docker run --rm -it -v $(pwd)/cdn:/srv/cdn -v $(pwd)/src/lib/EquipmentAliases.ts:/srv/src/lib/EquipmentAliases.ts weirdgloop/osrs-dps-calc:scraper",
-    "cdn-dispatch": "gh workflow run regenerate.yml"
+    "cdn-dispatch": "gh workflow run regenerate.yml",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d out -m"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
@@ -46,6 +49,7 @@
     "@next/bundle-analyzer": "^14.1.0",
     "@tailwindcss/forms": "^0.5.7",
     "@types/d3-array": "^3.2.1",
+    "@types/gh-pages": "^6",
     "@types/lodash.isequal": "^4.5.8",
     "@types/lodash.mergewith": "^4.6.9",
     "@types/node": "20.10.6",
@@ -64,6 +68,7 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^6.3.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "postcss-import": "^16.0.0",

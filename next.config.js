@@ -20,7 +20,8 @@ const shouldAnalyse = process.env.ANALYSE === 'true';
 let nextConfig = {
   output: 'export',
   reactStrictMode: true,
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+  basePath: '/osrs-dps-calc',
+  assetPrefix: '/osrs-dps-calc/',
   images: {
     unoptimized: true,
     domains: ['runescape.wiki', 'oldschool.runescape.wiki'],
