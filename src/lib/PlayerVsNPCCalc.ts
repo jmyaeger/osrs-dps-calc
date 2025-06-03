@@ -240,7 +240,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       if (this.wearing('Dragon hunter lance')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_DRAGONHUNTER, attackRoll, [6, 5]);
       } else if (this.wearing('Dragon hunter wand')) {
-        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_DRAGONHUNTER, attackRoll, [3, 2]);
+        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_DRAGONHUNTER, attackRoll, [7, 4]);
       }
     }
     if (this.wearing('Keris partisan of breaching') && mattrs.includes(MonsterAttribute.KALPHITE)) {
@@ -372,9 +372,12 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       const obsidianBonus = this.trackFactor(DetailKey.MAX_HIT_OBSIDIAN, baseMax, [1, 10]);
       maxHit = this.trackAdd(DetailKey.MAX_HIT_OBSIDIAN, maxHit, obsidianBonus);
     }
-    if (this.wearing(['Dragon hunter lance', 'Dragon hunter wand']) && mattrs.includes(MonsterAttribute.DRAGON)) {
-      // still applies to dhw when wand bashing
+    if (this.wearing('Dragon hunter lance') && mattrs.includes(MonsterAttribute.DRAGON)) {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_DRAGONHUNTER, maxHit, [6, 5]);
+    }
+    if (this.wearing('Dragon hunter wand') && mattrs.includes(MonsterAttribute.DRAGON)) {
+      // still applies to dhw when wand bashing
+      maxHit = this.trackFactor(DetailKey.MAX_HIT_DRAGONHUNTER, maxHit, [7, 5]);
     }
     if (this.isWearingKeris() && mattrs.includes(MonsterAttribute.KALPHITE)) {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_KERIS, maxHit, [133, 100]);
@@ -800,7 +803,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       } else if (this.wearing('Dragon hunter lance')) {
         attackRoll = this.trackFactor(DetailKey.MAX_HIT_DRAGONHUNTER, attackRoll, [6, 5]);
       } else if (this.wearing('Dragon hunter wand')) {
-        attackRoll = this.trackFactor(DetailKey.MAX_HIT_DRAGONHUNTER, attackRoll, [3, 2]);
+        attackRoll = this.trackFactor(DetailKey.MAX_HIT_DRAGONHUNTER, attackRoll, [7, 4]);
       }
     }
 
@@ -884,6 +887,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3 + 1));
     } else if (this.wearing('Warped sceptre')) {
       maxHit = Math.max(1, Math.trunc((8 * magicLevel + 96) / 37));
+    } else if (this.wearing('Eye of ayak')) {
+      maxHit = Math.max(1, Math.trunc(magicLevel / 3 - 6));
     } else if (this.wearing('Bone staff')) {
       // although the +10 is technically a ratbane bonus, the weapon can't be used against non-rats
       // and shows this max hit against the combat dummy as well
@@ -955,8 +960,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     }
 
     if (mattrs.includes(MonsterAttribute.DRAGON)) {
-      // this still applies to dhl and dhcb when autocasting
-      if (this.wearing(['Dragon hunter wand', 'Dragon hunter lance'])) {
+      if (this.wearing('Dragon hunter wand')) {
+        maxHit = this.trackFactor(DetailKey.MAX_HIT_DRAGONHUNTER, maxHit, [7, 5]);
+      } else if (this.wearing('Dragon hunter lance')) {
+        // this still applies to dhl and dhcb when autocasting
         maxHit = this.trackFactor(DetailKey.MAX_HIT_DRAGONHUNTER, maxHit, [6, 5]);
       } else if (this.wearing('Dragon hunter crossbow')) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_DRAGONHUNTER, maxHit, [5, 4]);
@@ -1176,6 +1183,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
           BaseCalc.getFangAccuracyRoll(atk, def),
         );
       }
+    }
+
+    if (this.wearing('Confliction gauntlets') && this.player.style.type === 'magic' && !this.player.equipment.weapon?.isTwoHanded) {
+      hitChance = this.track(DetailKey.PLAYER_ACCURACY_CONFLICTION_GAUNTLETS, BaseCalc.getConflictionGauntletsAccuracyRoll(atk, def));
     }
 
     return this.track(DetailKey.PLAYER_ACCURACY_FINAL, hitChance);
@@ -1679,7 +1690,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if ((OLM_MAGE_HAND_IDS.includes(this.monster.id) || OLM_MELEE_HAND_IDS.includes(this.monster.id)) && styleType === 'ranged') {
       dist = dist.transform(divisionTransformer(3));
     }
-    if (this.monster.name === 'Ice demon' && this.player.spell?.element !== 'fire') {
+    if (this.monster.name === 'Ice demon' && this.player.spell?.element !== 'fire' && !this.isUsingDemonbane()) {
       // https://twitter.com/JagexAsh/status/1133350436554121216
       dist = dist.transform(divisionTransformer(3));
     }
@@ -1897,7 +1908,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
    * Returns the average time-to-kill (in seconds) calculation.
    */
   public getTtk() {
-    return this.getHtk() * this.getExpectedAttackSpeed() * SECONDS_PER_TICK;
+    // return this.getHtk() * this.getExpectedAttackSpeed() * SECONDS_PER_TICK;
+    const ttkDist = this.getTtkDistribution();
+    let acc = 0;
+    for (const [ttk, prob] of ttkDist.entries()) {
+      acc += ttk * prob;
+    }
+    return acc * SECONDS_PER_TICK;
   }
 
   public getSpecDps(): number {
