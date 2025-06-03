@@ -19,7 +19,7 @@
     "cdn-docker": "yarn build-docker-scraper && docker run --rm -it -v $(pwd)/cdn:/srv/cdn -v $(pwd)/src/lib/EquipmentAliases.ts:/srv/src/lib/EquipmentAliases.ts weirdgloop/osrs-dps-calc:scraper",
     "cdn-dispatch": "gh workflow run regenerate.yml",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d out -m"
+    "deploy": "gh-pages -d out -m \"Deploy Next.js to Pages\""
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
