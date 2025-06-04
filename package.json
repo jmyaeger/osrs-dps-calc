@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": "Jonathan Yaeger",
-  "homepage": "https://jmyaeger.github.io/osrs-dps-calc/",
+  "homepage": "https://dps.oriontools.dev/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,8 +18,8 @@
     "test": "jest",
     "cdn-docker": "yarn build-docker-scraper && docker run --rm -it -v $(pwd)/cdn:/srv/cdn -v $(pwd)/src/lib/EquipmentAliases.ts:/srv/src/lib/EquipmentAliases.ts weirdgloop/osrs-dps-calc:scraper",
     "cdn-dispatch": "gh workflow run regenerate.yml",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d out -m \"Deploy Next.js to Pages\""
+    "predeploy": "yarn build && touch out/.nojekyll",
+    "deploy": "gh-pages -d out --dotfiles --cname dps.oriontools.dev -m \"Deploy Next.js to Pages\""
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
