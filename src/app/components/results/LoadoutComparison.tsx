@@ -213,7 +213,7 @@ const LoadoutComparison: React.FC = observer(() => {
     >
       {compareResult && (
         <div className="px-6 py-4">
-          <ResponsiveContainer width="100%" height={250}>
+          <ResponsiveContainer width="100%" height={500}>
             <LineChart
               data={compareResult.entries}
               margin={{ top: 40, right: 20 }}
