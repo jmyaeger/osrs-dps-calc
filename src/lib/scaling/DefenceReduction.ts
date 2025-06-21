@@ -133,6 +133,20 @@ const applyDefenceReductions = (m: Monster): Monster => {
     });
   }
 
+  const ayakDmg = reductions.ayak;
+  if (ayakDmg > 0) {
+    const baseBonus = m.defensive.magic;
+    const floor = Math.min(baseBonus, 0);
+    const newBonus = Math.max(floor, baseBonus - ayakDmg);
+    return {
+      ...m,
+      defensive: {
+        ...m.defensive,
+        magic: newBonus,
+      },
+    };
+  }
+
   let bgsDmg = reductions.bgs;
   if (bgsDmg > 0) {
     const applyBgsDmg = (monster: Monster, k: keyof Monster['skills']): Monster => {
