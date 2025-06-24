@@ -45,6 +45,7 @@ export interface CompareResult {
     y: ChartAnnotation[],
   },
   domainMax: number,
+  domainMin: number,
 }
 
 export default class Comparator {
@@ -258,8 +259,9 @@ export default class Comparator {
     return [];
   }
 
-  public getEntries(): [ChartEntry[], number] {
-    let domainMax: number = 0;
+  public getEntries(): [ChartEntry[], number, number] {
+    let domainMax: number = -Infinity;
+    let domainMin: number = Infinity;
 
     const res: ChartEntry[] = [];
     for (const x of this.inputsIterator()) {
@@ -269,6 +271,9 @@ export default class Comparator {
         if (f > domainMax) {
           domainMax = f;
         }
+        if (f < domainMin) {
+          domainMin = f;
+        }
       }
 
       res.push({
@@ -277,6 +282,6 @@ export default class Comparator {
       });
     }
 
-    return [res, domainMax];
+    return [res, domainMin, domainMax];
   }
 }

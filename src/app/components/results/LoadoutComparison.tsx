@@ -137,16 +137,19 @@ const LoadoutComparison: React.FC = observer(() => {
     });
   }, [showLoadoutComparison, loadouts, monster, xAxisType, yAxisType, calc]);
 
-  const [tickCount, domainMax] = useMemo(() => {
-    if (!compareResult?.domainMax) {
-      return [1, 1];
+  const [tickCount, domainMin, domainMax] = useMemo(() => {
+    if (!compareResult?.domainMax || compareResult.domainMin === undefined) {
+      return [1, 0, 1];
     }
 
     const highest = Math.ceil(compareResult.domainMax);
-    const stepsize = 10 ** Math.floor(Math.log10(highest) - 1);
+    const lowest = Math.floor(compareResult.domainMin);
+    const range = highest - lowest;
+    const stepsize = 10 ** Math.floor(Math.log10(range || 1) - 1);
     const ceilHighest = Math.ceil(1 / stepsize * highest) * stepsize - 1 / 1e9;
-    const count = 1 + Math.ceil(1 / stepsize * highest);
-    return [count, ceilHighest];
+    const floorLowest = Math.floor(1 / stepsize * lowest) * stepsize;
+    const count = Math.max(2, Math.ceil((ceilHighest - floorLowest) / stepsize) + 1);
+    return [count, floorLowest, ceilHighest];
   }, [compareResult]);
 
   const generateChartLines = useCallback(() => {
@@ -212,63 +215,79 @@ const LoadoutComparison: React.FC = observer(() => {
       )}
     >
       {compareResult && (
-        <div className="px-6 py-4">
-          <ResponsiveContainer width="100%" height={500}>
+      <div className="px-6 py-4">
+        <div className="w-full h-64 md:h-80 lg:h-96">
+          <ResponsiveContainer height="100%" width="100%">
             <LineChart
               data={compareResult.entries}
-              margin={{ top: 40, right: 20 }}
+              margin={{
+                top: 40,
+                right: 20,
+              }}
             >
               <XAxis
                 allowDecimals
                 dataKey="name"
                 stroke="#777777"
                 interval="equidistantPreserveStart"
-                label={{ value: xAxisType?.axisLabel, position: 'insideBottom', offset: -15 }}
+                label={{
+                  value: xAxisType?.axisLabel,
+                  position: 'insideBottom',
+                  offset: -15,
+                }}
               />
               <YAxis
                 stroke="#777777"
-                domain={[0, domainMax]}
+                domain={[domainMin, domainMax]}
                 tickCount={tickCount}
                 tickFormatter={(v: number) => `${parseFloat(v.toFixed(2))}`}
                 interval="equidistantPreserveStart"
                 label={{
-                  value: yAxisType?.axisLabel, position: 'insideLeft', angle: -90, style: { textAnchor: 'middle' },
+                  value: yAxisType?.axisLabel,
+                  position: 'insideLeft',
+                  angle: -90,
+                  style: { textAnchor: 'middle' },
                 }}
               />
               <CartesianGrid stroke="gray" strokeDasharray="5 5" />
               <Tooltip
                 content={(props) => <CustomTooltip {...props} />}
               />
-              <Legend wrapperStyle={{ fontSize: '.9em', top: 0 }} />
+              <Legend wrapperStyle={{
+                fontSize: '.9em',
+                top: 0,
+              }}
+              />
               {generateChartLines()}
               {generateAnnotations()}
             </LineChart>
           </ResponsiveContainer>
-          <div className="my-4 flex flex-wrap md:flex-nowrap gap-4 max-w-lg m-auto dark:text-white">
-            <div className="basis-full md:basis-1/2">
-              <h3 className="font-serif font-bold mb-2">X axis</h3>
-              <Select
-                id="loadout-comparison-x"
-                items={XAxisOptions}
-                value={xAxisType || undefined}
-                onSelectedItemChange={(i) => {
-                  setXAxisType(i);
-                }}
-              />
-            </div>
-            <div className="basis-full md:basis-1/2">
-              <h3 className="font-serif font-bold mb-2">Y axis</h3>
-              <Select
-                id="loadout-comparison-y"
-                items={YAxisOptions}
-                value={yAxisType || undefined}
-                onSelectedItemChange={(i) => {
-                  setYAxisType(i);
-                }}
-              />
-            </div>
+        </div>
+        <div className="my-4 flex flex-wrap md:flex-nowrap gap-4 max-w-lg m-auto dark:text-white">
+          <div className="basis-full md:basis-1/2">
+            <h3 className="font-serif font-bold mb-2">X axis</h3>
+            <Select
+              id="loadout-comparison-x"
+              items={XAxisOptions}
+              value={xAxisType || undefined}
+              onSelectedItemChange={(i) => {
+                setXAxisType(i);
+              }}
+            />
+          </div>
+          <div className="basis-full md:basis-1/2">
+            <h3 className="font-serif font-bold mb-2">Y axis</h3>
+            <Select
+              id="loadout-comparison-y"
+              items={YAxisOptions}
+              value={yAxisType || undefined}
+              onSelectedItemChange={(i) => {
+                setYAxisType(i);
+              }}
+            />
           </div>
         </div>
+      </div>
       )}
     </SectionAccordion>
   );
