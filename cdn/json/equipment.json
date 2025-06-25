@@ -79530,6 +79530,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Keris Partisan of Amascut",
+    "id": -6,
+    "version": "",
+    "slot": "weapon",
+    "image": "Keris partisan of corruption.png",
+    "speed": 4,
+    "category": "Partisan",
+    "bonuses": {
+      "str": 67,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 3
+    },
+    "offensive": {
+      "stab": 108,
+      "slash": -2,
+      "crush": 57,
+      "magic": 2,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Keris partisan of breaching",
     "id": 25981,
     "version": "",

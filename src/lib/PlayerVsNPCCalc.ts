@@ -382,6 +382,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (this.isWearingKeris() && mattrs.includes(MonsterAttribute.KALPHITE)) {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_KERIS, maxHit, [133, 100]);
     }
+    if (this.wearing('Keris Partisan of Amascut') && mattrs.includes(MonsterAttribute.KALPHITE)) {
+      maxHit = this.trackFactor(DetailKey.MAX_HIT_KERIS, maxHit, [115, 100]);
+    }
     if (this.wearing('Barronite mace') && mattrs.includes(MonsterAttribute.GOLEM)) {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_GOLEMBANE, maxHit, [23, 20]);
     }
