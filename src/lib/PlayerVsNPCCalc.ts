@@ -1951,7 +1951,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     for (const [ttk, prob] of ttkDist.entries()) {
       acc += ttk * prob;
     }
-    return acc * SECONDS_PER_TICK;
+    return acc * SECONDS_PER_TICK + (this.getExpectedAttackSpeed() - 1) * SECONDS_PER_TICK;
   }
 
   public getSpecDps(): number {
