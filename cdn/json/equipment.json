@@ -46950,6 +46950,36 @@
     "isTwoHanded": true
   },
   {
+    "name": "Dinh's blazing bulwark (rotten)",
+    "id": 31132,
+    "version": "",
+    "slot": "weapon",
+    "image": "Dinh's blazing bulwark.png",
+    "speed": 0,
+    "category": "Bow",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": true
+  },
+  {
     "name": "Dinh's bulwark",
     "id": 21015,
     "version": "",
@@ -91140,6 +91170,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Nifty hat",
+    "id": 31780,
+    "version": "",
+    "slot": "head",
+    "image": "Nifty hat.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Nightmare staff",
     "id": 24422,
     "version": "",
@@ -133909,6 +133969,36 @@
       "crush": 0,
       "magic": 0,
       "ranged": 90
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": true
+  },
+  {
+    "name": "Venator bow (rotten)",
+    "id": 31133,
+    "version": "",
+    "slot": "weapon",
+    "image": "Venator bow (rotten).png",
+    "speed": 5,
+    "category": "Bow",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
     },
     "defensive": {
       "stab": 0,
