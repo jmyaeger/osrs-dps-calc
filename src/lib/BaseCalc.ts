@@ -772,8 +772,5 @@ export default class BaseCalc {
     if (this.wearing('Echo boots')) {
       this.addIssue(UserIssueType.FEET_RECOIL_UNSUPPORTED, 'The calculator does not account for recoil damage.');
     }
-    if (this.wearing('Confliction gauntlets')) {
-      this.addIssue(UserIssueType.HANDS_EFFECT_UNSUPPORTED, 'The calculator does not account for this item\'s special effect.');
-    }
   }
 }
