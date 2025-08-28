@@ -26831,7 +26831,8 @@
       "stab": 0
     },
     "attributes": [
-      "flying"
+      "flying",
+      "golem"
     ],
     "immunities": {
       "burn": null
@@ -29991,7 +29992,9 @@
       "slash": 0,
       "stab": 0
     },
-    "attributes": [],
+    "attributes": [
+      "golem"
+    ],
     "immunities": {
       "burn": null
     },
@@ -30039,7 +30042,9 @@
       "slash": 0,
       "stab": 0
     },
-    "attributes": [],
+    "attributes": [
+      "golem"
+    ],
     "immunities": {
       "burn": null
     },
@@ -38616,7 +38621,9 @@
       "slash": 60,
       "stab": 50
     },
-    "attributes": [],
+    "attributes": [
+      "golem"
+    ],
     "immunities": {
       "burn": null
     },
@@ -38663,7 +38670,9 @@
       "slash": 60,
       "stab": 50
     },
-    "attributes": [],
+    "attributes": [
+      "golem"
+    ],
     "immunities": {
       "burn": null
     },
@@ -67198,7 +67207,9 @@
       "slash": 50,
       "stab": 50
     },
-    "attributes": [],
+    "attributes": [
+      "golem"
+    ],
     "immunities": {
       "burn": null
     },
