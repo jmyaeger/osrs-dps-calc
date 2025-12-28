@@ -1,4 +1,4 @@
-import { lerp } from '@/lib/Math';
+import { iLerp } from '@/lib/Math';
 import { Monster } from '@/types/Monster';
 
 interface VardNumbers {
@@ -46,8 +46,8 @@ const applyVardScaling = (m: Monster): Monster => {
     ...m,
     skills: {
       ...m.skills,
-      str: lerp(currHp, vardRanges.maxHp, 0, vardRanges.str[0], vardRanges.str[1]),
-      def: lerp(currHp, vardRanges.maxHp, 0, vardRanges.def[0], vardRanges.def[1]),
+      str: iLerp(vardRanges.str[0], vardRanges.str[1], vardRanges.maxHp, 0, currHp),
+      def: iLerp(vardRanges.def[0], vardRanges.def[1], vardRanges.maxHp, 0, currHp),
     },
   };
 };
