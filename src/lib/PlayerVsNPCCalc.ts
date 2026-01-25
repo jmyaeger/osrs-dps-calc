@@ -1237,7 +1237,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const def = this.getNPCDefenceRoll();
 
     if (this.opts.usingSpecialAttack && this.wearing('New Spec Weapon')) {
-      const specMaxHit = Math.trunc(this.getMinAndMax()[1] * 7 / 10);
+      const specMaxHit = Math.trunc(this.getMinAndMax()[1]);
       if (this.monster.inputs.monsterCurrentHp < specMaxHit) {
         return this.track(DetailKey.PLAYER_ACCURACY_FINAL, BaseCalc.getFixedAccuracyRoll(atk, def));
       }
