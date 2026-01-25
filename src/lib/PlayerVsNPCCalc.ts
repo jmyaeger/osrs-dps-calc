@@ -56,7 +56,9 @@ import {
 } from '@/lib/constants';
 import { EquipmentCategory } from '@/enums/EquipmentCategory';
 import { DetailKey } from '@/lib/CalcDetails';
-import { Factor, iLerp, MinMax } from '@/lib/Math';
+import {
+  binomialProbability, Factor, iLerp, MinMax,
+} from '@/lib/Math';
 import { calculateAttackSpeed, WEAPON_SPEC_COSTS } from '@/lib/Equipment';
 import BaseCalc, { CalcOpts, InternalOpts } from '@/lib/BaseCalc';
 import { scaleMonster, scaleMonsterHpOnly } from '@/lib/MonsterScaling';
@@ -259,6 +261,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     }
     if (this.wearing(['Blisterwood flail', 'Blisterwood sickle']) && isVampyre(mattrs)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_VAMPYREBANE, attackRoll, [21, 20]);
+    }
+    if (this.wearing('Flail Upgrade') && isVampyre(mattrs)) {
+      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_VAMPYREBANE, attackRoll, [5, 4]);
     }
     if (this.isWearingSilverWeapon() && this.wearing("Efaritay's aid") && isVampyre(mattrs)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_EFARITAY, attackRoll, [23, 20]); // todo ordering? does this stack multiplicatively with vampyrebane?
@@ -487,11 +492,18 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       } else if (this.wearing('Soulreaper axe')) {
         const stacks = Math.max(0, Math.min(5, this.player.buffs.soulreaperStacks));
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [100 + 6 * stacks, 100]);
+      } else if (this.wearing('New Spec Weapon')) {
+        maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [7, 10]);
       }
     }
 
     if (this.monster.name === 'Respiratory system') {
       minHit = this.trackAdd(DetailKey.REPIRATORY_SYSTEM_MIN_HIT, minHit, Math.trunc(maxHit / 2));
+    }
+
+    if (this.opts.usingSpecialAttack && this.wearing('New Spec Weapon')) {
+      minHit = Math.trunc(maxHit * 7 / 10);
+      maxHit = minHit;
     }
 
     return [minHit, maxHit];
@@ -672,6 +684,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const bonusStr = scalesWithStr ? this.player.bonuses.str : this.player.bonuses.ranged_str;
     const baseMax = this.trackMaxHitFromEffective(DetailKey.MAX_HIT_BASE, effectiveLevel, 64 + bonusStr);
     let [minHit, maxHit]: MinMax = [0, baseMax];
+
+    if (this.isWearingSeekerArrow() && !this.isAmmoInvalid()) {
+      minHit = 3;
+    }
 
     // tested this in-game, slayer helmet (i) + crystal legs + crystal body + bowfa, on accurate, no rigour, 99 ranged
     // max hit is 36, but would be 37 if placed after slayer helm
@@ -1224,6 +1240,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const atk = this.getMaxAttackRoll();
     const def = this.getNPCDefenceRoll();
 
+    if (this.opts.usingSpecialAttack && this.wearing('New Spec Weapon') && this.monster.inputs.monsterCurrentHp < this.getMax()) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, BaseCalc.getFixedAccuracyRoll(atk, def));
+    }
+
     let hitChance = this.track(
       DetailKey.PLAYER_ACCURACY_BASE,
       BaseCalc.getNormalAccuracyRoll(atk, def),
@@ -1388,6 +1408,24 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       if (this.opts.usingSpecialAttack) {
         dist = dist.transform(flatLimitTransformer(48, min));
       }
+    }
+
+    if (this.opts.usingSpecialAttack && this.wearing('Crimson Bludgeon')) {
+      const hitDist = new HitDistribution([]);
+      for (let successfulRolls = 1; successfulRolls <= 4; successfulRolls++) {
+        const low = Math.trunc(max * (2 * successfulRolls + 7) / 10);
+        let high = Math.trunc(max * (2 * successfulRolls + 11) / 10);
+        if (successfulRolls === 4) {
+          high -= 1;
+        }
+        const prob = binomialProbability(4, successfulRolls, acc);
+        const chanceOfDmg = prob / (high - low + 1);
+        for (let dmg = low; dmg <= high; dmg++) {
+          hitDist.addHit(new WeightedHit(chanceOfDmg, [new Hitsplat(dmg)]));
+        }
+      }
+      hitDist.addHit(new WeightedHit(binomialProbability(4, 0, acc), [Hitsplat.INACCURATE]));
+      dist = new AttackDistribution([hitDist.flatten()]);
     }
 
     let accurateZeroApplicable: boolean = true;
@@ -1577,7 +1615,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       const efaritay = this.wearing("Efaritay's aid");
       const doEfaritay = (d: AttackDistribution) => (efaritay ? d.scaleDamage(11, 10) : d);
 
-      if (this.wearing('Blisterwood flail')) {
+      if (this.wearing(['Blisterwood flail', 'Flail Upgrade'])) {
         dist = doEfaritay(dist);
         dist = dist.scaleDamage(5, 4);
       } else if (this.wearing('Blisterwood sickle')) {

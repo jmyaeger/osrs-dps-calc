@@ -168,6 +168,12 @@ export default class BaseCalc {
     return 0;
   }
 
+  public static getFixedAccuracyRoll(atk: number, def: number): number {
+    if (atk < 0) atk = Math.min(0, atk + 2);
+    if (def < 0) def = Math.min(0, def + 2);
+    return Math.min(1, atk / def);
+  }
+
   public static getConflictionGauntletsAccuracyRoll(atk: number, def: number): number {
     const singleRoll = this.getNormalAccuracyRoll(atk, def);
     const doubleRoll = this.getFangAccuracyRoll(atk, def);
@@ -612,6 +618,10 @@ export default class BaseCalc {
 
   protected isWearingOgreBow(): boolean {
     return this.wearing(['Ogre bow', 'Comp ogre bow']);
+  }
+
+  protected isWearingSeekerArrow(): boolean {
+    return this.wearing(['Bronze seeker arrows', 'Iron seeker arrows', 'Steel seeker arrows', 'Mithril seeker arrows', 'Adamant seeker arrows', 'Rune seeker arrows', 'Amethyst seeker arrows', 'Dragon seeker arrows']);
   }
 
   protected tdUnshieldedBonusApplies(): boolean {

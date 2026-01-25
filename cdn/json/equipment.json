@@ -5700,6 +5700,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Adamant seeker arrows",
+    "id": -7,
+    "version": "",
+    "slot": "ammo",
+    "image": "Adamant arrow 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 31,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 23
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Adamant shield (h1)",
     "id": 7334,
     "version": "",
@@ -8149,6 +8179,36 @@
       "crush": 0,
       "magic": 0,
       "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Amethyst seeker arrows",
+    "id": -9,
+    "version": "",
+    "slot": "ammo",
+    "image": "Amethyst arrow 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 55,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 23
     },
     "defensive": {
       "stab": 0,
@@ -22374,7 +22434,7 @@
       "stab": 23,
       "slash": 30,
       "crush": 30,
-      "magic": 26,
+      "magic": 28,
       "ranged": 40
     },
     "isTwoHanded": false
@@ -22404,7 +22464,7 @@
       "stab": 23,
       "slash": 30,
       "crush": 30,
-      "magic": 26,
+      "magic": 28,
       "ranged": 40
     },
     "isTwoHanded": false
@@ -22434,7 +22494,7 @@
       "stab": 23,
       "slash": 30,
       "crush": 30,
-      "magic": 26,
+      "magic": 28,
       "ranged": 40
     },
     "isTwoHanded": false
@@ -25560,6 +25620,36 @@
     "isTwoHanded": true
   },
   {
+    "name": "Bow of faerdhinen (c) (deadman)",
+    "id": 33021,
+    "version": "",
+    "slot": "weapon",
+    "image": "Bow of faerdhinen (c) (deadman).png",
+    "speed": 5,
+    "category": "Bow",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 106,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 128
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": true
+  },
+  {
     "name": "Bowl wig",
     "id": 20110,
     "version": "",
@@ -28613,6 +28703,36 @@
     "defensive": {
       "stab": 0,
       "slash": 1,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Bronze seeker arrows",
+    "id": -3,
+    "version": "",
+    "slot": "ammo",
+    "image": "Bronze arrow 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 7,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 23
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -43742,9 +43862,9 @@
   {
     "name": "Crate of mahogany logs",
     "id": 32604,
-    "version": "neitiznot",
+    "version": "Neitiznot",
     "slot": "weapon",
-    "image": "Crate of mahogany logs (neitiznot).png",
+    "image": "Crate of mahogany logs (Neitiznot).png",
     "speed": 0,
     "category": "Blunt",
     "bonuses": {
@@ -43772,9 +43892,9 @@
   {
     "name": "Crate of mahogany logs",
     "id": 32644,
-    "version": "port piscarilius",
+    "version": "Port Piscarilius",
     "slot": "weapon",
-    "image": "Crate of mahogany logs (port piscarilius).png",
+    "image": "Crate of mahogany logs (Port Piscarilius).png",
     "speed": 0,
     "category": "Blunt",
     "bonuses": {
@@ -49020,6 +49140,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Crimson bludgeon",
+    "id": -11,
+    "version": "",
+    "slot": "weapon",
+    "image": "Cursed goblin hammer.png",
+    "speed": 4,
+    "category": "Spiked",
+    "bonuses": {
+      "str": 56,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 57,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Crone-made amulet",
     "id": 10500,
     "version": "",
@@ -49766,6 +49916,66 @@
       "crush": 32,
       "magic": 44,
       "ranged": 53
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Crystal body (deadman)",
+    "id": 33023,
+    "version": "Active",
+    "slot": "body",
+    "image": "Crystal body (deadman).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 3
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": -18,
+      "ranged": 31
+    },
+    "defensive": {
+      "stab": 46,
+      "slash": 38,
+      "crush": 48,
+      "magic": 44,
+      "ranged": 68
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Crystal body (deadman)",
+    "id": 33025,
+    "version": "Inactive",
+    "slot": "body",
+    "image": "Crystal body (inactive, deadman).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
     },
     "isTwoHanded": false
   },
@@ -51840,6 +52050,66 @@
     "isTwoHanded": false
   },
   {
+    "name": "Crystal helm (deadman)",
+    "id": 33031,
+    "version": "Active",
+    "slot": "head",
+    "image": "Crystal helm (deadman).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 2
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": -10,
+      "ranged": 9
+    },
+    "defensive": {
+      "stab": 12,
+      "slash": 8,
+      "crush": 14,
+      "magic": 10,
+      "ranged": 18
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Crystal helm (deadman)",
+    "id": 33033,
+    "version": "Inactive",
+    "slot": "head",
+    "image": "Crystal helm (inactive, deadman).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Crystal helm (perfected)",
     "id": 23888,
     "version": "",
@@ -52436,6 +52706,66 @@
       "crush": 24,
       "magic": 34,
       "ranged": 29
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Crystal legs (deadman)",
+    "id": 33027,
+    "version": "Active",
+    "slot": "legs",
+    "image": "Crystal legs (deadman).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 2
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": -12,
+      "ranged": 18
+    },
+    "defensive": {
+      "stab": 26,
+      "slash": 21,
+      "crush": 30,
+      "magic": 34,
+      "ranged": 38
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Crystal legs (deadman)",
+    "id": 33029,
+    "version": "Inactive",
+    "slot": "legs",
+    "image": "Crystal legs (inactive, deadman).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
     },
     "isTwoHanded": false
   },
@@ -62310,6 +62640,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Dragon seeker arrows",
+    "id": -10,
+    "version": "",
+    "slot": "ammo",
+    "image": "Dragon arrow 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 60,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 23
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Dragon spear",
     "id": 3176,
     "version": "Karambwan poison",
@@ -70018,6 +70378,36 @@
       "ranged": 0
     },
     "isTwoHanded": true
+  },
+  {
+    "name": "Flail Upgrade",
+    "id": -2,
+    "version": "",
+    "slot": "weapon",
+    "image": "Blisterwood flail.png",
+    "speed": 4,
+    "category": "Staff",
+    "bonuses": {
+      "str": 46,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 6
+    },
+    "offensive": {
+      "stab": 32,
+      "slash": 68,
+      "crush": 0,
+      "magic": 10,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 2,
+      "crush": 0,
+      "magic": 10,
+      "ranged": 0
+    },
+    "isTwoHanded": false
   },
   {
     "name": "Flamtaer bracelet",
@@ -84090,6 +84480,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Holy moleys",
+    "id": 33002,
+    "version": "",
+    "slot": "feet",
+    "image": "Holy moleys.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 3
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Holy sandals",
     "id": 12598,
     "version": "",
@@ -84416,6 +84836,126 @@
       "crush": 0,
       "magic": 0,
       "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Hooded slayer helmet",
+    "id": 33066,
+    "version": "",
+    "slot": "head",
+    "image": "Hooded slayer helmet.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": -6,
+      "ranged": -2
+    },
+    "defensive": {
+      "stab": 30,
+      "slash": 32,
+      "crush": 27,
+      "magic": -1,
+      "ranged": 30
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Hooded slayer helmet (i)",
+    "id": 33072,
+    "version": "Emir's Arena",
+    "slot": "head",
+    "image": "Hooded slayer helmet (i).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 3,
+      "ranged": 3
+    },
+    "defensive": {
+      "stab": 30,
+      "slash": 32,
+      "crush": 27,
+      "magic": 10,
+      "ranged": 30
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Hooded slayer helmet (i)",
+    "id": 33068,
+    "version": "",
+    "slot": "head",
+    "image": "Hooded slayer helmet (i).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 3,
+      "ranged": 3
+    },
+    "defensive": {
+      "stab": 30,
+      "slash": 32,
+      "crush": 27,
+      "magic": 10,
+      "ranged": 30
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Hooded slayer helmet (i)",
+    "id": 33070,
+    "version": "Soul Wars",
+    "slot": "head",
+    "image": "Hooded slayer helmet (i).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 3,
+      "ranged": 3
+    },
+    "defensive": {
+      "stab": 30,
+      "slash": 32,
+      "crush": 27,
+      "magic": 10,
+      "ranged": 30
     },
     "isTwoHanded": false
   },
@@ -89783,6 +90323,36 @@
     "defensive": {
       "stab": 0,
       "slash": 1,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Iron seeker arrows",
+    "id": -4,
+    "version": "",
+    "slot": "ammo",
+    "image": "Iron arrow 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 10,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 23
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -99630,6 +100200,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Mithril seeker arrows",
+    "id": -6,
+    "version": "",
+    "slot": "ammo",
+    "image": "Mithril arrow 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 22,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 23
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Mithril spear",
     "id": 3173,
     "version": "Karambwan poison",
@@ -102960,6 +103560,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Necklace of Pursuit",
+    "id": -12,
+    "version": "",
+    "slot": "neck",
+    "image": "Gnome amulet.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 8,
+      "magic_str": 0,
+      "prayer": 3
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 22
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 42,
+      "crush": 28,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Necklace of anguish",
     "id": 19547,
     "version": "",
@@ -103318,6 +103948,36 @@
       "ranged": 0
     },
     "isTwoHanded": false
+  },
+  {
+    "name": "New Spec Weapon",
+    "id": -1,
+    "version": "",
+    "slot": "weapon",
+    "image": "Rapier.png",
+    "speed": 5,
+    "category": "Stab Sword",
+    "bonuses": {
+      "str": 70,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 100,
+      "slash": 21,
+      "crush": 60,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 42,
+      "crush": 28,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": true
   },
   {
     "name": "Nightmare staff",
@@ -121080,6 +121740,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Rune seeker arrows",
+    "id": -8,
+    "version": "",
+    "slot": "ammo",
+    "image": "Rune arrow 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 49,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 23
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Rune shield (h1)",
     "id": 7336,
     "version": "",
@@ -132360,6 +133050,36 @@
     "isTwoHanded": true
   },
   {
+    "name": "Starter cape",
+    "id": 33063,
+    "version": "",
+    "slot": "cape",
+    "image": "Starter cape.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 5,
+      "slash": 5,
+      "crush": 5,
+      "magic": 5,
+      "ranged": 5
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Starter staff",
     "id": 22335,
     "version": "",
@@ -135773,6 +136493,36 @@
     "defensive": {
       "stab": 0,
       "slash": 1,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Steel seeker arrows",
+    "id": -5,
+    "version": "",
+    "slot": "ammo",
+    "image": "Steel arrow 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 16,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 23
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -141508,6 +142258,66 @@
       "ranged": 0
     },
     "isTwoHanded": true
+  },
+  {
+    "name": "Toxic staff (deadman)",
+    "id": 33036,
+    "version": "Charged",
+    "slot": "weapon",
+    "image": "Toxic staff (deadman).png",
+    "speed": 4,
+    "category": "Bladed Staff",
+    "bonuses": {
+      "str": 72,
+      "ranged_str": 0,
+      "magic_str": 150,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 55,
+      "slash": 70,
+      "crush": 0,
+      "magic": 25,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 3,
+      "crush": 3,
+      "magic": 17,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Toxic staff (deadman)",
+    "id": 33035,
+    "version": "Uncharged",
+    "slot": "weapon",
+    "image": "Toxic staff (uncharged, deadman).png",
+    "speed": 4,
+    "category": "Bladed Staff",
+    "bonuses": {
+      "str": 72,
+      "ranged_str": 0,
+      "magic_str": 150,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 55,
+      "slash": 70,
+      "crush": 0,
+      "magic": 17,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 3,
+      "crush": 3,
+      "magic": 17,
+      "ranged": 0
+    },
+    "isTwoHanded": false
   },
   {
     "name": "Toxic staff of the dead",
