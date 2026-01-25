@@ -401,7 +401,7 @@ export const WEAPON_SPEC_COSTS: { [canonicalName: string]: number } = {
 
   'Dragon sword': 40,
 
-  'Crimson Bludgeon': 50,
+  'Crimson bludgeon': 50,
   'New Spec Weapon': 50,
   'Elder maul': 50,
   'Dragon warhammer': 50,

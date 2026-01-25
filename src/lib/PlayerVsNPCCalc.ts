@@ -1410,7 +1410,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
-    if (this.opts.usingSpecialAttack && this.wearing('Crimson Bludgeon')) {
+    if (this.opts.usingSpecialAttack && this.wearing('Crimson bludgeon')) {
       const hitDist = new HitDistribution([]);
       for (let successfulRolls = 1; successfulRolls <= 4; successfulRolls++) {
         const low = Math.trunc(max * (2 * successfulRolls + 7) / 10);
