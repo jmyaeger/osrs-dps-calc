@@ -494,7 +494,6 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [100 + 6 * stacks, 100]);
       } else if (this.wearing('New Spec Weapon')) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [7, 10]);
-        minHit = this.track(DetailKey.MIN_HIT_SPEC, maxHit);
       }
     }
 
@@ -1422,6 +1421,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
       hitDist.addHit(new WeightedHit(binomialProbability(4, 0, acc), [Hitsplat.INACCURATE]));
       dist = new AttackDistribution([hitDist.flatten()]);
+    }
+
+    if (this.opts.usingSpecialAttack && this.wearing('New Spec Weapon')) {
+      dist = dist.transform(
+        (h) => new HitDistribution([new WeightedHit(1.0, [new Hitsplat(max, h.accurate)])]),
+        { transformInaccurate: false },
+      );
     }
 
     let accurateZeroApplicable: boolean = true;
