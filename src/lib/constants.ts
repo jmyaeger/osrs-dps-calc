@@ -3,6 +3,9 @@ import { CombatStyleStance } from '@/types/PlayerCombatStyle';
 export const BLOWPIPE_IDS: number[] = [
   12926, // regular
   28688, // blazing
+  31575, // camphor
+  31579, // ironwood
+  31583, // rosewood
 ];
 
 // The maximum number of loadouts that users can have. Do not lower it, else it will cause share link issues.
@@ -37,7 +40,7 @@ export const ZEBAK_IDS = [
 ];
 
 export const TOA_OBELISK_IDS = [
-  11750, 11751, 11752,
+  11751, 11750, 11752,
 ];
 
 export const P2_WARDEN_IDS = [
@@ -135,6 +138,38 @@ export const TOB_EM_MONSTER_IDS = [
   10767, 10768, // xarpus
   10833, 10834, 10835, // verzik
   10837, 10841, 10842, 10843, 10844, 10845, // verzik web + nylos
+];
+
+/** IDs of monsters that are present in The Gauntlet.
+ * Used to sort equipment
+ */
+export const GAUNTLET_MONSTER_IDS = [
+  9021, // Crystalline Hunllef
+  9026, // Crystalline Rat
+  9027, // Crystalline Spider
+  9028, // Crystalline Bat
+  9029, // Crystalline Unicorn
+  9030, // Crystalline Scorpion
+  9031, // Crystalline Wolf
+  9032, // Crystalline Bear
+  9033, // Crystalline Dragon
+  9034, // Crystalline Dark Beast
+];
+
+/** IDs of monsters that are present in The Corrupted Gauntlet.
+ * Used to sort equipment
+ */
+export const CORRUPTED_GAUNTLET_MONSTER_IDS = [
+  9035, // Corrupted Hunllef
+  9040, // Corrupted Rat
+  9041, // Corrupted Spider
+  9042, // Corrupted Bat
+  9043, // Corrupted Unicorn
+  9044, // Corrupted Scorpion
+  9045, // Corrupted Wolf
+  9046, // Corrupted Bear
+  9047, // Corrupted Dragon
+  9048, // Corrupted Dark Beast
 ];
 
 /**
@@ -493,6 +528,10 @@ HUEYCOATL_PHASE_IDS.forEach((id) => { MONSTER_PHASES_BY_ID[id] = HUEYCOATL_PHASE
 export const ROYAL_TITANS_PHASES = ['In Melee Range', 'Out of Melee Range'];
 TITAN_BOSS_IDS.forEach((id) => { MONSTER_PHASES_BY_ID[id] = ROYAL_TITANS_PHASES; });
 
+export const DOOM_OF_MOKHAIOTL_IDS = [14707];
+export const DOOM_OF_MOKHAIOTL_PHASES = ['Normal', 'Shielded', 'Burrowing'];
+DOOM_OF_MOKHAIOTL_IDS.forEach((id) => { MONSTER_PHASES_BY_ID[id] = DOOM_OF_MOKHAIOTL_PHASES; });
+
 export const ABYSSAL_SIRE_PHASES = ['Standard', 'Transition'];
 export const ABYSSAL_SIRE_TRANSITION_IDS = [5886, 5889, 5891];
 ABYSSAL_SIRE_TRANSITION_IDS.forEach((id) => { MONSTER_PHASES_BY_ID[id] = ABYSSAL_SIRE_PHASES; });
@@ -504,3 +543,5 @@ YAMA_IDS.forEach((id) => { MONSTER_PHASES_BY_ID[id] = YAMA_PHASES; });
 export const INFINITE_HEALTH_MONSTERS: number[] = [
   14779, // gemstone crab
 ];
+
+export const ECLIPSE_MOON_IDS = [13012];

@@ -48,6 +48,8 @@ const equipmentAliases = {
   8847: [24139], // Black defender#Normal
   1165: [2595, 2587, 10306, 10308, 10310, 10312, 10314], // Black full helm
   1195: [2597, 2589, 7332, 7338, 7344, 7350, 7356], // Black kiteshield
+  8901: [8919, 8917, 8915, 8913, 8911, 8909, 8907, 8905, 8903, 8921], // Black mask#(10)
+  11774: [11783, 25275, 26780, 11782, 25274, 26779, 11781, 25273, 26778, 11780, 25272, 26777, 11779, 25271, 26776, 11778, 25270, 26775, 11777, 25269, 26774, 11776, 25268, 26773, 11775, 25267, 26772, 11784, 25276, 26781], // Black mask (i)#(10)
   1125: [2591, 23366, 23369, 23372, 23375, 23378, 2583], // Black platebody
   1077: [2593, 2585], // Black platelegs
   1089: [3473, 3472], // Black plateskirt
@@ -170,6 +172,7 @@ const equipmentAliases = {
   21752: [26685, 25193], // Granite ring (i)#Nightmare Zone
   1135: [7370, 7372], // Green d'hide body
   1099: [7378, 7380], // Green d'hide chaps
+  31181: [31190], // Grid master tabard
   4730: [4926, 4922, 4925, 4924, 4923], // Guthan's chainskirt#Undamaged
   4724: [4908, 4904, 4907, 4906, 4905], // Guthan's helm#Undamaged
   4728: [4920, 4916, 4919, 4918, 4917], // Guthan's platebody#Undamaged
@@ -277,6 +280,7 @@ const equipmentAliases = {
   1097: [7366, 7368], // Studded chaps
   26757: [26758], // Superior calamity breeches#Normal
   26751: [26752], // Superior calamity chest#Normal
+  31193: [31202], // Swords and emblem
   4747: [4962, 4958, 4961, 4960, 4959], // Torag's hammers#Undamaged
   4745: [4956, 4952, 4955, 4954, 4953], // Torag's helm#Undamaged
   4749: [4968, 4964, 4967, 4966, 4965], // Torag's platebody#Undamaged
@@ -307,6 +311,7 @@ const equipmentAliases = {
   11663: [24183, 27005, 26473], // Void mage helm#Normal
   11665: [24185, 27007, 26477], // Void melee helm#Normal
   11664: [24184, 27006, 26475], // Void ranger helm#Normal
+  11666: [11673, 11672, 11671, 11670, 11669, 11668, 11667], // Void seal#(8)
   27690: [29607], // Voidwaker
   24424: [29609], // Volatile nightmare staff
   11772: [26769, 25262], // Warrior ring (i)#Nightmare Zone

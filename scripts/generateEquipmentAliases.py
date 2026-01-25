@@ -16,48 +16,55 @@ MAPPING_DICT_FILE_NAME = '../cdn/json/equipment_aliases.json'
 WIKI_BASE = 'https://oldschool.runescape.wiki'
 API_BASE = WIKI_BASE + '/api.php'
 
-REQUIRED_PRINTOUTS = [
-    'Equipment slot',
-    'Item ID',
-    'Version anchor'
+BUCKET_API_FIELDS = [
+    'page_name',
+    'page_name_sub',
+    'infobox_bonuses.equipment_slot',
+    'item_id',
+    'version_anchor'
 ]
 
 
 def getEquipmentData():
-    equipment = {}
+    equipment = []
     offset = 0
+    fields_csv = ",".join(map(repr, BUCKET_API_FIELDS))
     while True:
         print('Fetching equipment info: ' + str(offset))
         query = {
-            'action': 'ask',
+            'action': 'bucket',
             'format': 'json',
-            'query': '[[Equipment slot::+]][[Item ID::+]]|?' + '|?'.join(REQUIRED_PRINTOUTS) + '|limit=500|offset=' + str(offset)
+            'query': 
+            (
+                f"bucket('infobox_item')"
+                f".select({fields_csv})"
+                f".limit(500).offset({offset})"
+                f".where('infobox_bonuses.equipment_slot', '!=', bucket.Null())"
+                f".where('item_id', '!=', bucket.Null())"
+                f".join('infobox_bonuses', 'infobox_bonuses.page_name_sub', 'infobox_item.page_name_sub')"
+                f".orderBy('page_name_sub', 'asc').run()"
+            )
         }
         r = requests.get(API_BASE + '?' + urllib.parse.urlencode(query), headers={
             'User-Agent': 'osrs-dps-calc (https://github.com/weirdgloop/osrs-dps-calc)'
         })
         data = r.json()
 
-        if 'query' not in data or 'results' not in data['query']:
+        if 'bucket' not in data:
             # No results?
             break
 
-        equipment = equipment | data['query']['results']
+        equipment = equipment + data['bucket']
 
-        if 'query-continue-offset' not in data or int(data['query-continue-offset']) < offset:
+        # Bucket's API doesn't tell you when there are more results, so we'll just have to guess
+        if len(data['bucket']) == 500:
+            offset += 500
+        else:
             # If we are at the end of the results, break out of this loop
             break
-        else:
-            offset = data['query-continue-offset']
+
+
     return equipment
-
-
-def getPrintoutValue(prop):
-    # SMW printouts are all arrays, so ensure that the array is not empty
-    if not prop:
-        return None
-    else:
-        return prop[0]
 
 
 data = {}
@@ -98,27 +105,36 @@ one_off_renames = {
 def main():
     global dataJs
 
-    # Grab the equipment info using SMW, including all the relevant printouts
+    # Grab the equipment info using Bucket
     wiki_data = getEquipmentData()
 
-    all_items = []
+    # Use an object rather than an array, so that we can't have duplicate items with the same page_name_sub
+    all_items = {}
 
     # Loop over the equipment data from the wiki
-    for k, v in wiki_data.items():
-        print('Processing ' + k)
-        # Sanity check: make sure that this equipment has printouts from SMW
-        if 'printouts' not in v:
-            print(k + ' is missing SMW printouts - skipping.')
+    for v in wiki_data:
+
+        print(f"Processing {v['page_name_sub']}")
+
+        try:
+            item_id = int(v.get('item_id')[0]) if v.get('item_id') else None
+        except ValueError:
+            # Item has an invalid ID, do not show it here as it's probably historical or something.
+            print("Skipping - invalid item ID (not an int)")
             continue
 
-        po = v['printouts']
+        if item_id in all_items:
+            # Skip duplicates although the object key also prevents this
+            continue
 
-        all_items.append({
-            'name': k.rsplit('#', 1)[0],
-            'id': getPrintoutValue(po['Item ID']),
-            'version': getPrintoutValue(po['Version anchor']) or ''
-        })
+        all_items[item_id] = {
+            'name': v['page_name'],
+            'id': item_id,
+            'version': v.get('version_anchor', ''),
+            'page_name_sub': v['page_name_sub'],
+        }
 
+    all_items = list(all_items.values())
     all_items.sort(key=lambda d: d.get('name'))
 
     for item in all_items:
@@ -193,6 +209,10 @@ def main():
         # Radiant oathplate variants
         elif re.match(r"^Radiant", item['name']):
             handle_base_variant(all_items, item, item['name'].replace("Radiant ", "").capitalize(), '')
+        elif re.match("^Black mask", item['name']) and item['version'] != "(10)":
+            handle_base_variant(all_items, item, item['name'], ['(10)'])
+        elif item['name'] == "Void seal" and item['version'] != "(8)":
+            handle_base_variant(all_items, item, item['name'], ['(8)'])
 
     mapping_dict = {}
     for k, v in sorted(data.items(), key=lambda item: item[1].base_name):

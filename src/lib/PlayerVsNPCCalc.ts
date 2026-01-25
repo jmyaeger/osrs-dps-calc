@@ -21,6 +21,8 @@ import {
   ABYSSAL_SIRE_TRANSITION_IDS,
   ALWAYS_MAX_HIT_MONSTERS,
   BA_ATTACKER_MONSTERS,
+  DOOM_OF_MOKHAIOTL_IDS,
+  ECLIPSE_MOON_IDS,
   GLOWING_CRYSTAL_IDS,
   GUARANTEED_ACCURACY_MONSTERS,
   GUARDIAN_IDS,
@@ -261,6 +263,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (this.isWearingSilverWeapon() && this.wearing("Efaritay's aid") && isVampyre(mattrs)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_EFARITAY, attackRoll, [23, 20]); // todo ordering? does this stack multiplicatively with vampyrebane?
     }
+    if (this.wearing('Granite hammer') && mattrs.includes(MonsterAttribute.GOLEM)) {
+      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_GOLEMBANE, attackRoll, [13, 10]);
+    }
+
     if (this.wearing('Granite hammer') && mattrs.includes(MonsterAttribute.GOLEM)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_GOLEMBANE, attackRoll, [13, 10]);
     }
@@ -583,6 +589,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [10, 7]);
       } else if (this.wearing(['Heavy ballista', 'Light ballista'])) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [5, 4]);
+      } else if (this.wearing('Rosewood blowpipe')) {
+        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [4, 5]);
       }
     }
 
@@ -629,7 +637,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       return [0, maxHit];
     }
 
-    if (this.opts.usingSpecialAttack && (this.isWearingMsb() || this.isWearingMlb() || this.wearing('Seercull'))) {
+    if ((this.opts.usingSpecialAttack && (this.isWearingMsb() || this.isWearingMlb() || this.wearing('Seercull'))) || this.isWearingOgreBow()) {
       // why +10 when that's not used anywhere else? who knows
       effectiveLevel += 10;
 
@@ -741,6 +749,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         maxHit = this.trackAdd(DetailKey.MAX_HIT_SPEC, maxHit, -maxReduction);
       } else if (this.wearing(['Heavy ballista', 'Light ballista'])) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [5, 4]);
+      } else if (this.wearing('Rosewood blowpipe')) {
+        maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [11, 10]);
       }
     }
 
@@ -1139,11 +1149,19 @@ export default class PlayerVsNPCCalc extends BaseCalc {
   }
 
   public getHitChance() {
+    if (this.isImmune()) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 0.0);
+    }
+
     if (this.opts.overrides?.accuracy) {
       return this.track(DetailKey.PLAYER_ACCURACY_FINAL, this.opts.overrides.accuracy);
     }
 
     if (GUARANTEED_ACCURACY_MONSTERS.includes(this.monster.id)) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
+    }
+
+    if (DOOM_OF_MOKHAIOTL_IDS.includes(this.monster.id) && this.monster.inputs.phase !== 'Normal') {
       return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
     }
 
@@ -1177,12 +1195,23 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       return this.track(DetailKey.PLAYER_ACCURACY_FINAL, accuracy);
     }
 
-    if (this.player.style.type === 'magic' && ALWAYS_MAX_HIT_MONSTERS.magic.includes(this.monster.id)) return 1.0;
-    if (this.player.style.type === 'ranged' && ALWAYS_MAX_HIT_MONSTERS.ranged.includes(this.monster.id)) return 1.0;
-    if (this.isUsingMeleeStyle() && ALWAYS_MAX_HIT_MONSTERS.melee.includes(this.monster.id)) return 1.0;
+    // Eclipse Moon clone phase
+    if (ECLIPSE_MOON_IDS.includes(this.monster.id) && this.monster.version === 'Clone' && this.isUsingMeleeStyle()) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
+    }
+
+    if (this.player.style.type === 'magic' && ALWAYS_MAX_HIT_MONSTERS.magic.includes(this.monster.id)) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
+    }
+    if (this.player.style.type === 'ranged' && ALWAYS_MAX_HIT_MONSTERS.ranged.includes(this.monster.id)) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
+    }
+    if (this.isUsingMeleeStyle() && ALWAYS_MAX_HIT_MONSTERS.melee.includes(this.monster.id)) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
+    }
 
     if (this.opts.usingSpecialAttack && this.wearing(['Voidwaker', 'Dawnbringer'])) {
-      return 1.0;
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
     }
 
     if (this.opts.usingSpecialAttack && (this.wearing('Seercull') || this.isWearingMlb())) {
@@ -1318,18 +1347,6 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       ]);
     }
 
-    // monsters that are always max hit no matter what
-    if ((this.player.style.type === 'magic' && ALWAYS_MAX_HIT_MONSTERS.magic.includes(this.monster.id))
-      || (this.isUsingMeleeStyle() && ALWAYS_MAX_HIT_MONSTERS.melee.includes(this.monster.id))
-      || (this.player.style.type === 'ranged' && ALWAYS_MAX_HIT_MONSTERS.ranged.includes(this.monster.id))) {
-      if (YAMA_VOID_FLARE_IDS.includes(this.monster.id) && this.player.buffs.markOfDarknessSpell && this.player.spell?.name.includes('Demonbane')) {
-        const demonbaneFactor = this.wearing('Purging staff') ? 50 : 25;
-        return new AttackDistribution([HitDistribution.single(1.0, [new Hitsplat(max + Math.trunc(Math.trunc(max * demonbaneFactor / 100) * this.demonbaneVulnerability() / 100))])]);
-      }
-
-      return new AttackDistribution([HitDistribution.single(1.0, [new Hitsplat(max)])]);
-    }
-
     if (style === 'ranged' && this.wearing('Tonalztics of ralos') && this.player.equipment.weapon?.version === 'Charged') {
       // roll two independent hits
       if (!this.opts.usingSpecialAttack) {
@@ -1398,7 +1415,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     // simple multi-hit specs
     if (this.opts.usingSpecialAttack) {
       let hitCount = 1;
-      if (this.wearing(['Dragon dagger', 'Dragon knife']) || this.isWearingMsb()) {
+      if (this.wearing(['Dragon dagger', 'Dragon knife', 'Rosewood blowpipe']) || this.isWearingMsb()) {
         hitCount = 2;
       } else if (this.wearing('Webweaver bow')) {
         hitCount = 4;
@@ -1669,6 +1686,18 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       dist = new AttackDistribution(zippedDists).flatten();
     }
 
+    // monsters that are always max hit no matter what
+    if ((this.player.style.type === 'magic' && ALWAYS_MAX_HIT_MONSTERS.magic.includes(this.monster.id))
+        || (this.isUsingMeleeStyle() && ALWAYS_MAX_HIT_MONSTERS.melee.includes(this.monster.id))
+        || (this.player.style.type === 'ranged' && ALWAYS_MAX_HIT_MONSTERS.ranged.includes(this.monster.id))) {
+      if (YAMA_VOID_FLARE_IDS.includes(this.monster.id) && this.player.buffs.markOfDarknessSpell && this.player.spell?.name.includes('Demonbane')) {
+        const demonbaneFactor = this.wearing('Purging staff') ? 50 : 25;
+        return new AttackDistribution([HitDistribution.single(1.0, [new Hitsplat(max + Math.trunc(Math.trunc(max * demonbaneFactor / 100) * this.demonbaneVulnerability() / 100))])]);
+      }
+
+      return new AttackDistribution([HitDistribution.single(1.0, [new Hitsplat(dist.getMax())])]);
+    }
+
     if (process.env.NEXT_PUBLIC_HIT_DIST_SANITY_CHECK) {
       dist.dists.forEach((hitDist, ix) => {
         const sumAccuracy = sum(hitDist.hits, (wh) => wh.probability);
@@ -1769,9 +1798,12 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       const crush = styleType === 'crush'
         && this.player.offensive.crush > this.player.offensive.slash
         && this.player.offensive.crush > this.player.offensive.stab;
+      const earth = this.player.spell?.element === 'earth';
 
-      dist = dist.transform(linearMinTransformer(crush ? 9 : 4));
+      // crush and earth spells have a higher limiter
+      dist = dist.transform(linearMinTransformer((crush || earth) ? 9 : 4));
 
+      // and crush also gets misses turned into 1s
       if (crush) {
         dist = dist.transform((h) => {
           if (h.damage > 0) {
@@ -1790,9 +1822,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     }
 
     const flatArmour = this.monster.defensive.flat_armour;
-    if (flatArmour) {
+    if (flatArmour && styleType !== 'magic') {
       dist = dist.transform(
-        flatAddTransformer(-flatArmour, 1),
+        flatAddTransformer(-flatArmour),
         { transformInaccurate: false },
       );
     }
@@ -1822,7 +1854,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (mattrs.includes(MonsterAttribute.FLYING) && this.isUsingMeleeStyle()) {
       // Vespula is immune to melee despite flying attribute.
       if (VESPULA_IDS.includes(this.monster.id)) return true;
-      if (this.player.equipment.weapon?.category === EquipmentCategory.POLEARM) return false;
+      if (this.player.equipment.weapon?.category === EquipmentCategory.POLEARM || this.player.equipment.weapon?.category === EquipmentCategory.SALAMANDER) return false;
       return true;
     }
     if (IMMUNE_TO_NON_SALAMANDER_MELEE_DAMAGE_NPC_IDS.includes(monsterId)
@@ -1842,6 +1874,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (mattrs.includes(MonsterAttribute.LEAFY) && !this.isWearingLeafBladedWeapon()) {
       return true;
     }
+    if (DOOM_OF_MOKHAIOTL_IDS.includes(monsterId) && this.monster.inputs.phase === 'Shielded' && !this.isUsingDemonbane()) {
+      return true;
+    }
     if (!mattrs.includes(MonsterAttribute.RAT) && this.isWearingRatBoneWeapon()) {
       return true;
     }
@@ -1854,6 +1889,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         || (styleType === 'ranged' && !this.player.equipment.ammo?.name?.includes('arrow'))) {
         return true;
       }
+    }
+    // Eclipse moon clone is immune to non-melee attacks
+    if (ECLIPSE_MOON_IDS.includes(this.monster.id) && this.monster.version === 'Clone' && !this.isUsingMeleeStyle()) {
+      return true;
     }
 
     return false;
