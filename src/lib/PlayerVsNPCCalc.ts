@@ -494,16 +494,12 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [100 + 6 * stacks, 100]);
       } else if (this.wearing('New Spec Weapon')) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [7, 10]);
+        minHit = this.track(DetailKey.MIN_HIT_SPEC, maxHit);
       }
     }
 
     if (this.monster.name === 'Respiratory system') {
       minHit = this.trackAdd(DetailKey.REPIRATORY_SYSTEM_MIN_HIT, minHit, Math.trunc(maxHit / 2));
-    }
-
-    if (this.opts.usingSpecialAttack && this.wearing('New Spec Weapon')) {
-      minHit = Math.trunc(maxHit * 7 / 10);
-      maxHit = minHit;
     }
 
     return [minHit, maxHit];
