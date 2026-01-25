@@ -2042,15 +2042,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
    * Returns the average time-to-kill (in seconds) calculation.
    */
   public getTtk() {
-    if (!this.distIsCurrentHpDependent(this.player, this.monster)) {
-      return this.getHtk() * this.getExpectedAttackSpeed() * SECONDS_PER_TICK;
-    }
-    const ttkDist = this.getTtkDistribution();
-    let acc = 0;
-    for (const [ttk, prob] of ttkDist.entries()) {
-      acc += ttk * prob;
-    }
-    return acc * SECONDS_PER_TICK + (this.getExpectedAttackSpeed() - 1) * SECONDS_PER_TICK;
+    return this.getHtk() * this.getExpectedAttackSpeed() * SECONDS_PER_TICK;
   }
 
   public getSpecDps(): number {
