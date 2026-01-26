@@ -681,7 +681,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const baseMax = this.trackMaxHitFromEffective(DetailKey.MAX_HIT_BASE, effectiveLevel, 64 + bonusStr);
     let [minHit, maxHit]: MinMax = [0, baseMax];
 
-    if (this.isWearingSeekerArrow() && !this.isAmmoInvalid() && !this.player.buffs.seekerArrowsClamp) {
+    if (this.seekerArrowBuffApplies() && !this.player.buffs.seekerArrowsClamp) {
       minHit = 3;
     }
 
@@ -1684,11 +1684,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     // raise accurate 0s to 1
     if (accurateZeroApplicable) {
-      const minHit = (this.isWearingSeekerArrow()
-          && this.player.style.type === 'ranged'
-          && !this.isAmmoInvalid()
-          && this.player.buffs.seekerArrowsClamp
-      ) ? 3 : 1;
+      const minHit = (this.seekerArrowBuffApplies() && this.player.buffs.seekerArrowsClamp) ? 3 : 1;
       dist = dist.transform(
         (h) => HitDistribution.single(1.0, [new Hitsplat(Math.max(h.damage, minHit))]),
         { transformInaccurate: false },

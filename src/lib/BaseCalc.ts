@@ -4,10 +4,7 @@ import { AmmoApplicability, ammoApplicability, getCanonicalEquipment } from '@/l
 import UserIssueType from '@/enums/UserIssueType';
 import { MonsterAttribute } from '@/enums/MonsterAttribute';
 import {
-  CAST_STANCES,
-  IMMUNE_TO_BURN_DAMAGE_NPC_IDS,
-  YAMA_IDS,
-  YAMA_VOID_FLARE_IDS,
+  CAST_STANCES, IMMUNE_TO_BURN_DAMAGE_NPC_IDS, YAMA_IDS, YAMA_VOID_FLARE_IDS,
 } from '@/lib/constants';
 import { UserIssue } from '@/types/State';
 import { CalcDetails, DetailEntry } from '@/lib/CalcDetails';
@@ -680,6 +677,12 @@ export default class BaseCalc {
 
   protected isAmmoInvalid(): boolean {
     return ammoApplicability(this.player.equipment.weapon?.id, this.player.equipment.ammo?.id) === AmmoApplicability.INVALID;
+  }
+
+  protected seekerArrowBuffApplies(): boolean {
+    return this.isWearingSeekerArrow()
+        && ammoApplicability(this.player.equipment.weapon?.id, this.player.equipment.ammo?.id) === AmmoApplicability.INCLUDED
+        && this.player.style.type === 'ranged';
   }
 
   protected isImmuneToNormalBurns(): boolean {
