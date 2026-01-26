@@ -681,7 +681,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const baseMax = this.trackMaxHitFromEffective(DetailKey.MAX_HIT_BASE, effectiveLevel, 64 + bonusStr);
     let [minHit, maxHit]: MinMax = [0, baseMax];
 
-    if (this.isWearingSeekerArrow() && !this.isAmmoInvalid() && !this.opts.seekerArrowsClamp) {
+    if (this.isWearingSeekerArrow() && !this.isAmmoInvalid() && !this.player.buffs.seekerArrowsClamp) {
       minHit = 3;
     }
 
@@ -1426,7 +1426,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
         // Case 1: Defense is re-rolled each time (like fang inside ToA)
         // Case 2: Defense is only rolled once and compared to each attack roll (like fang outside ToA)
-        const prob = this.opts.crimsonBludgeonDefReroll ? binomialProbability(4, successfulRolls, acc) : successProbs[successfulRolls];
+        const prob = this.player.buffs.crimsonBludgeonDefReroll ? binomialProbability(4, successfulRolls, acc) : successProbs[successfulRolls];
 
         const chanceOfDmg = prob / (high - low + 1);
         for (let dmg = low; dmg <= high; dmg++) {
@@ -1434,7 +1434,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         }
       }
 
-      if (this.opts.crimsonBludgeonDefReroll) {
+      if (this.player.buffs.crimsonBludgeonDefReroll) {
         // Case 1
         hitDist.addHit(new WeightedHit(binomialProbability(4, 0, acc), [Hitsplat.INACCURATE]));
       } else {
@@ -1687,7 +1687,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       const minHit = (this.isWearingSeekerArrow()
           && this.player.style.type === 'ranged'
           && !this.isAmmoInvalid()
-          && this.opts.seekerArrowsClamp
+          && this.player.buffs.seekerArrowsClamp
       ) ? 3 : 1;
       dist = dist.transform(
         (h) => HitDistribution.single(1.0, [new Hitsplat(Math.max(h.damage, minHit))]),

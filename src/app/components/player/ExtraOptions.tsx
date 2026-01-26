@@ -95,8 +95,8 @@ const ExtraOptions: React.FC = observer(() => {
           )}
         />
         <Toggle
-          checked={store.prefs.crimsonBludgeonDefReroll}
-          setChecked={(c) => store.updatePreferences({ crimsonBludgeonDefReroll: c })}
+          checked={player.buffs.crimsonBludgeonDefReroll}
+          setChecked={(c) => store.updatePlayer({ buffs: { crimsonBludgeonDefReroll: c } })}
           label={(
             <>
               {' '}
@@ -113,8 +113,8 @@ const ExtraOptions: React.FC = observer(() => {
               )}
         />
         <Toggle
-          checked={store.prefs.seekerArrowsClamp}
-          setChecked={(c) => store.updatePreferences({ seekerArrowsClamp: c })}
+          checked={player.buffs.seekerArrowsClamp}
+          setChecked={(c) => store.updatePlayer({ buffs: { seekerArrowsClamp: c } })}
           label={(
             <>
               {' '}

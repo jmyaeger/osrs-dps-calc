@@ -131,6 +131,8 @@ export const generateEmptyPlayer = (name?: string): Player => ({
     baAttackerLevel: 0,
     chinchompaDistance: 4, // 4 tiles is the optimal range for "medium fuse" (rapid), which is the default selected stance
     usingSunfireRunes: false,
+    crimsonBludgeonDefReroll: false,
+    seekerArrowsClamp: false,
   },
   spell: null,
 });
@@ -233,8 +235,6 @@ class GlobalState implements State {
     hitDistsHideZeros: false,
     hitDistShowSpec: false,
     resultsExpanded: true,
-    crimsonBludgeonDefReroll: false,
-    seekerArrowsClamp: false,
   };
 
   calc: Calculator = {
@@ -819,7 +819,6 @@ class GlobalState implements State {
         hitDistHideMisses: this.prefs.hitDistsHideZeros,
         detailedOutput: this.debug,
         disableMonsterScaling: this.monster.id === -1,
-        crimsonBludgeonDefReroll: this.prefs.crimsonBludgeonDefReroll,
       },
     };
     const request = async (type: WorkerRequestType.COMPUTE_BASIC | WorkerRequestType.COMPUTE_REVERSE) => {

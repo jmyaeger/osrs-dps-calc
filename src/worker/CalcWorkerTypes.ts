@@ -27,8 +27,6 @@ export interface WorkerCalcOpts {
   hitDistHideMisses?: boolean,
   detailedOutput?: CalcOpts['detailedOutput'],
   disableMonsterScaling?: CalcOpts['disableMonsterScaling'],
-  crimsonBludgeonDefReroll?: CalcOpts['crimsonBludgeonDefReroll'],
-  seekerArrowsClamp?: CalcOpts['seekerArrowsClamp'],
 }
 
 export interface ComputeBasicRequest extends WorkerRequest<WorkerRequestType.COMPUTE_BASIC> {

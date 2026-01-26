@@ -22,8 +22,6 @@ export interface CalcOpts {
   detailedOutput?: boolean,
   disableMonsterScaling?: boolean,
   usingSpecialAttack?: boolean,
-  crimsonBludgeonDefReroll?: boolean,
-  seekerArrowsClamp?: boolean,
   overrides?: {
     accuracy?: number,
     attackRoll?: number,
@@ -44,8 +42,6 @@ const DEFAULT_OPTS: Required<InternalOpts> = {
   detailedOutput: false,
   disableMonsterScaling: false,
   usingSpecialAttack: false,
-  crimsonBludgeonDefReroll: false,
-  seekerArrowsClamp: false,
   noInit: false,
   overrides: {},
 };

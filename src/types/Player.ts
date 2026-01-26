@@ -141,6 +141,14 @@ export interface Player extends EquipmentStats {
      * @see https://oldschool.runescape.wiki/w/Sunfire_rune
      */
     usingSunfireRunes: boolean;
+    /**
+     * Whether the crimson bludgeon spec should re-roll defence for each accuracy roll.
+     */
+    crimsonBludgeonDefReroll: boolean;
+    /**
+     * Whether seeker arrows should clamp damage at 3 instead of rolling [3, max].
+     */
+    seekerArrowsClamp: boolean;
   };
   spell: Spell | null;
 }
