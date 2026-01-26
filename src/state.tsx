@@ -233,6 +233,8 @@ class GlobalState implements State {
     hitDistsHideZeros: false,
     hitDistShowSpec: false,
     resultsExpanded: true,
+    crimsonBludgeonDefReroll: false,
+    seekerArrowsClamp: false,
   };
 
   calc: Calculator = {
@@ -817,6 +819,7 @@ class GlobalState implements State {
         hitDistHideMisses: this.prefs.hitDistsHideZeros,
         detailedOutput: this.debug,
         disableMonsterScaling: this.monster.id === -1,
+        crimsonBludgeonDefReroll: this.prefs.crimsonBludgeonDefReroll,
       },
     };
     const request = async (type: WorkerRequestType.COMPUTE_BASIC | WorkerRequestType.COMPUTE_REVERSE) => {

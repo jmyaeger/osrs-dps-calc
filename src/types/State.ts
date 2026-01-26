@@ -34,6 +34,8 @@ export interface Preferences {
   hitDistsHideZeros: boolean; // legacy name
   hitDistShowSpec: boolean;
   resultsExpanded: boolean;
+  crimsonBludgeonDefReroll: boolean;
+  seekerArrowsClamp: boolean;
 }
 
 export interface ChartEntry {

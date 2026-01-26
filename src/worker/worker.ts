@@ -31,6 +31,8 @@ const computePvMValues: Handler<WorkerRequestType.COMPUTE_BASIC> = async (data) 
       loadoutName,
       detailedOutput: calcOpts.detailedOutput,
       disableMonsterScaling: calcOpts.disableMonsterScaling,
+      crimsonBludgeonDefReroll: calcOpts.crimsonBludgeonDefReroll,
+      seekerArrowsClamp: calcOpts.seekerArrowsClamp,
     });
     const specCalc = calc.getSpecCalc();
 

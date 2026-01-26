@@ -17,6 +17,8 @@ export const ttkDist: Handler<WorkerRequestType.COMPUTE_TTK> = async (data) => {
       loadoutName,
       detailedOutput: calcOpts.detailedOutput,
       disableMonsterScaling: calcOpts.disableMonsterScaling,
+      crimsonBludgeonDefReroll: calcOpts.crimsonBludgeonDefReroll,
+      seekerArrowsClamp: calcOpts.seekerArrowsClamp,
     });
 
     res.push({

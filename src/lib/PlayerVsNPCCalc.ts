@@ -681,7 +681,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const baseMax = this.trackMaxHitFromEffective(DetailKey.MAX_HIT_BASE, effectiveLevel, 64 + bonusStr);
     let [minHit, maxHit]: MinMax = [0, baseMax];
 
-    if (this.isWearingSeekerArrow() && !this.isAmmoInvalid()) {
+    if (this.isWearingSeekerArrow() && !this.isAmmoInvalid() && !this.opts.seekerArrowsClamp) {
       minHit = 3;
     }
 
@@ -1411,19 +1411,37 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     if (this.opts.usingSpecialAttack && this.wearing('Crimson bludgeon')) {
       const hitDist = new HitDistribution([]);
+
+      // For Case 2
+      const atk = this.getMaxAttackRoll();
+      const def = this.getNPCDefenceRoll();
+      const successProbs = BaseCalc.getCrimsonSpecProbabilities(atk, def);
+
       for (let successfulRolls = 1; successfulRolls <= 4; successfulRolls++) {
         const low = Math.trunc(max * (2 * successfulRolls + 5) / 10);
         let high = Math.trunc(max * (2 * successfulRolls + 9) / 10);
         if (successfulRolls === 4) {
           high -= 1;
         }
-        const prob = binomialProbability(4, successfulRolls, acc);
+
+        // Case 1: Defense is re-rolled each time (like fang inside ToA)
+        // Case 2: Defense is only rolled once and compared to each attack roll (like fang outside ToA)
+        const prob = this.opts.crimsonBludgeonDefReroll ? binomialProbability(4, successfulRolls, acc) : successProbs[successfulRolls];
+
         const chanceOfDmg = prob / (high - low + 1);
         for (let dmg = low; dmg <= high; dmg++) {
           hitDist.addHit(new WeightedHit(chanceOfDmg, [new Hitsplat(dmg)]));
         }
       }
-      hitDist.addHit(new WeightedHit(binomialProbability(4, 0, acc), [Hitsplat.INACCURATE]));
+
+      if (this.opts.crimsonBludgeonDefReroll) {
+        // Case 1
+        hitDist.addHit(new WeightedHit(binomialProbability(4, 0, acc), [Hitsplat.INACCURATE]));
+      } else {
+        // Case 2
+        hitDist.addHit(new WeightedHit(successProbs[0], [Hitsplat.INACCURATE]));
+      }
+
       dist = new AttackDistribution([hitDist.flatten()]);
     }
 
@@ -1666,8 +1684,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     // raise accurate 0s to 1
     if (accurateZeroApplicable) {
+      const minHit = (this.isWearingSeekerArrow()
+          && this.player.style.type === 'ranged'
+          && !this.isAmmoInvalid()
+          && this.opts.seekerArrowsClamp
+      ) ? 3 : 1;
       dist = dist.transform(
-        (h) => HitDistribution.single(1.0, [new Hitsplat(Math.max(h.damage, 1))]),
+        (h) => HitDistribution.single(1.0, [new Hitsplat(Math.max(h.damage, minHit))]),
         { transformInaccurate: false },
       );
     }
