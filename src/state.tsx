@@ -132,7 +132,7 @@ export const generateEmptyPlayer = (name?: string): Player => ({
     chinchompaDistance: 4, // 4 tiles is the optimal range for "medium fuse" (rapid), which is the default selected stance
     usingSunfireRunes: false,
     crimsonBludgeonDefReroll: false,
-    seekerArrowsClamp: false,
+    seekerArrowsClamp: true,
   },
   spell: null,
 });
