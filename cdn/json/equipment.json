@@ -5718,7 +5718,7 @@
       "slash": 0,
       "crush": 0,
       "magic": 0,
-      "ranged": 23
+      "ranged": 20
     },
     "defensive": {
       "stab": 0,
@@ -8208,7 +8208,7 @@
       "slash": 0,
       "crush": 0,
       "magic": 0,
-      "ranged": 23
+      "ranged": 20
     },
     "defensive": {
       "stab": 0,
@@ -28728,7 +28728,7 @@
       "slash": 0,
       "crush": 0,
       "magic": 0,
-      "ranged": 23
+      "ranged": 20
     },
     "defensive": {
       "stab": 0,
@@ -49140,7 +49140,7 @@
     "isTwoHanded": false
   },
   {
-    "name": "Crimson bludgeon",
+    "name": "Crimson kisten",
     "id": -11,
     "version": "",
     "slot": "weapon",
@@ -62658,7 +62658,7 @@
       "slash": 0,
       "crush": 0,
       "magic": 0,
-      "ranged": 23
+      "ranged": 20
     },
     "defensive": {
       "stab": 0,
@@ -90348,7 +90348,7 @@
       "slash": 0,
       "crush": 0,
       "magic": 0,
-      "ranged": 23
+      "ranged": 20
     },
     "defensive": {
       "stab": 0,
@@ -100218,7 +100218,7 @@
       "slash": 0,
       "crush": 0,
       "magic": 0,
-      "ranged": 23
+      "ranged": 20
     },
     "defensive": {
       "stab": 0,
@@ -121758,7 +121758,7 @@
       "slash": 0,
       "crush": 0,
       "magic": 0,
-      "ranged": 23
+      "ranged": 20
     },
     "defensive": {
       "stab": 0,
@@ -136518,7 +136518,7 @@
       "slash": 0,
       "crush": 0,
       "magic": 0,
-      "ranged": 23
+      "ranged": 20
     },
     "defensive": {
       "stab": 0,

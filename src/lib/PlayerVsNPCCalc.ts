@@ -1409,7 +1409,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
-    if (this.opts.usingSpecialAttack && this.wearing('Crimson bludgeon')) {
+    if (this.opts.usingSpecialAttack && this.wearing('Crimson kisten')) {
       const hitDist = new HitDistribution([]);
 
       // For Case 2
@@ -1426,7 +1426,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
         // Case 1: Defense is re-rolled each time (like fang inside ToA)
         // Case 2: Defense is only rolled once and compared to each attack roll (like fang outside ToA)
-        const prob = this.player.buffs.crimsonBludgeonDefReroll ? binomialProbability(4, successfulRolls, acc) : successProbs[successfulRolls];
+        const prob = this.player.buffs.crimsonKistenDefReroll ? binomialProbability(4, successfulRolls, acc) : successProbs[successfulRolls];
 
         const chanceOfDmg = prob / (high - low + 1);
         for (let dmg = low; dmg <= high; dmg++) {
@@ -1434,7 +1434,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         }
       }
 
-      if (this.player.buffs.crimsonBludgeonDefReroll) {
+      if (this.player.buffs.crimsonKistenDefReroll) {
         // Case 1
         hitDist.addHit(new WeightedHit(binomialProbability(4, 0, acc), [Hitsplat.INACCURATE]));
       } else {

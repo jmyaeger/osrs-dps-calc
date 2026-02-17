@@ -95,17 +95,17 @@ const ExtraOptions: React.FC = observer(() => {
           )}
         />
         <Toggle
-          checked={player.buffs.crimsonBludgeonDefReroll}
-          setChecked={(c) => store.updatePlayer({ buffs: { crimsonBludgeonDefReroll: c } })}
+          checked={player.buffs.crimsonKistenDefReroll}
+          setChecked={(c) => store.updatePlayer({ buffs: { crimsonKistenDefReroll: c } })}
           label={(
             <>
               {' '}
-              Crimson bludgeon spec re-rolls defence
+              Crimson kisten spec re-rolls defence
               {' '}
               <span
                 className="align-super underline decoration-dotted cursor-help text-xs text-gray-300"
                 data-tooltip-id="tooltip"
-                data-tooltip-content="Crimson bludgeon spec re-rolls defence for all four accuracy rolls."
+                data-tooltip-content="Crimson kisten spec re-rolls defence for all four accuracy rolls."
               >
                 ?
               </span>

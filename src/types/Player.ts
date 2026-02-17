@@ -142,9 +142,9 @@ export interface Player extends EquipmentStats {
      */
     usingSunfireRunes: boolean;
     /**
-     * Whether the crimson bludgeon spec should re-roll defence for each accuracy roll.
+     * Whether the crimson kisten spec should re-roll defence for each accuracy roll.
      */
-    crimsonBludgeonDefReroll: boolean;
+    crimsonKistenDefReroll: boolean;
     /**
      * Whether seeker arrows should clamp damage at 3 instead of rolling [3, max].
      */
