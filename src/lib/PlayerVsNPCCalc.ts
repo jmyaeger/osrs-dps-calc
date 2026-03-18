@@ -1989,7 +1989,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
    * Returns the average time-to-kill (in seconds) calculation.
    */
   public getTtk() {
-    return this.getHtk() * this.getExpectedAttackSpeed() * SECONDS_PER_TICK;
+    let acc = 0.0;
+    const ttkDist = this.getTtkDistribution();
+    for (const [ttk, prob] of ttkDist) {
+      acc += ttk * prob;
+    }
+    return (acc + this.getAttackSpeed() - 1) * SECONDS_PER_TICK;
+    // return this.getHtk() * this.getExpectedAttackSpeed() * SECONDS_PER_TICK;
   }
 
   public getSpecDps(): number {
@@ -2053,6 +2059,14 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       .zipped
       .withProbabilisticDelays(this.getWeaponDelayProvider());
 
+    // Detect soulreaper axe stacking (deterministic: stack count is a function of tick)
+    const isSoulreaperStacking = this.wearing('Soulreaper axe')
+      && !this.opts.usingSpecialAttack
+      && this.player.buffs.soulreaperStacks < 5;
+    const initialStacks = isSoulreaperStacking
+      ? Math.max(0, this.player.buffs.soulreaperStacks)
+      : 0;
+
     // dist attack-on-specific-tick probabilities
     // todo thralls, append here
     const dists = [playerDist];
@@ -2079,9 +2093,46 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     // if the hit dist depends on hp, we'll have to recalculate it each time, so cache the results to not repeat work
     const recalcDistOnHp = this.distIsCurrentHpDependent(this.player, this.monster);
+
+    // Pre-compute per-stack distributions for soulreaper axe stacking
+    const stackDists = new Array<DelayedHit[]>(6);
+    const stackHpDists = new Array<DelayedHit[][]>(6);
+
+    if (isSoulreaperStacking) {
+      for (let s = initialStacks; s <= 5; s++) {
+        if (recalcDistOnHp) {
+          // Soulreaper + hp-dependent: pre-compute for each stack count × hp value
+          stackHpDists[s] = new Array<DelayedHit[]>(this.monster.skills.hp + 1);
+          for (let hp = 0; hp <= this.monster.skills.hp; hp++) {
+            const subCalc = this.noInitSubCalc(
+              { ...this.player, buffs: { ...this.player.buffs, soulreaperStacks: s } },
+              scaleMonsterHpOnly({
+                ...this.baseMonster,
+                inputs: { ...this.baseMonster.inputs, monsterCurrentHp: hp },
+              }),
+            );
+            stackHpDists[s][hp] = subCalc.getDistribution()
+              .zipped
+              .withProbabilisticDelays(this.getWeaponDelayProvider());
+          }
+        } else {
+          // Soulreaper + no hp-dependent: one dist per stack count
+          const subCalc = this.noInitSubCalc(
+            { ...this.player, buffs: { ...this.player.buffs, soulreaperStacks: s } },
+            this.monster,
+          );
+          stackDists[s] = subCalc.getDistribution()
+            .zipped
+            .withProbabilisticDelays(this.getWeaponDelayProvider());
+        }
+      }
+    }
+
+    // Only compute hpHitDists when hp-dependent WITHOUT soulreaper stacking
+    // (when soulreaper stacking, stackHpDists already covers this)
     const hpHitDists = new Array<DelayedHit[]>(this.monster.skills.hp + 1);
     hpHitDists[this.monster.skills.hp] = playerDist;
-    if (recalcDistOnHp) {
+    if (recalcDistOnHp && !isSoulreaperStacking) {
       for (let hp = 0; hp <= this.monster.skills.hp; hp++) {
         hpHitDists[hp] = this.distAtHp(playerDist, hp);
       }
@@ -2091,6 +2142,11 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     // 1. until the amount of hp values remaining above zero is more than our desired epsilon accuracy,
     //    or we reach the maximum iteration rounds
     for (let tick = 1; tick <= iterMax && epsilon >= TTK_DIST_EPSILON; tick++) {
+      // Soulreaper axe: stack count is deterministic based on attack number
+      const stacks = isSoulreaperStacking
+        ? Math.min(initialStacks + Math.floor((tick - 1) / speed), 5)
+        : -1;
+
       for (let distIx = 0; distIx < dists.length; distIx++) {
         const distProb = attackOnTick[distIx][tick];
         if (distProb === 0) {
@@ -2102,8 +2158,12 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         // 3. for each possible hp value,
         const hps = tickHps[tick];
         for (const [hp, hpProb] of hps.entries()) {
-          // this is a bit of a hack, but idk if there's a better way
-          const currDist: DelayedHit[] = recalcDistOnHp ? hpHitDists[hp] : dist;
+          let currDist: DelayedHit[];
+          if (isSoulreaperStacking) {
+            currDist = recalcDistOnHp ? stackHpDists[stacks][hp] : stackDists[stacks];
+          } else {
+            currDist = recalcDistOnHp ? hpHitDists[hp] : dist;
+          }
           if (hpProb === 0) {
             continue;
           }
