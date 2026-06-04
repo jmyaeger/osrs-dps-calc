@@ -145,10 +145,6 @@ export interface Player extends EquipmentStats {
      * Whether the crimson kisten spec should re-roll defence for each accuracy roll.
      */
     crimsonKistenDefReroll: boolean;
-    /**
-     * Whether seeker arrows should clamp damage at 3 instead of rolling [3, max].
-     */
-    seekerArrowsClamp: boolean;
   };
   spell: Spell | null;
 }

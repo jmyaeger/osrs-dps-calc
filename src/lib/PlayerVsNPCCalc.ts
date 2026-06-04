@@ -678,10 +678,6 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const baseMax = this.trackMaxHitFromEffective(DetailKey.MAX_HIT_BASE, effectiveLevel, 64 + bonusStr);
     let [minHit, maxHit]: MinMax = [0, baseMax];
 
-    if (this.seekerArrowBuffApplies() && !this.player.buffs.seekerArrowsClamp) {
-      minHit = 3;
-    }
-
     // tested this in-game, slayer helmet (i) + crystal legs + crystal body + bowfa, on accurate, no rigour, 99 ranged
     // max hit is 36, but would be 37 if placed after slayer helm
     if (this.isWearingCrystalBow()) {
@@ -1691,7 +1687,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     // raise accurate 0s to 1
     if (accurateZeroApplicable) {
-      const minHit = (this.seekerArrowBuffApplies() && this.player.buffs.seekerArrowsClamp) ? 3 : 1;
+      const minHit = (this.seekerArrowBuffApplies()) ? 3 : 1;
       dist = dist.transform(
         (h) => HitDistribution.single(1.0, [new Hitsplat(Math.max(h.damage, minHit))]),
         { transformInaccurate: false },
