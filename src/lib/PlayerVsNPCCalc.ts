@@ -1590,6 +1590,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
           new WeightedHit(0.8, [h]),
           new WeightedHit(0.2, [new Hitsplat(h.damage + 8, h.accurate)]),
         ]),
+        { transformInaccurate: false },
       );
     }
 
