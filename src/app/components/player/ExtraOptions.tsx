@@ -135,7 +135,7 @@ const ExtraOptions: React.FC = observer(() => {
             className="form-control w-12"
             required
             min={0}
-            max={5}
+            max={3}
             value={player.buffs.soulreaperStacks}
             onChange={(v) => store.updatePlayer({ buffs: { soulreaperStacks: v } })}
           />

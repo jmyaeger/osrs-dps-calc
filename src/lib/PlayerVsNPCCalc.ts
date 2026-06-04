@@ -289,9 +289,6 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         if (this.wearing("Inquisitor's mace")) {
           // 2.5% per piece, no full-set bonus
           inqPieces *= 5;
-        } else if (inqPieces === 3) {
-          // 1.0% extra for full set when not using inq mace
-          inqPieces = 5;
         }
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_INQ, attackRoll, [200 + inqPieces, 200]);
       }
@@ -309,8 +306,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       } else if (this.wearing('Abyssal dagger')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [5, 4]);
       } else if (this.wearing('Soulreaper axe')) {
-        const stacks = Math.max(0, Math.min(5, this.player.buffs.soulreaperStacks));
-        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [100 + 6 * stacks, 100]);
+        const stacks = Math.max(0, Math.min(3, this.player.buffs.soulreaperStacks));
+        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [100 + 10 * stacks, 100]);
       } else if (this.wearing('Brine sabre')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [2, 1]);
       } else if (this.wearing('Barrelchest anchor')) {
@@ -341,8 +338,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     if (this.wearing('Soulreaper axe') && !this.opts.usingSpecialAttack) {
       // does not stack multiplicatively with prayers
-      const stacks = Math.max(0, Math.min(5, buffs.soulreaperStacks));
-      const bonus = this.trackFactor(DetailKey.DAMAGE_LEVEL_SOULREAPER_BONUS, baseLevel, [stacks * 6, 100]);
+      const stacks = Math.max(0, Math.min(3, buffs.soulreaperStacks));
+      const bonus = this.trackFactor(DetailKey.DAMAGE_LEVEL_SOULREAPER_BONUS, baseLevel, [stacks * 10, 100]);
       effectiveLevel = this.trackAdd(DetailKey.DAMAGE_LEVEL_SOULREAPER, effectiveLevel, bonus);
     }
 
@@ -490,8 +487,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         minHit = this.trackFactor(DetailKey.MIN_HIT_SPEC, maxHit, [1, 4]);
         maxHit = this.trackAdd(DetailKey.MAX_HIT_SPEC, maxHit, minHit);
       } else if (this.wearing('Soulreaper axe')) {
-        const stacks = Math.max(0, Math.min(5, this.player.buffs.soulreaperStacks));
-        maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [100 + 6 * stacks, 100]);
+        const stacks = Math.max(0, Math.min(3, this.player.buffs.soulreaperStacks));
+        maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [100 + 10 * stacks, 100]);
       } else if (this.wearing('New Spec Weapon')) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [7, 10]);
         minHit = this.track(DetailKey.MIN_HIT_SPEC, maxHit);
@@ -921,7 +918,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     } else if (this.wearing(['Trident of the swamp', 'Trident of the swamp (e)'])) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3 - 2));
     } else if (this.wearing(['Sanguinesti staff', 'Holy sanguinesti staff'])) {
-      maxHit = Math.max(1, Math.trunc(magicLevel / 3 - 1));
+      maxHit = Math.max(1, Math.trunc(magicLevel / 3));
     } else if (this.wearing('Dawnbringer')) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 6 - 1));
       if (this.opts.usingSpecialAttack) { // guaranteed hit between 75-150, ignores bonuses
@@ -1585,6 +1582,15 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
       this.track(DetailKey.GUARDIANS_DMG_BONUS, factor / divisor);
       dist = dist.transform(multiplyTransformer(factor, divisor));
+    }
+
+    if (this.wearing(['Sanguinesti staff', 'Holy sanguinesti staff'])) {
+      dist = dist.transform(
+        (h) => new HitDistribution([
+          new WeightedHit(0.8, [h]),
+          new WeightedHit(0.2, [new Hitsplat(h.damage + 8, h.accurate)]),
+        ]),
+      );
     }
 
     if (this.player.buffs.markOfDarknessSpell && this.player.spell?.name.includes('Demonbane') && mattrs.includes(MonsterAttribute.DEMON)) {
