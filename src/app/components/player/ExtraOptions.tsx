@@ -112,24 +112,6 @@ const ExtraOptions: React.FC = observer(() => {
             </>
               )}
         />
-        <Toggle
-          checked={player.buffs.seekerArrowsClamp}
-          setChecked={(c) => store.updatePlayer({ buffs: { seekerArrowsClamp: c } })}
-          label={(
-            <>
-              {' '}
-              Seeker arrows clamp damage
-              {' '}
-              <span
-                className="align-super underline decoration-dotted cursor-help text-xs text-gray-300"
-                data-tooltip-id="tooltip"
-                data-tooltip-content="Seeker arrows clamp damage at 3 instead of rolling [3, max]."
-              >
-                ?
-              </span>
-            </>
-              )}
-        />
         <div className="w-full">
           <NumberInput
             className="form-control w-12"
