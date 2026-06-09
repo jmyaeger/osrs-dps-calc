@@ -278,20 +278,18 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     // Inquisitor's armour set gives bonuses when using the crush attack style
     if (style.type === 'crush') {
-      let inqPieces = this.allEquippedItems.filter((v) => [
-        "Inquisitor's great helm",
-        "Inquisitor's hauberk",
-        "Inquisitor's plateskirt",
-      ].includes(v)).length;
-
-      // When wearing the full set, the bonus is enhanced
-      if (inqPieces > 0) {
-        if (this.wearing("Inquisitor's mace")) {
-          // 2.5% per piece, no full-set bonus
-          inqPieces *= 5;
-        }
-        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_INQ, attackRoll, [200 + inqPieces, 200]);
+      let inqBonus = 0;
+      if (this.wearing("Inquisitor's great helm")) {
+        inqBonus += 1;
       }
+      if (this.wearing("Inquisitor's hauberk")) {
+        inqBonus += 2;
+      }
+      if (this.wearing("Inquisitor's plateskirt")) {
+        inqBonus += 2;
+      }
+
+      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_INQ, attackRoll, [200 + inqBonus, 200]);
     }
 
     if (this.opts.usingSpecialAttack) {
@@ -306,8 +304,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       } else if (this.wearing('Abyssal dagger')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [5, 4]);
       } else if (this.wearing('Soulreaper axe')) {
-        const stacks = Math.max(0, Math.min(3, this.player.buffs.soulreaperStacks));
-        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [100 + 10 * stacks, 100]);
+        const stacks = Math.max(0, Math.min(5, this.player.buffs.soulreaperStacks));
+        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [100 + 12 * stacks, 100]);
       } else if (this.wearing('Brine sabre')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [2, 1]);
       } else if (this.wearing('Barrelchest anchor')) {
@@ -338,8 +336,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     if (this.wearing('Soulreaper axe') && !this.opts.usingSpecialAttack) {
       // does not stack multiplicatively with prayers
-      const stacks = Math.max(0, Math.min(3, buffs.soulreaperStacks));
-      const bonus = this.trackFactor(DetailKey.DAMAGE_LEVEL_SOULREAPER_BONUS, baseLevel, [stacks * 10, 100]);
+      const stacks = Math.max(0, Math.min(5, buffs.soulreaperStacks));
+      const bonus = this.trackFactor(DetailKey.DAMAGE_LEVEL_SOULREAPER_BONUS, baseLevel, [stacks * 6, 100]);
       effectiveLevel = this.trackAdd(DetailKey.DAMAGE_LEVEL_SOULREAPER, effectiveLevel, bonus);
     }
 
@@ -429,22 +427,18 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     }
     // Inquisitor's armour set gives bonuses when using the crush attack style
     if (style.type === 'crush') {
-      let inqPieces = this.allEquippedItems.filter((v) => [
-        "Inquisitor's great helm",
-        "Inquisitor's hauberk",
-        "Inquisitor's plateskirt",
-      ].includes(v)).length;
-
-      if (inqPieces > 0) {
-        if (this.wearing("Inquisitor's mace")) {
-          // 2.5% per piece, no full-set bonus
-          inqPieces *= 5;
-        } else if (inqPieces === 3) {
-          // 1.0% extra for full set when not using inq mace
-          inqPieces = 5;
-        }
-        maxHit = this.trackFactor(DetailKey.MAX_HIT_INQ, maxHit, [200 + inqPieces, 200]);
+      let inqBonus = 0;
+      if (this.wearing("Inquisitor's great helm")) {
+        inqBonus += 1;
       }
+      if (this.wearing("Inquisitor's hauberk")) {
+        inqBonus += 2;
+      }
+      if (this.wearing("Inquisitor's plateskirt")) {
+        inqBonus += 2;
+      }
+
+      maxHit = this.trackFactor(DetailKey.MAX_HIT_INQ, maxHit, [200 + inqBonus, 200]);
     }
 
     if (this.isWearingFang()) {
@@ -487,8 +481,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         minHit = this.trackFactor(DetailKey.MIN_HIT_SPEC, maxHit, [1, 4]);
         maxHit = this.trackAdd(DetailKey.MAX_HIT_SPEC, maxHit, minHit);
       } else if (this.wearing('Soulreaper axe')) {
-        const stacks = Math.max(0, Math.min(3, this.player.buffs.soulreaperStacks));
-        maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [100 + 10 * stacks, 100]);
+        const stacks = Math.max(0, Math.min(5, this.player.buffs.soulreaperStacks));
+        minHit = this.trackAdd(DetailKey.MIN_HIT_SPEC, minHit, Math.trunc(maxHit * 6 * stacks / 100));
+        maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [100 + 6 * stacks, 100]);
       } else if (this.wearing('New Spec Weapon')) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [7, 10]);
         minHit = this.track(DetailKey.MIN_HIT_SPEC, maxHit);
@@ -596,6 +591,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [5, 4]);
       } else if (this.wearing('Rosewood blowpipe')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [4, 5]);
+      } else if (this.wearing('Tonalztics of ralos')) {
+        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
       }
     }
 
