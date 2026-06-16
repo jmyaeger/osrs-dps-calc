@@ -146558,26 +146558,26 @@
     "speed": 5,
     "category": "Breaker",
     "bonuses": {
-      "str": 0,
-      "ranged_str": 53,
+      "str": 40,
+      "ranged_str": 0,
       "magic_str": 0,
-      "prayer": 0
+      "prayer": 3
     },
     "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
+      "stab": 22,
+      "slash": -8,
+      "crush": 120,
       "magic": 0,
       "ranged": 0
     },
     "defensive": {
       "stab": 0,
-      "slash": 0,
+      "slash": 16,
       "crush": 0,
-      "magic": 0,
-      "ranged": 0
+      "magic": 3,
+      "ranged": 8
     },
-    "isTwoHanded": false
+    "isTwoHanded": true
   },
   {
     "name": "Tzkal slayer helmet",
