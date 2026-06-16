@@ -10,7 +10,6 @@ import {
 import { sum } from 'd3-array';
 import equipment from '../../cdn/json/equipment.json';
 import generatedEquipmentAliases from './EquipmentAliases';
-import { Plaster } from 'next/font/google';
 
 export type EquipmentBonuses = Pick<Player, 'bonuses' | 'offensive' | 'defensive' | 'attackSpeed'>;
 
