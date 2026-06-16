@@ -1533,7 +1533,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (this.isUsingMeleeStyle() && this.wearing('TzHaar-Ket Breaker') && this.player.style.name === 'Thrust') {
       const defs = this.monster.defensive;
       const rolls = 1 + [defs.stab, defs.slash, defs.light, defs.standard, defs.heavy, defs.magic]
-        .filter((d) => d >= defs.crush).length;
+        .filter((d) => d > defs.crush).length;
       dist = new AttackDistribution([HitDistribution.maxOfDamageRolls(acc, min, max, rolls)]);
     }
 
