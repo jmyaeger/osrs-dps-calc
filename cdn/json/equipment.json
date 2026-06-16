@@ -146556,7 +146556,7 @@
     "slot": "weapon",
     "image": "",
     "speed": 5,
-    "category": "",
+    "category": "Breaker",
     "bonuses": {
       "str": 0,
       "ranged_str": 53,
