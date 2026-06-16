@@ -452,6 +452,11 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
+    if (this.wearing('TzHaar-Ket Breaker') && this.player.style.name === 'Thrust') {
+      const modifier = 25 * Math.max(0, Math.min(2, this.monster.size - this.player.buffs.chinchompaDistance));
+      maxHit = this.trackFactor(DetailKey.MAX_HIT_BREAKER, maxHit, [100 + modifier, 100]);
+    }
+
     if (this.opts.usingSpecialAttack) {
       if (this.isWearingGodsword()) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_GODSWORD_SPEC, maxHit, [11, 10]);
@@ -1525,6 +1530,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       dist = new AttackDistribution(hits);
     }
 
+    if (this.isUsingMeleeStyle() && this.wearing('TzHaar-Ket Breaker') && this.player.style.name === 'Thrust') {
+      const defs = this.monster.defensive;
+      const rolls = 1 + [defs.stab, defs.slash, defs.light, defs.standard, defs.heavy, defs.magic]
+        .filter((d) => d > defs.crush).length;
+      dist = new AttackDistribution([HitDistribution.maxOfDamageRolls(acc, min, max, rolls)]);
+    }
+
     if (this.isUsingMeleeStyle() && this.wearing('Dual macuahuitl')) {
       const secondHit = HitDistribution.linear(acc, 0, max - Math.trunc(max / 2));
       const firstHit = new AttackDistribution([HitDistribution.linear(acc, 0, Math.trunc(max / 2))]);
@@ -1662,6 +1674,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       spec: this.opts.usingSpecialAttack,
       kandarinDiary: this.player.buffs.kandarinDiary,
       monster: this.monster,
+      ascensions: this.wearing('Ascension crossbows'),
     };
     if (this.player.style.type === 'ranged' && this.player.equipment.weapon?.name.includes('rossbow')) {
       if (this.wearing(['Opal bolts (e)', 'Opal dragon bolts (e)'])) {
@@ -1673,6 +1686,14 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       } else if (this.wearing(['Dragonstone bolts (e)', 'Dragonstone dragon bolts (e)'])) {
         dist = dist.transform(dragonstoneBolts(boltContext));
       } else if (this.wearing(['Onyx bolts (e)', 'Onyx dragon bolts (e)']) && !mattrs.includes(MonsterAttribute.UNDEAD)) {
+        dist = dist.transform(onyxBolts(boltContext));
+      }
+    }
+
+    if (this.wearing('Ascension crossbows') && this.player.style.type === 'ranged') {
+      if (this.wearing('Diamond fractured bolts (e)')) {
+        dist = dist.transform(diamondBolts(boltContext));
+      } else if (this.wearing('Onyx fractured bolts (e)')) {
         dist = dist.transform(onyxBolts(boltContext));
       }
     }

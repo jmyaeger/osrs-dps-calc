@@ -558,6 +558,10 @@ export const CombatStyleMap: { [k in EquipmentCategory]: { [k: string]: { image:
     Kick: { image: '248' },
     Block: { image: '249' },
   },
+  [EquipmentCategory.BREAKER]: {
+    Thrust: { image: '284' },
+    Smash: { image: '275' },
+  },
 };
 
 /**
@@ -595,6 +599,12 @@ export const getCombatStylesForCategory = (style: EquipmentCategory): PlayerComb
     case EquipmentCategory.BLASTER:
       // TODO?
       return [];
+    case EquipmentCategory.BREAKER:
+      ret = [
+        { name: 'Thrust', type: 'crush', stance: 'Controlled' },
+        { name: 'Smash', type: 'crush', stance: 'Controlled' },
+      ];
+      break;
     case EquipmentCategory.BOW:
     case EquipmentCategory.CROSSBOW:
     case EquipmentCategory.THROWN:

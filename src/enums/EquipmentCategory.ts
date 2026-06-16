@@ -12,6 +12,7 @@ export enum EquipmentCategory {
   BLUDGEON = 'Bludgeon',
   BLUNT = 'Blunt',
   BOW = 'Bow',
+  BREAKER = 'Breaker',
   BULWARK = 'Bulwark',
   CHINCHOMPA = 'Chinchompas',
   CLAW = 'Claw',

@@ -277,6 +277,19 @@ export class HitDistribution {
     }
     return d;
   }
+
+  public static maxOfDamageRolls(accuracy: number, minimum: number, maximum: number, rolls: number): HitDistribution {
+    const d = new HitDistribution([]);
+    const span = maximum - minimum + 1;
+    const denom = span ** rolls;
+    for (let k = minimum; k <= maximum; k++) {
+      const i = k - minimum;
+      const weight = (i + 1) ** rolls - i ** rolls;
+      d.addHit(new WeightedHit(accuracy * weight / denom, [new Hitsplat(k)]));
+    }
+    d.addHit(new WeightedHit(1 - accuracy, [Hitsplat.INACCURATE]));
+    return d;
+  }
 }
 
 export class AttackDistribution {

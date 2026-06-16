@@ -50,6 +50,7 @@ export enum DetailKey {
   MAX_HIT_FORINTHRY_SURGE = 'Max hit forinthry surge',
   MAX_HIT_SALVE = 'Max hit salve amulet',
   MAX_HIT_BLACK_MASK = 'Max hit black mask',
+  MAX_HIT_BREAKER = 'Max hit TzHaar-Ket Breaker',
   MAX_HIT_DEMONBANE = 'Max hit demonbane',
   MAX_HIT_OBSIDIAN_BONUS = 'Max hit obsidian bonus',
   MAX_HIT_OBSIDIAN = 'Max hit obsidian',

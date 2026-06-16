@@ -10,6 +10,7 @@ import {
 import { sum } from 'd3-array';
 import equipment from '../../cdn/json/equipment.json';
 import generatedEquipmentAliases from './EquipmentAliases';
+import { Plaster } from 'next/font/google';
 
 export type EquipmentBonuses = Pick<Player, 'bonuses' | 'offensive' | 'defensive' | 'attackSpeed'>;
 
@@ -157,6 +158,7 @@ const ammoForRangedWeapons: { [weapon: number]: number[] } = {
   28834: [28837], // Tecu salamander, Irit tar
   28869: [28872, 28878], // Hunters' sunlight crossbow
   29000: [28991], // Eclipse atlatl
+  99996: [99997, 99998, 99999], // Ascension crossbows
 };
 
 export enum AmmoApplicability {
@@ -257,6 +259,8 @@ export const calculateAttackSpeed = (player: Player, monster: Monster): number =
     } else {
       attackSpeed = 5;
     }
+  } else if (player.equipment.weapon?.name === 'TzHaar-Ket Breaker' && player.style.name === 'Smash') {
+    attackSpeed = 3;
   }
 
   // Giant rat (Scurrius)
