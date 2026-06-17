@@ -452,7 +452,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
-    if (this.wearing('TzHaar-Ket Breaker') && this.player.style.name === 'Thrust') {
+    if (this.wearing('TzHaar-Ket Breaker') && (this.player.style.name === 'Thrust (Aggressive)' || this.player.style.name === 'Thrust (Controlled)')) {
       const modifier = 25 * Math.max(0, Math.min(2, this.monster.size - this.player.buffs.chinchompaDistance));
       maxHit = this.trackFactor(DetailKey.MAX_HIT_BREAKER, maxHit, [100 + modifier, 100]);
     }
@@ -1530,7 +1530,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       dist = new AttackDistribution(hits);
     }
 
-    if (this.isUsingMeleeStyle() && this.wearing('TzHaar-Ket Breaker') && this.player.style.name === 'Thrust') {
+    if (this.isUsingMeleeStyle() && this.wearing('TzHaar-Ket Breaker') && (this.player.style.name === 'Thrust (Aggressive)' || this.player.style.name === 'Thrust (Controlled)')) {
       const defs = this.monster.defensive;
       const rolls = 1 + [defs.stab, defs.slash, defs.light, defs.standard, defs.heavy, defs.magic]
         .filter((d) => d > defs.crush).length;
