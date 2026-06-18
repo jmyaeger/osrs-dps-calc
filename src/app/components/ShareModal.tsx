@@ -10,8 +10,7 @@ const ShareModal: React.FC = observer(() => {
   const store = useStore();
   const { ui, debug } = store;
   const inputRef = createRef<HTMLInputElement>();
-
-  const domain = process.env.NEXT_PUBLIC_SHORTLINK_URL;
+  const domain = 'https://dps.oriontools.dev/';
   const [shareId, setShareId] = useState('');
   const [error, setError] = useState(false);
 
