@@ -498,13 +498,13 @@ export default class BaseCalc {
    */
   protected wearingVampyrebane(tier: MonsterAttribute.VAMPYRE_2 | MonsterAttribute.VAMPYRE_3): boolean {
     const t2 = tier === MonsterAttribute.VAMPYRE_2;
-    return (t2 || this.isUsingMeleeStyle())
+    return this.wearing('Blisterwood stake') || ((t2 || this.isUsingMeleeStyle())
       && this.wearing([
         ...(t2 ? ['Rod of ivandis'] : []),
         'Ivandis flail',
         'Blisterwood sickle',
-        'Blisterwood flail', 'Hallowed flail', 'Sunspear',
-      ]);
+        'Blisterwood flail', 'Hallowed flail', 'Sunspear', 'Blisterwood stake',
+      ]));
   }
 
   protected isWearingMsb(): boolean {

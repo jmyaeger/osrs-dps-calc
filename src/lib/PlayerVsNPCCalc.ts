@@ -263,12 +263,15 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (this.wearing(['Blisterwood flail', 'Blisterwood sickle']) && isVampyre(mattrs)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_VAMPYREBANE, attackRoll, [21, 20]);
     }
-    if (this.wearing('Flail Upgrade') && isVampyre(mattrs)) {
+    if (this.wearing('Hallowed flail') && isVampyre(mattrs)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_VAMPYREBANE, attackRoll, [5, 4]);
     }
     if (this.isWearingSilverWeapon() && this.wearing("Efaritay's aid") && isVampyre(mattrs)) {
-      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_EFARITAY, attackRoll, [23, 20]); // todo ordering? does this stack multiplicatively with vampyrebane?
+      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_EFARITAY, attackRoll, [23, 20]);
     }
+
+    // TODO: find out the accuracy boosts of the sunspear and blisterwood stakes
+
     if (this.wearing('Granite hammer') && mattrs.includes(MonsterAttribute.GOLEM)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_GOLEMBANE, attackRoll, [13, 10]);
     }
@@ -1662,7 +1665,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       const efaritay = this.wearing("Efaritay's aid");
       const doEfaritay = (d: AttackDistribution) => (efaritay ? d.scaleDamage(11, 10) : d);
 
-      if (this.wearing(['Blisterwood flail', 'Flail Upgrade'])) {
+      if (this.wearing(['Blisterwood flail', 'Hallowed flail', 'Sunspear', 'Blisterwood stake'])) {
         dist = doEfaritay(dist);
         dist = dist.scaleDamage(5, 4);
       } else if (this.wearing('Blisterwood sickle')) {
