@@ -124,6 +124,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (!this.opts.noInit && this.isSpecSupported() === FeatureStatus.UNIMPLEMENTED) {
       this.addIssue(UserIssueType.EQUIPMENT_SPEC_UNSUPPORTED, 'This loadout\'s weapon special attack is not yet supported in the calculator.');
     }
+    if (!this.opts.noInit && this.isBurnIncludedInDps()) {
+      this.addIssue(UserIssueType.TTK_DOES_NOT_INCLUDE_BURN, 'The effects of burn are included in DPS but not TTK.');
+    }
   }
 
   /**
@@ -1298,6 +1301,15 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       this.track(DetailKey.DOT_EXPECTED, ret);
     }
     return ret;
+  }
+
+  private isBurnIncludedInDps(): boolean {
+    if (this.opts.usingSpecialAttack) {
+      return false;
+    }
+
+    return (this.isWearingEclipseMoonSet() && !this.isImmuneToStrongBurns())
+      || (this.player.spell?.element === 'fire' && this.monster.id === 15742);
   }
 
   public getDoTMax(): number {

@@ -8,11 +8,13 @@ import { max, min, some } from 'd3-array';
 import { toJS } from 'mobx';
 import { isDefined } from '@/utils';
 import UserIssueType from '@/enums/UserIssueType';
+import UserIssueWarning from '@/app/components/generic/UserIssueWarning';
 
 interface IResultRowProps {
   calcKey: keyof Omit<PlayerVsNPCCalculatedLoadout, 'ttkDist'>;
   hasResults: boolean;
   collapseSpecs?: boolean;
+  issueType?: UserIssueType;
   title?: string;
 }
 
@@ -65,6 +67,7 @@ const ResultRow: React.FC<PropsWithChildren<IResultRowProps>> = observer((props)
     title,
     hasResults,
     collapseSpecs,
+    issueType,
   } = props;
   const { calc, userIssues } = store;
   const loadouts = toJS(calc.loadouts);
@@ -75,6 +78,9 @@ const ResultRow: React.FC<PropsWithChildren<IResultRowProps>> = observer((props)
 
     return Object.values(loadouts).map((l, i) => {
       const value = l[calcKey] as number;
+      const issue = issueType
+        ? userIssues.find((is) => is.loadout === `${i + 1}` && is.type === issueType)
+        : undefined;
       if (hasResults && calcKey.startsWith('spec') && (value === undefined || value === null)) {
         // results are in, but the weapon has no implemented special attack
         // we colspan on the first entry (specAccuracy) if extended, and just return nothing for the rest
@@ -90,11 +96,16 @@ const ResultRow: React.FC<PropsWithChildren<IResultRowProps>> = observer((props)
       return (
         // eslint-disable-next-line react/no-array-index-key
         <th className={`text-center w-28 border-r ${((Object.values(loadouts).length > 1) && bestValue === value) ? 'dark:text-green-200 text-green-800' : 'dark:text-body-200 text-black'}`} key={i}>
-          {hasResults ? calcKeyToString(value, calcKey) : (<Spinner className="w-3" />)}
+          {hasResults ? (
+            <div className="flex items-center justify-center gap-1">
+              <span>{calcKeyToString(value, calcKey)}</span>
+              {issue && <UserIssueWarning issue={issue} />}
+            </div>
+          ) : (<Spinner className="w-3" />)}
         </th>
       );
     });
-  }, [loadouts, calcKey, collapseSpecs, hasResults, userIssues]);
+  }, [loadouts, calcKey, collapseSpecs, hasResults, issueType, userIssues]);
 
   return (
     <tr>
@@ -143,7 +154,7 @@ const PlayerVsNPCResultsTable: React.FC = observer(() => {
         <ResultRow calcKey="dps" title="The average damage you will deal per-second" hasResults={hasResults}>
           DPS
         </ResultRow>
-        <ResultRow calcKey="ttk" title="The average time (in seconds) it will take to defeat the monster" hasResults={hasResults}>
+        <ResultRow calcKey="ttk" title="The average time (in seconds) it will take to defeat the monster" hasResults={hasResults} issueType={UserIssueType.TTK_DOES_NOT_INCLUDE_BURN}>
           Avg. TTK
         </ResultRow>
         <ResultRow calcKey="accuracy" title="How accurate you are against the monster" hasResults={hasResults}>
