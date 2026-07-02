@@ -405,7 +405,7 @@ export const WEAPON_SPEC_COSTS: { [canonicalName: string]: number } = {
   'Dragon sword': 40,
 
   'Crimson kisten': 50,
-  'New Spec Weapon': 50,
+  'Sunspear': 50,
   'Elder maul': 50,
   'Dragon warhammer': 50,
   'Bandos godsword': 50,

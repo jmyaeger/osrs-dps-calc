@@ -490,7 +490,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         const stacks = Math.max(0, Math.min(5, this.player.buffs.soulreaperStacks));
         minHit = this.trackAdd(DetailKey.MIN_HIT_SPEC, minHit, Math.trunc(maxHit * 6 * stacks / 100));
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [100 + 6 * stacks, 100]);
-      } else if (this.wearing('New Spec Weapon')) {
+      } else if (this.wearing('Sunspear')) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [7, 10]);
         minHit = this.track(DetailKey.MIN_HIT_SPEC, maxHit);
       }
@@ -1232,7 +1232,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const atk = this.getMaxAttackRoll();
     const def = this.getNPCDefenceRoll();
 
-    if (this.opts.usingSpecialAttack && this.wearing('New Spec Weapon')) {
+    if (this.opts.usingSpecialAttack && this.wearing('Sunspear')) {
       const specMaxHit = Math.trunc(this.getMinAndMax()[1]);
       if (this.monster.inputs.monsterCurrentHp < specMaxHit) {
         return this.track(DetailKey.PLAYER_ACCURACY_FINAL, BaseCalc.getFixedAccuracyRoll(atk, def));

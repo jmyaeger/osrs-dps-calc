@@ -497,7 +497,7 @@ export default class BaseCalc {
         ...(t2 ? ['Rod of ivandis'] : []),
         'Ivandis flail',
         'Blisterwood sickle',
-        'Blisterwood flail', 'Flail Upgrade', 'New Spec Weapon',
+        'Blisterwood flail', 'Hallowed flail', 'Sunspear',
       ]);
   }
 
