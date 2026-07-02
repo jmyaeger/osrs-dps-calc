@@ -655,10 +655,6 @@ export default class BaseCalc {
     return this.wearing(['Ogre bow', 'Comp ogre bow']);
   }
 
-  protected isWearingSeekerArrow(): boolean {
-    return this.wearing(['Bronze seeker arrows', 'Iron seeker arrows', 'Steel seeker arrows', 'Mithril seeker arrows', 'Adamant seeker arrows', 'Rune seeker arrows', 'Amethyst seeker arrows', 'Dragon seeker arrows']);
-  }
-
   protected tdUnshieldedBonusApplies(): boolean {
     if (this.monster.name !== 'Tormented Demon' || this.monster.inputs.phase !== 'Unshielded') {
       return false;
@@ -684,9 +680,12 @@ export default class BaseCalc {
   }
 
   protected seekerArrowBuffApplies(): boolean {
-    return this.isWearingSeekerArrow()
+    if (this.player.equipment.ammo?.name.includes('Seeking')
         && ammoApplicability(this.player.equipment.weapon?.id, this.player.equipment.ammo?.id) === AmmoApplicability.INCLUDED
-        && this.player.style.type === 'ranged';
+        && this.player.style.type === 'ranged') {
+      return true;
+    }
+    return false;
   }
 
   protected isImmuneToNormalBurns(): boolean {
