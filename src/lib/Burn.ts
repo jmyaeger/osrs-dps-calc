@@ -23,16 +23,28 @@ interface BurnStateSpace {
   steps: StateStep[];
 }
 
+interface BurnOptions {
+  burnChance: number;
+  hitsPerStack: number;
+  burnStacksPerProc?: number;
+  tol?: number;
+  maxIter?: number;
+}
+
 const totalStacks = (counts: number[]): number => counts.reduce((a, b) => a + b, 0);
 
-const addStack = (hitsPerStack: number, counts?: number[]): number[] => {
+const addStacks = (hitsPerStack: number, stackCount: number, counts?: number[]): number[] => {
   if (counts === undefined) {
     counts = Array(hitsPerStack).fill(0);
   }
   const next = counts.slice();
-  next[hitsPerStack - 1] += 1;
+  next[hitsPerStack - 1] += stackCount;
   return next;
 };
+
+const burnStacksAdded = (counts: number[], burnStacksPerProc: number): number => (
+  Math.min(burnStacksPerProc, MAX_BURN_STACKS - totalStacks(counts))
+);
 
 const applyBurnTick = (counts: number[]): number[] => [...counts.slice(1), 0];
 
@@ -71,23 +83,33 @@ const applyBurnsSinceLast = (counts: number[], phase: number, attackSpeed: numbe
   return { phase: (phase + attackSpeed) % BURN_INTERVAL, counts: current };
 };
 
-const nextState = (state: BurnState, procOccurs: boolean, attackSpeed: number, hitsPerStack: number): BurnState => {
+const nextState = (
+  state: BurnState,
+  procOccurs: boolean,
+  attackSpeed: number,
+  hitsPerStack: number,
+  burnStacksPerProc: number,
+): BurnState => {
   if (state.phase === INACTIVE) {
     if (!procOccurs) {
       return inactiveState(hitsPerStack);
     }
-    return applyBurnsSinceLast(addStack(hitsPerStack), 0, attackSpeed, hitsPerStack);
+    const stacksToAdd = burnStacksAdded(Array(hitsPerStack).fill(0), burnStacksPerProc);
+    return applyBurnsSinceLast(addStacks(hitsPerStack, stacksToAdd), 0, attackSpeed, hitsPerStack);
   }
 
   let counts = state.counts;
-  if (procOccurs && totalStacks(counts) < MAX_BURN_STACKS) {
-    counts = addStack(hitsPerStack, counts);
+  if (procOccurs) {
+    const stacksToAdd = burnStacksAdded(counts, burnStacksPerProc);
+    if (stacksToAdd > 0) {
+      counts = addStacks(hitsPerStack, stacksToAdd, counts);
+    }
   }
 
   return applyBurnsSinceLast(counts, state.phase, attackSpeed, hitsPerStack);
 };
 
-const buildStateSpace = (attackSpeed: number, hitsPerStack: number): BurnStateSpace => {
+const buildStateSpace = (attackSpeed: number, hitsPerStack: number, burnStacksPerProc: number): BurnStateSpace => {
   const states: BurnState[] = [];
   const steps: StateStep[] = [];
   const stateToIndex = new Map<number, number>();
@@ -109,8 +131,8 @@ const buildStateSpace = (attackSpeed: number, hitsPerStack: number): BurnStateSp
 
   for (let i = 0; i < states.length; i++) {
     const state = states[i];
-    const noProcState = nextState(state, false, attackSpeed, hitsPerStack);
-    const procState = nextState(state, true, attackSpeed, hitsPerStack);
+    const noProcState = nextState(state, false, attackSpeed, hitsPerStack, burnStacksPerProc);
+    const procState = nextState(state, true, attackSpeed, hitsPerStack, burnStacksPerProc);
 
     steps[i] = { noProcIndex: getOrAddStateIndex(noProcState), procIndex: getOrAddStateIndex(procState) };
   }
@@ -133,7 +155,7 @@ const steadyStateBurnDist = (stateSpace: BurnStateSpace, procChance: number, tol
 
       const { noProcIndex, procIndex } = steps[i];
       if (noProcIndex === procIndex) {
-        // If both lead to the same state, the burn cap must have been hit, so it doesn't proc
+        // If both outcomes lead to the same state, the branch probability does not affect the state distribution
         next[noProcIndex] += prob;
         continue;
       }
@@ -158,19 +180,28 @@ const steadyStateBurnDist = (stateSpace: BurnStateSpace, procChance: number, tol
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const getExpectedBurn = (hitChance: number, attackSpeed: number, burnChance: number, hitsPerStack: number, tol = CONVERGENCE_TOL, maxIter = MAX_ITER): number => {
+export const getExpectedBurn = (
+  hitChance: number,
+  attackSpeed: number,
+  opts: BurnOptions,
+): number => {
+  const {
+    burnChance,
+    hitsPerStack,
+    burnStacksPerProc = 1,
+    tol = CONVERGENCE_TOL,
+    maxIter = MAX_ITER,
+  } = opts;
   const procChance = hitChance * burnChance;
-  const stateSpace = buildStateSpace(attackSpeed, hitsPerStack);
+  const stateSpace = buildStateSpace(attackSpeed, hitsPerStack, burnStacksPerProc);
   const steadyStateDist = steadyStateBurnDist(stateSpace, procChance, tol, maxIter);
 
-  // Determine the probability of being at the burn cap when attacking
-  let capProb = 0;
+  // Determine the expected number of stacks available to be added when a burn procs (i.e.,
+  // accounting for both the burn cap and the number of stacks added per proc)
+  let expectedStacksAdded = 0;
   for (let i = 0; i < stateSpace.states.length; i++) {
-    if (totalStacks(stateSpace.states[i].counts) === MAX_BURN_STACKS) {
-      capProb += steadyStateDist[i];
-    }
+    expectedStacksAdded += steadyStateDist[i] * burnStacksAdded(stateSpace.states[i].counts, burnStacksPerProc);
   }
 
-  // Scale the proc chance to account for cases where burns can't proc because of the cap
-  return hitsPerStack * procChance * (1 - capProb);
+  return hitsPerStack * procChance * expectedStacksAdded;
 };

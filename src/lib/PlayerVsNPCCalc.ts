@@ -1277,7 +1277,18 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const hitChance = this.getHitChance();
     const attackSpeed = this.getExpectedAttackSpeed();
     if (this.isWearingEclipseMoonSet() && !this.isImmuneToStrongBurns()) {
-      ret = getExpectedBurn(hitChance, attackSpeed, 0.2, 10);
+      ret = getExpectedBurn(hitChance, attackSpeed, {
+        burnChance: 0.2,
+        hitsPerStack: 10,
+      });
+    }
+
+    if (this.player.spell?.element === 'fire' && this.monster.id === 15742) {
+      ret = getExpectedBurn(hitChance, attackSpeed, {
+        burnChance: 1.0,
+        hitsPerStack: 5,
+        burnStacksPerProc: this.isTwinflameDoubleHitSpell() ? 2 : 1,
+      });
     }
 
     if (ret !== 0) {
@@ -1719,9 +1730,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       );
     }
 
-    if (this.player.style.type === 'magic'
-      && this.wearing('Twinflame staff')
-      && ['Bolt', 'Blast', 'Wave'].some((spellClass) => this.player.spell?.name.includes(spellClass) ?? false)) {
+    if (this.isTwinflameDoubleHitSpell()) {
       dist = dist.transform(
         (h) => HitDistribution.single(1.0, [
           new Hitsplat(h.damage),

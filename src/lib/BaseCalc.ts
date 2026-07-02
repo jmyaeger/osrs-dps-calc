@@ -382,6 +382,12 @@ export default class BaseCalc {
     return this.wearing(['Ancient godsword', 'Armadyl godsword', 'Bandos godsword', 'Saradomin godsword', 'Zamorak godsword']);
   }
 
+  protected isTwinflameDoubleHitSpell(): boolean {
+    return this.player.style.type === 'magic'
+      && this.wearing('Twinflame staff')
+      && ['Bolt', 'Blast', 'Wave'].some((spellType) => this.player.spell?.name.includes(spellType) ?? false);
+  }
+
   /**
    * Whether the player is using any variant of the scythe of vitur.
    * @see https://oldschool.runescape.wiki/w/Scythe_of_vitur
