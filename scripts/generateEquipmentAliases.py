@@ -112,6 +112,13 @@ one_off_renames = {
     "Obsidian cape (r)": "Obsidian cape",
     "Elidinis' ward (or)": "Elidinis' ward (f)",
     "Amulet of rancour (s)": "Amulet of rancour",
+    "Trident of the seas (e) (o)": "Trident of the seas (e)",
+    "Trident of the seas (o)": "Trident of the seas",
+    "Trident of the swamp (e) (o)": "Trident of the swamp (e)",
+    "Trident of the swamp (o)": "Trident of the swamp",
+    "Iban's staff (o)": "Iban's staff",
+    "Iban's staff (u) (o)": "Iban's staff (u)",
+    "Soulreaper axe (o)": "Soulreaper axe",
 }
 
 
@@ -151,7 +158,7 @@ def main():
 
     for item in all_items:
         slayer_helm_match = re.match(
-            r"^(?:Black|Green|Red|Purple|Turquoise|Hydra|Twisted|Tztok|Vampyric|Tzkal|Araxyte|Hooded) slayer helmet( \(i\))?$",
+            r"^(?:Black|Green|Red|Purple|Turquoise|Hydra|Twisted|Tztok|Vampyric|Tzkal|Araxyte|Hooded|Demonic|Radiant|Oathplate) slayer helmet( \(i\))?$",
             item["name"],
         )
         sanguine_torva_match = re.match(
@@ -168,9 +175,6 @@ def main():
 
         # One off items:
         if item["name"] in one_off_renames:
-            assert item["version"] in ["", "Empty", "Charged", "Uncharged"], (
-                "Only certain versions are expected: %s" % item
-            )
             handle_base_variant(
                 all_items, item, one_off_renames[item["name"]], [item["version"]]
             )

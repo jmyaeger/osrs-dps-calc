@@ -24,6 +24,7 @@ BUCKET_API_FIELDS = [
     "item_name",
     "image",
     "item_id",
+    "weight",
     "version_anchor",
     "infobox_bonuses.crush_attack_bonus",
     "infobox_bonuses.crush_defence_bonus",
@@ -48,13 +49,10 @@ BUCKET_API_FIELDS = [
 
 ITEMS_TO_SKIP = [
     "The dogsword",
-    "Drygore blowpipe",
     "Amulet of the monarchs",
     "Emperor ring",
-    "Devil's element",
     "Nature's reprisal",
     "Gloves of the damned",
-    "Crystal blessing",
     "Sunlight spear",
     "Sunlit bracers",
     "Thunder khopesh",
@@ -156,6 +154,7 @@ def main():
         equipment = {
             "name": v["page_name"],
             "id": item_id,
+            "weight": v.get("weight", 0),
             "version": v.get("version_anchor", ""),
             "slot": v.get("infobox_bonuses.equipment_slot", ""),
             "image": ""

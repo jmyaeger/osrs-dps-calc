@@ -33,7 +33,7 @@ BUCKET_API_FIELDS = [
     "flat_armour",
     "hitpoints",
     "image",
-    "poison_immune",
+    "poison_resistance",
     "venom_immune",
     "magic_damage_bonus",
     "magic_attack_bonus",
@@ -127,27 +127,7 @@ def main():
     data = []
     required_imgs = []
 
-    monsters_to_skip = [
-        "Albatross",
-        "Armoured kraken",
-        "Bull shark",
-        "Butterfly ray",
-        "Eagle ray",
-        "Frigatebird",
-        "Great white shark",
-        "Hammerhead shark",
-        "Manta ray (monster)",
-        "Mogre (Sailing)",
-        "Narwhal",
-        "Orca",
-        "Osprey",
-        "Pygmy kraken",
-        "Spined kraken",
-        "Stingray",
-        "Tern",
-        "Tiger shark",
-        "Vampyre kraken",
-    ]
+    monsters_to_skip = []
 
     # Loop over the monsters data from the wiki
     for v in wiki_data:
@@ -162,6 +142,9 @@ def main():
         # If this is a CoX monster Challenge Mode variant, remove it. This will be handled by the calculator UI.
         if "Challenge Mode" in version:
             print(k + " is a CoX CM variant - skipping.")
+            continue
+
+        if "Deadman" in k:
             continue
 
         # Skip monsters that aren't in the main namespace on the wiki
@@ -254,7 +237,13 @@ def main():
             "immunities": {
                 "burn": burn_immunity,
             },
+            "is_slayer_monster": v.get("slayer_experience") is not None,
         }
+
+        if "Awakened" in version:
+            monster["is_slayer_monster"] = False
+        if monster["name"] == "Lizardman shaman (Chambers of Xeric)":
+            monster["is_slayer_monster"] = True
 
         weakness = v.get("elemental_weakness")
         if weakness:
@@ -305,6 +294,14 @@ def main():
         if not monster["image"] == "":
             required_imgs.append(monster["image"])
 
+    with open("manual_monster.json", "r") as f:
+        manual_monsters = json.load(f)
+        for m in manual_monsters:
+            img = m.get("image")
+            if img:
+                required_imgs.append(img)
+        data = data + manual_monsters
+
     print("Total monsters: " + str(len(data)))
 
     # Save the JSON
@@ -316,6 +313,23 @@ def main():
     failed_img_dls = 0
     skipped_img_dls = 0
     required_imgs = set(required_imgs)
+
+    removed_count = 0
+    # Delete any images that are no longer required while enumerating existing files
+    if os.path.isdir(IMG_PATH):
+        for root, _, files in os.walk(IMG_PATH):
+            for file in files:
+                rel_path = os.path.relpath(os.path.join(root, file), IMG_PATH).replace(
+                    os.sep, "/"
+                )
+                if rel_path not in required_imgs:
+                    to_remove = os.path.join(root, file)
+                    try:
+                        os.remove(to_remove)
+                        print(f"Removed obsolete image: {rel_path}")
+                        removed_count += 1
+                    except OSError as e:
+                        print(f"Failed to remove obsolete image: {rel_path} ({e})")
 
     # Fetch all the images from the wiki and store them for local serving
     saved_image_paths = set()
@@ -349,6 +363,7 @@ def main():
     print("Total images saved: " + str(success_img_dls))
     print("Total images skipped (already exists): " + str(skipped_img_dls))
     print("Total images failed to save: " + str(failed_img_dls))
+    print("Total obsolete images removed: " + str(removed_count))
 
 
 main()
