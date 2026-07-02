@@ -1,5 +1,4 @@
 const MAX_BURN_STACKS = 5;
-const INACTIVE = -1;
 const BURN_INTERVAL = 4;
 const CONVERGENCE_TOL = 1e-10;
 const MAX_ITER = 20_000;
@@ -48,14 +47,14 @@ const burnStacksAdded = (counts: number[], burnStacksPerProc: number): number =>
 
 const applyBurnTick = (counts: number[]): number[] => [...counts.slice(1), 0];
 
-const inactiveState = (hitsPerStack: number): BurnState => ({ phase: INACTIVE, counts: Array(hitsPerStack).fill(0) });
+const zeroStackState = (phase: number, hitsPerStack: number): BurnState => ({ phase, counts: Array(hitsPerStack).fill(0) });
 
 // Encode the burn state as a base-6 integer to use as a Map key
 // e.g., (phase = 1, counts = 0, 0, 0, 0, 0, 0, 0, 0, 0, 1) => 20000000001 in base 6 (60466177 in decimal)
-// This works because phase is in [-1, 3] (mapped to [0, 4]) and counts are in [0, 5]
+// This works because phase is in [0, 3] and counts are in [0, 5]
 // Note that this scheme would need to be changed if the stack cap were ever changed
 const stateToInt = (phase: number, counts: number[], hitsPerStack: number): number => {
-  let key = phase + 1;
+  let key = phase;
   for (let i = 0; i < hitsPerStack; i++) {
     key = key * 6 + counts[i];
   }
@@ -73,14 +72,15 @@ const burnsSinceLast = (phase: number, attackSpeed: number): number => {
 
 const applyBurnsSinceLast = (counts: number[], phase: number, attackSpeed: number, hitsPerStack: number): BurnState => {
   let current = counts;
+  const nextPhase = (phase + attackSpeed) % BURN_INTERVAL;
   const burnCount = burnsSinceLast(phase, attackSpeed);
   for (let t = 0; t < burnCount; t++) {
     current = applyBurnTick(current);
     if (totalStacks(current) === 0) {
-      return inactiveState(hitsPerStack);
+      return zeroStackState(nextPhase, hitsPerStack);
     }
   }
-  return { phase: (phase + attackSpeed) % BURN_INTERVAL, counts: current };
+  return { phase: nextPhase, counts: current };
 };
 
 const nextState = (
@@ -90,14 +90,6 @@ const nextState = (
   hitsPerStack: number,
   burnStacksPerProc: number,
 ): BurnState => {
-  if (state.phase === INACTIVE) {
-    if (!procOccurs) {
-      return inactiveState(hitsPerStack);
-    }
-    const stacksToAdd = burnStacksAdded(Array(hitsPerStack).fill(0), burnStacksPerProc);
-    return applyBurnsSinceLast(addStacks(hitsPerStack, stacksToAdd), 0, attackSpeed, hitsPerStack);
-  }
-
   let counts = state.counts;
   if (procOccurs) {
     const stacksToAdd = burnStacksAdded(counts, burnStacksPerProc);
@@ -127,7 +119,7 @@ const buildStateSpace = (attackSpeed: number, hitsPerStack: number, burnStacksPe
     return index;
   };
 
-  getOrAddStateIndex(inactiveState(hitsPerStack));
+  getOrAddStateIndex(zeroStackState(0, hitsPerStack));
 
   for (let i = 0; i < states.length; i++) {
     const state = states[i];
