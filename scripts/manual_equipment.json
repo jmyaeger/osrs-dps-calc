@@ -30,315 +30,225 @@
 		"isTwoHanded": false
 	},
 	{
-		"name": "New Spec Weapon",
-		"id": -13,
+		"name": "Ascension crossbows",
+		"id": 99996,
 		"version": "",
 		"slot": "weapon",
-		"image": "Rapier.png",
-		"speed": 5,
-		"category": "Stab Sword",
+		"image": "",
+		"speed": 3,
+		"category": "Crossbow",
 		"bonuses": {
-			"str": 70,
+			"str": 0,
 			"ranged_str": 0,
 			"magic_str": 0,
 			"prayer": 0
 		},
 		"offensive": {
-			"stab": 100,
-			"slash": 21,
-			"crush": 60,
-			"magic": 0,
-			"ranged": 0
+			"stab": 0,
+			"slash": 0,
+			"crush": 0,
+			"magic": 3,
+			"ranged": 34
 		},
 		"defensive": {
-			"stab": 0,
-			"slash": 42,
-			"crush": 28,
-			"magic": 0,
+			"stab": -7,
+			"slash": -5,
+			"crush": 0,
+			"magic": 10,
 			"ranged": 0
 		},
 		"isTwoHanded": true
 	},
 	{
-		"name": "Flail Upgrade",
-		"id": -2,
+		"name": "Fractured bolts",
+		"id": 99997,
 		"version": "",
-		"slot": "weapon",
-		"image": "Blisterwood flail.png",
-		"speed": 4,
-		"category": "Staff",
+		"slot": "ammo",
+		"image": "",
+		"speed": 0,
+		"category": "",
 		"bonuses": {
-			"str": 46,
-			"ranged_str": 0,
+			"str": 0,
+			"ranged_str": 53,
 			"magic_str": 0,
+			"prayer": 0
+		},
+		"offensive": {
+			"stab": 0,
+			"slash": 0,
+			"crush": 0,
+			"magic": 0,
+			"ranged": 0
+		},
+		"defensive": {
+			"stab": 0,
+			"slash": 0,
+			"crush": 0,
+			"magic": 0,
+			"ranged": 0
+		},
+		"isTwoHanded": false
+	},
+	{
+		"name": "Diamond fractured bolts (e)",
+		"id": 99998,
+		"version": "",
+		"slot": "ammo",
+		"image": "",
+		"speed": 0,
+		"category": "",
+		"bonuses": {
+			"str": 0,
+			"ranged_str": 58,
+			"magic_str": 0,
+			"prayer": 0
+		},
+		"offensive": {
+			"stab": 0,
+			"slash": 0,
+			"crush": 0,
+			"magic": 0,
+			"ranged": 0
+		},
+		"defensive": {
+			"stab": 0,
+			"slash": 0,
+			"crush": 0,
+			"magic": 0,
+			"ranged": 0
+		},
+		"isTwoHanded": false
+	},
+	{
+		"name": "Onyx fractured bolts (e)",
+		"id": 99999,
+		"version": "",
+		"slot": "ammo",
+		"image": "",
+		"speed": 0,
+		"category": "",
+		"bonuses": {
+			"str": 0,
+			"ranged_str": 58,
+			"magic_str": 0,
+			"prayer": 0
+		},
+		"offensive": {
+			"stab": 0,
+			"slash": 0,
+			"crush": 0,
+			"magic": 0,
+			"ranged": 0
+		},
+		"defensive": {
+			"stab": 0,
+			"slash": 0,
+			"crush": 0,
+			"magic": 0,
+			"ranged": 0
+		},
+		"isTwoHanded": false
+	},
+	{
+		"name": "Hybrid Helmet",
+		"id": -13,
+		"version": "",
+		"slot": "head",
+		"image": "",
+		"speed": 0,
+		"category": "",
+		"bonuses": {
+			"str": 6,
+			"ranged_str": 0,
+			"magic_str": 20,
 			"prayer": 6
 		},
 		"offensive": {
-			"stab": 32,
-			"slash": 68,
-			"crush": 0,
-			"magic": 10,
-			"ranged": 0
+			"stab": 5,
+			"slash": 5,
+			"crush": 5,
+			"magic": 8,
+			"ranged": -15
 		},
 		"defensive": {
-			"stab": 0,
-			"slash": 2,
-			"crush": 0,
-			"magic": 10,
-			"ranged": 0
+			"stab": 58,
+			"slash": 58,
+			"crush": 60,
+			"magic": 3,
+			"ranged": 55
 		},
 		"isTwoHanded": false
 	},
 	{
-		"name": "Bronze seeker arrows",
-		"id": -3,
+		"name": "Hybrid Body",
+		"id": -14,
 		"version": "",
-		"slot": "ammo",
-		"image": "Bronze arrow 5.png",
+		"slot": "body",
+		"image": "",
 		"speed": 0,
 		"category": "",
 		"bonuses": {
-			"str": 0,
-			"ranged_str": 7,
-			"magic_str": 0,
-			"prayer": 0
+			"str": 4,
+			"ranged_str": 0,
+			"magic_str": 20,
+			"prayer": 5
 		},
 		"offensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 20
+			"stab": 8,
+			"slash": 8,
+			"crush": 8,
+			"magic": 31,
+			"ranged": -23
 		},
 		"defensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 0
+			"stab": 110,
+			"slash": 108,
+			"crush": 112,
+			"magic": 14,
+			"ranged": 120
 		},
 		"isTwoHanded": false
 	},
 	{
-		"name": "Iron seeker arrows",
-		"id": -4,
+		"name": "Hybrid Legs",
+		"id": -15,
 		"version": "",
-		"slot": "ammo",
-		"image": "Iron arrow 5.png",
+		"slot": "head",
+		"image": "",
 		"speed": 0,
 		"category": "",
 		"bonuses": {
-			"str": 0,
-			"ranged_str": 10,
-			"magic_str": 0,
-			"prayer": 0
+			"str": 3,
+			"ranged_str": 0,
+			"magic_str": 20,
+			"prayer": 6
 		},
 		"offensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 20
+			"stab": 6,
+			"slash": 6,
+			"crush": 6,
+			"magic": 24,
+			"ranged": -21
 		},
 		"defensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 0
+			"stab": 79,
+			"slash": 84,
+			"crush": 77,
+			"magic": 11,
+			"ranged": 96
 		},
 		"isTwoHanded": false
 	},
 	{
-		"name": "Steel seeker arrows",
-		"id": -5,
+		"name": "Rondache",
+		"id": -16,
 		"version": "",
-		"slot": "ammo",
-		"image": "Steel arrow 5.png",
+		"slot": "shield",
+		"image": "",
 		"speed": 0,
 		"category": "",
 		"bonuses": {
-			"str": 0,
-			"ranged_str": 16,
-			"magic_str": 0,
-			"prayer": 0
-		},
-		"offensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 20
-		},
-		"defensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 0
-		},
-		"isTwoHanded": false
-	},
-	{
-		"name": "Mithril seeker arrows",
-		"id": -6,
-		"version": "",
-		"slot": "ammo",
-		"image": "Mithril arrow 5.png",
-		"speed": 0,
-		"category": "",
-		"bonuses": {
-			"str": 0,
-			"ranged_str": 22,
-			"magic_str": 0,
-			"prayer": 0
-		},
-		"offensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 20
-		},
-		"defensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 0
-		},
-		"isTwoHanded": false
-	},
-	{
-		"name": "Adamant seeker arrows",
-		"id": -7,
-		"version": "",
-		"slot": "ammo",
-		"image": "Adamant arrow 5.png",
-		"speed": 0,
-		"category": "",
-		"bonuses": {
-			"str": 0,
-			"ranged_str": 31,
-			"magic_str": 0,
-			"prayer": 0
-		},
-		"offensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 20
-		},
-		"defensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 0
-		},
-		"isTwoHanded": false
-	},
-	{
-		"name": "Rune seeker arrows",
-		"id": -8,
-		"version": "",
-		"slot": "ammo",
-		"image": "Rune arrow 5.png",
-		"speed": 0,
-		"category": "",
-		"bonuses": {
-			"str": 0,
-			"ranged_str": 49,
-			"magic_str": 0,
-			"prayer": 0
-		},
-		"offensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 20
-		},
-		"defensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 0
-		},
-		"isTwoHanded": false
-	},
-	{
-		"name": "Amethyst seeker arrows",
-		"id": -9,
-		"version": "",
-		"slot": "ammo",
-		"image": "Amethyst arrow 5.png",
-		"speed": 0,
-		"category": "",
-		"bonuses": {
-			"str": 0,
-			"ranged_str": 55,
-			"magic_str": 0,
-			"prayer": 0
-		},
-		"offensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 20
-		},
-		"defensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 0
-		},
-		"isTwoHanded": false
-	},
-	{
-		"name": "Dragon seeker arrows",
-		"id": -10,
-		"version": "",
-		"slot": "ammo",
-		"image": "Dragon arrow 5.png",
-		"speed": 0,
-		"category": "",
-		"bonuses": {
-			"str": 0,
-			"ranged_str": 60,
-			"magic_str": 0,
-			"prayer": 0
-		},
-		"offensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 20
-		},
-		"defensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 0
-		},
-		"isTwoHanded": false
-	},
-	{
-		"name": "Crimson kisten",
-		"id": -11,
-		"version": "",
-		"slot": "weapon",
-		"image": "Cursed goblin hammer.png",
-		"speed": 4,
-		"category": "Spiked",
-		"bonuses": {
-			"str": 56,
+			"str": 8,
 			"ranged_str": 0,
 			"magic_str": 0,
 			"prayer": 0
@@ -346,48 +256,47 @@
 		"offensive": {
 			"stab": 0,
 			"slash": 0,
-			"crush": 57,
-			"magic": 0,
-			"ranged": 0
+			"crush": 0,
+			"magic": -5,
+			"ranged": -8
 		},
 		"defensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 0
+			"stab": 35,
+			"slash": 41,
+			"crush": 38,
+			"magic": -6,
+			"ranged": 55
 		},
 		"isTwoHanded": false
 	},
 	{
-		"name": "Necklace of Pursuit",
-		"id": -12,
+		"name": "TzHaar-Ket Breaker",
+		"id": -17,
 		"version": "",
-		"slot": "neck",
-		"image": "Gnome amulet.png",
-		"speed": 0,
-		"category": "",
+		"slot": "weapon",
+		"image": "",
+		"speed": 5,
+		"category": "Breaker",
 		"bonuses": {
-			"str": 0,
-			"ranged_str": 8,
+			"str": 40,
+			"ranged_str": 0,
 			"magic_str": 0,
 			"prayer": 3
 		},
 		"offensive": {
-			"stab": 0,
-			"slash": 0,
-			"crush": 0,
-			"magic": 0,
-			"ranged": 22
-		},
-		"defensive": {
-			"stab": 0,
-			"slash": 42,
-			"crush": 28,
+			"stab": 22,
+			"slash": -8,
+			"crush": 120,
 			"magic": 0,
 			"ranged": 0
 		},
-		"isTwoHanded": false
+		"defensive": {
+			"stab": 0,
+			"slash": 10,
+			"crush": 0,
+			"magic": 3,
+			"ranged": 8
+		},
+		"isTwoHanded": true
 	}
 ]
-

@@ -5983,36 +5983,6 @@
     "isTwoHanded": false
   },
   {
-    "name": "Adamant seeker arrows",
-    "id": -7,
-    "version": "",
-    "slot": "ammo",
-    "image": "Adamant arrow 5.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 31,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 20
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
     "name": "Adamant shield (h1)",
     "id": 7334,
     "weight": 5.896,
@@ -8555,36 +8525,6 @@
     "isTwoHanded": false
   },
   {
-    "name": "Amethyst seeker arrows",
-    "id": -9,
-    "version": "",
-    "slot": "ammo",
-    "image": "Amethyst arrow 5.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 55,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 20
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
     "name": "Amulet of accuracy",
     "id": 1478,
     "weight": 0.01,
@@ -10859,7 +10799,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -10890,7 +10830,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -13667,6 +13607,36 @@
       "ranged": 0
     },
     "isTwoHanded": false
+  },
+  {
+    "name": "Ascension crossbows",
+    "id": 99996,
+    "version": "",
+    "slot": "weapon",
+    "image": "",
+    "speed": 3,
+    "category": "Crossbow",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 3,
+      "ranged": 34
+    },
+    "defensive": {
+      "stab": -7,
+      "slash": -5,
+      "crush": 0,
+      "magic": 10,
+      "ranged": 0
+    },
+    "isTwoHanded": true
   },
   {
     "name": "Assembler max cape",
@@ -22110,14 +22080,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 100,
+      "slash": 94,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22172,14 +22142,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 100,
+      "slash": 94,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22203,14 +22173,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 100,
+      "slash": 94,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22234,14 +22204,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 100,
+      "slash": 94,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22265,14 +22235,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 100,
+      "slash": 94,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22296,14 +22266,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 100,
+      "slash": 94,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22327,14 +22297,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 100,
+      "slash": 94,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22358,14 +22328,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 100,
+      "slash": 94,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22389,14 +22359,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 100,
+      "slash": 94,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22763,7 +22733,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -22794,7 +22764,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -22825,7 +22795,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -30030,36 +30000,6 @@
     "defensive": {
       "stab": 0,
       "slash": 1,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Bronze seeker arrows",
-    "id": -3,
-    "version": "",
-    "slot": "ammo",
-    "image": "Bronze arrow 5.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 7,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 20
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -51054,36 +50994,6 @@
     "isTwoHanded": true
   },
   {
-    "name": "Crimson kisten",
-    "id": -11,
-    "version": "",
-    "slot": "weapon",
-    "image": "Cursed goblin hammer.png",
-    "speed": 4,
-    "category": "Spiked",
-    "bonuses": {
-      "str": 56,
-      "ranged_str": 0,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 57,
-      "magic": 0,
-      "ranged": 0
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
     "name": "Crone-made amulet",
     "id": 10500,
     "weight": 0.01,
@@ -61717,6 +61627,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Diamond fractured bolts (e)",
+    "id": 99998,
+    "version": "",
+    "slot": "ammo",
+    "image": "",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 58,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Diamond necklace",
     "id": 1662,
     "weight": 0.01,
@@ -65647,36 +65587,6 @@
     "defensive": {
       "stab": 0,
       "slash": 1,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Dragon seeker arrows",
-    "id": -10,
-    "version": "",
-    "slot": "ammo",
-    "image": "Dragon arrow 5.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 60,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 20
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -73868,36 +73778,6 @@
     "isTwoHanded": true
   },
   {
-    "name": "Flail Upgrade",
-    "id": -2,
-    "version": "",
-    "slot": "weapon",
-    "image": "Blisterwood flail.png",
-    "speed": 4,
-    "category": "Staff",
-    "bonuses": {
-      "str": 46,
-      "ranged_str": 0,
-      "magic_str": 0,
-      "prayer": 6
-    },
-    "offensive": {
-      "stab": 32,
-      "slash": 68,
-      "crush": 0,
-      "magic": 10,
-      "ranged": 0
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 2,
-      "crush": 0,
-      "magic": 10,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
     "name": "Flamtaer bracelet",
     "id": 21180,
     "weight": 0.25,
@@ -74684,6 +74564,36 @@
     "bonuses": {
       "str": 0,
       "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Fractured bolts",
+    "id": 99997,
+    "version": "",
+    "slot": "ammo",
+    "image": "",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 53,
       "magic_str": 0,
       "prayer": 0
     },
@@ -77007,13 +76917,13 @@
     "speed": 4,
     "category": "Stab Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
-      "stab": 100,
+      "stab": 94,
       "slash": 55,
       "crush": 0,
       "magic": 0,
@@ -88415,13 +88325,13 @@
     "speed": 4,
     "category": "Stab Sword",
     "bonuses": {
-      "str": 93,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
-      "stab": 100,
+      "stab": 94,
       "slash": 55,
       "crush": 0,
       "magic": 0,
@@ -89553,6 +89463,96 @@
     "isTwoHanded": false
   },
   {
+    "name": "Hybrid Body",
+    "id": -14,
+    "version": "",
+    "slot": "body",
+    "image": "",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 4,
+      "ranged_str": 0,
+      "magic_str": 20,
+      "prayer": 5
+    },
+    "offensive": {
+      "stab": 8,
+      "slash": 8,
+      "crush": 8,
+      "magic": 31,
+      "ranged": -23
+    },
+    "defensive": {
+      "stab": 110,
+      "slash": 108,
+      "crush": 112,
+      "magic": 14,
+      "ranged": 120
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Hybrid Helmet",
+    "id": -13,
+    "version": "",
+    "slot": "head",
+    "image": "",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 6,
+      "ranged_str": 0,
+      "magic_str": 20,
+      "prayer": 6
+    },
+    "offensive": {
+      "stab": 5,
+      "slash": 5,
+      "crush": 5,
+      "magic": 8,
+      "ranged": -15
+    },
+    "defensive": {
+      "stab": 58,
+      "slash": 58,
+      "crush": 60,
+      "magic": 3,
+      "ranged": 55
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Hybrid Legs",
+    "id": -15,
+    "version": "",
+    "slot": "head",
+    "image": "",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 3,
+      "ranged_str": 0,
+      "magic_str": 20,
+      "prayer": 6
+    },
+    "offensive": {
+      "stab": 6,
+      "slash": 6,
+      "crush": 6,
+      "magic": 24,
+      "ranged": -21
+    },
+    "defensive": {
+      "stab": 79,
+      "slash": 84,
+      "crush": 77,
+      "magic": 11,
+      "ranged": 96
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Hydra slayer helmet",
     "id": 23073,
     "weight": 2.267,
@@ -89874,7 +89874,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -89905,7 +89905,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -89936,7 +89936,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -92321,15 +92321,15 @@
     "speed": 0,
     "category": "",
     "bonuses": {
-      "str": 6,
+      "str": 4,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 1
     },
     "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 10,
+      "stab": -2,
+      "slash": -2,
+      "crush": 8,
       "magic": -5,
       "ranged": -5
     },
@@ -92358,9 +92358,9 @@
       "prayer": 2
     },
     "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 16,
+      "stab": -3,
+      "slash": -3,
+      "crush": 12,
       "magic": -11,
       "ranged": -10
     },
@@ -92383,7 +92383,7 @@
     "speed": 4,
     "category": "Spiked",
     "bonuses": {
-      "str": 96,
+      "str": 89,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 2
@@ -92391,7 +92391,7 @@
     "offensive": {
       "stab": 52,
       "slash": -4,
-      "crush": 102,
+      "crush": 95,
       "magic": 0,
       "ranged": 0
     },
@@ -92420,8 +92420,8 @@
       "prayer": 2
     },
     "offensive": {
-      "stab": 0,
-      "slash": 0,
+      "stab": -3,
+      "slash": -3,
       "crush": 12,
       "magic": -9,
       "ranged": -5
@@ -94599,36 +94599,6 @@
     "defensive": {
       "stab": 0,
       "slash": 1,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Iron seeker arrows",
-    "id": -4,
-    "version": "",
-    "slot": "ammo",
-    "image": "Iron arrow 5.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 10,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 20
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -101808,7 +101778,7 @@
     "bonuses": {
       "str": 0,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
@@ -104890,36 +104860,6 @@
     "defensive": {
       "stab": 0,
       "slash": 1,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Mithril seeker arrows",
-    "id": -6,
-    "version": "",
-    "slot": "ammo",
-    "image": "Mithril arrow 5.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 22,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 20
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -108430,36 +108370,6 @@
     "isTwoHanded": false
   },
   {
-    "name": "Necklace of Pursuit",
-    "id": -12,
-    "version": "",
-    "slot": "neck",
-    "image": "Gnome amulet.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 8,
-      "magic_str": 0,
-      "prayer": 3
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 22
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 42,
-      "crush": 28,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
     "name": "Necklace of anguish",
     "id": 19547,
     "weight": 0.01,
@@ -108861,36 +108771,6 @@
       "ranged": 0
     },
     "isTwoHanded": false
-  },
-  {
-    "name": "New Spec Weapon",
-    "id": -13,
-    "version": "",
-    "slot": "weapon",
-    "image": "Rapier.png",
-    "speed": 5,
-    "category": "Stab Sword",
-    "bonuses": {
-      "str": 70,
-      "ranged_str": 0,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 100,
-      "slash": 21,
-      "crush": 60,
-      "magic": 0,
-      "ranged": 0
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 42,
-      "crush": 28,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": true
   },
   {
     "name": "Nightmare staff",
@@ -110598,6 +110478,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Onyx fractured bolts (e)",
+    "id": 99999,
+    "version": "",
+    "slot": "ammo",
+    "image": "",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 58,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Onyx necklace",
     "id": 6577,
     "weight": 0.01,
@@ -112003,7 +111913,7 @@
     "category": "",
     "bonuses": {
       "str": 0,
-      "ranged_str": 1,
+      "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
@@ -123401,6 +123311,36 @@
     "isTwoHanded": false
   },
   {
+    "name": "Rondache",
+    "id": -16,
+    "version": "",
+    "slot": "shield",
+    "image": "",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 8,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": -5,
+      "ranged": -8
+    },
+    "defensive": {
+      "stab": 35,
+      "slash": 41,
+      "crush": 38,
+      "magic": -6,
+      "ranged": 55
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Rosewood blowpipe",
     "id": 31583,
     "weight": 0.5,
@@ -127548,36 +127488,6 @@
     "defensive": {
       "stab": 0,
       "slash": 1,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Rune seeker arrows",
-    "id": -8,
-    "version": "",
-    "slot": "ammo",
-    "image": "Rune arrow 5.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 49,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 20
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -132339,7 +132249,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -132370,7 +132280,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -132401,7 +132311,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -132501,7 +132411,7 @@
       "stab": 0,
       "slash": 0,
       "crush": 0,
-      "magic": 2,
+      "magic": -6,
       "ranged": -2
     },
     "defensive": {
@@ -136989,7 +136899,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -137020,7 +136930,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -137051,7 +136961,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 100,
+      "magic_str": 50,
       "prayer": -1
     },
     "offensive": {
@@ -137947,7 +137857,7 @@
     "speed": 5,
     "category": "Axe",
     "bonuses": {
-      "str": 125,
+      "str": 121,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
@@ -143201,36 +143111,6 @@
     "defensive": {
       "stab": 0,
       "slash": 1,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Steel seeker arrows",
-    "id": -5,
-    "version": "",
-    "slot": "ammo",
-    "image": "Steel arrow 5.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 16,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 20
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -153559,6 +153439,36 @@
       "ranged": 9
     },
     "isTwoHanded": false
+  },
+  {
+    "name": "TzHaar-Ket Breaker",
+    "id": -17,
+    "version": "",
+    "slot": "weapon",
+    "image": "",
+    "speed": 5,
+    "category": "Breaker",
+    "bonuses": {
+      "str": 40,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 3
+    },
+    "offensive": {
+      "stab": 22,
+      "slash": -8,
+      "crush": 120,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 10,
+      "crush": 0,
+      "magic": 3,
+      "ranged": 8
+    },
+    "isTwoHanded": true
   },
   {
     "name": "Tzhaar-ket-em",
