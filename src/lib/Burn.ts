@@ -180,12 +180,17 @@ const steadyStateBurnDist = (stateSpace: BurnStateSpace, procChances: Float64Arr
   return dist;
 };
 
+export interface ExpectedBurnResult {
+  expectedBurn: number;
+  expectedHitChance: number;
+}
+
 // eslint-disable-next-line import/prefer-default-export
 export const getExpectedBurn = (
   hitChance: number | number[],
   attackSpeed: number,
   opts: BurnOptions,
-): number => {
+): ExpectedBurnResult => {
   const {
     burnChance,
     hitsPerStack,
@@ -208,9 +213,15 @@ export const getExpectedBurn = (
   // Determine the expected number of stacks available to be added on a given attack (i.e.,
   // accounting for the burn cap, proc chance, and number of stacks added per proc)
   let expectedStacksAdded = 0;
+  let expectedHitChance = 0;
   for (let i = 0; i < stateSpace.states.length; i++) {
-    expectedStacksAdded += steadyStateDist[i] * procChances[i] * burnStacksAdded(stateSpace.states[i].counts, burnStacksPerProc);
+    const p = steadyStateDist[i];
+    expectedStacksAdded += p * procChances[i] * burnStacksAdded(stateSpace.states[i].counts, burnStacksPerProc);
+    expectedHitChance += p * (procChances[i] / burnChance);
   }
 
-  return hitsPerStack * expectedStacksAdded;
+  return {
+    expectedBurn: hitsPerStack * expectedStacksAdded,
+    expectedHitChance,
+  };
 };

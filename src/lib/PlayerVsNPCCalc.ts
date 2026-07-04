@@ -77,7 +77,7 @@ import {
   rubyBolts,
 } from '@/lib/dists/bolts';
 import { burningClawDoT, burningClawSpec, dClawDist } from '@/lib/dists/claws';
-import { getExpectedBurn } from '@/lib/Burn';
+import { ExpectedBurnResult, getExpectedBurn } from '@/lib/Burn';
 
 const PARTIALLY_IMPLEMENTED_SPECS: string[] = [
   'Ancient godsword',
@@ -118,6 +118,8 @@ const UNIMPLEMENTED_SPECS: string[] = [
  */
 export default class PlayerVsNPCCalc extends BaseCalc {
   private memoizedDist?: AttackDistribution;
+
+  private memoizedBurnDist?: ExpectedBurnResult;
 
   constructor(player: Player, monster: Monster, opts: Partial<CalcOpts> = {}) {
     super(player, monster, opts);
@@ -1246,6 +1248,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
+    if (this.player.spell?.element === 'fire' && this.monster.id === 15742 && !this.opts.usingSpecialAttack) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, this.getMaggotKingBurn().expectedHitChance);
+    }
+
     let hitChance = this.track(
       DetailKey.PLAYER_ACCURACY_BASE,
       BaseCalc.getNormalAccuracyRoll(atk, def),
@@ -1287,10 +1293,22 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       ret = getExpectedBurn(hitChance, attackSpeed, {
         burnChance: 0.2,
         hitsPerStack: 10,
-      });
+      }).expectedBurn;
     }
 
     if (this.player.spell?.element === 'fire' && this.monster.id === 15742) {
+      ret = this.getMaggotKingBurn().expectedBurn;
+    }
+
+    if (ret !== 0) {
+      this.track(DetailKey.DOT_EXPECTED, ret);
+    }
+    return ret;
+  }
+
+  private getMaggotKingBurn(): ExpectedBurnResult {
+    if (this.memoizedBurnDist === undefined) {
+      const attackSpeed = this.getExpectedAttackSpeed();
       const atk = this.getMaxAttackRoll();
       const baseMagicDef = this.monster.defensive.magic;
       const usingConfliction = this.wearing('Confliction gauntlets') && !this.player.equipment.weapon?.isTwoHanded;
@@ -1303,7 +1321,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         rerollHitChances[i] = BaseCalc.getFangAccuracyRoll(atk, def);
       }
 
-      ret = getExpectedBurn(normalHitChances, attackSpeed, {
+      this.memoizedBurnDist = getExpectedBurn(normalHitChances, attackSpeed, {
         burnChance: 1.0,
         hitsPerStack: 5,
         burnStacksPerProc: this.isTwinflameDoubleHitSpell() ? 2 : 1,
@@ -1311,10 +1329,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       });
     }
 
-    if (ret !== 0) {
-      this.track(DetailKey.DOT_EXPECTED, ret);
-    }
-    return ret;
+    return this.memoizedBurnDist;
   }
 
   private isBurnIncludedInDps(): boolean {
