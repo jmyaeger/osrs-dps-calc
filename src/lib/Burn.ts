@@ -1,4 +1,5 @@
-const MAX_BURN_STACKS = 5;
+import { MAX_BURN_STACKS } from './constants';
+
 const BURN_INTERVAL = 4;
 const CONVERGENCE_TOL = 1e-10;
 const MAX_ITER = 20_000;
@@ -8,6 +9,7 @@ const MAX_ITER = 20_000;
 interface BurnState {
   phase: number;
   counts: number[];
+  prevAttackMissed: boolean;
 }
 
 // State space indices of the states reached when a burn doesn't or does proc at a given step
@@ -26,6 +28,7 @@ interface BurnOptions {
   burnChance: number;
   hitsPerStack: number;
   burnStacksPerProc?: number;
+  rerollHitChance?: number[];
   tol?: number;
   maxIter?: number;
 }
@@ -47,16 +50,16 @@ const burnStacksAdded = (counts: number[], burnStacksPerProc: number): number =>
 
 const applyBurnTick = (counts: number[]): number[] => [...counts.slice(1), 0];
 
-const zeroStackState = (phase: number, hitsPerStack: number): BurnState => ({ phase, counts: Array(hitsPerStack).fill(0) });
+const zeroStackState = (phase: number, hitsPerStack: number, prevAttackMissed: boolean): BurnState => ({ phase, counts: Array(hitsPerStack).fill(0), prevAttackMissed });
 
 // Encode the burn state as a base-6 integer to use as a Map key
-// e.g., (phase = 1, counts = 0, 0, 0, 0, 0, 0, 0, 0, 0, 1) => 20000000001 in base 6 (60466177 in decimal)
+// e.g., (previous attack missed, phase = 1, counts = 0, 0, 0, 0, 0, 0, 0, 0, 0, 1) => 110000000001 in base 6
 // This works because phase is in [0, 3] and counts are in [0, 5]
 // Note that this scheme would need to be changed if the stack cap were ever changed
-const stateToInt = (phase: number, counts: number[], hitsPerStack: number): number => {
-  let key = phase;
+const stateToInt = (state: BurnState, hitsPerStack: number): number => {
+  let key = (state.prevAttackMissed ? 1 : 0) * 6 + state.phase;
   for (let i = 0; i < hitsPerStack; i++) {
-    key = key * 6 + counts[i];
+    key = key * 6 + state.counts[i];
   }
   return key;
 };
@@ -77,10 +80,12 @@ const applyBurnsSinceLast = (counts: number[], phase: number, attackSpeed: numbe
   for (let t = 0; t < burnCount; t++) {
     current = applyBurnTick(current);
     if (totalStacks(current) === 0) {
-      return zeroStackState(nextPhase, hitsPerStack);
+      // prevAttackMissed is a placeholder here since it gets overwritten in nextState()
+      return zeroStackState(nextPhase, hitsPerStack, false);
     }
   }
-  return { phase: nextPhase, counts: current };
+
+  return { phase: nextPhase, counts: current, prevAttackMissed: false };
 };
 
 const nextState = (
@@ -89,6 +94,7 @@ const nextState = (
   attackSpeed: number,
   hitsPerStack: number,
   burnStacksPerProc: number,
+  conflictionReroll: boolean,
 ): BurnState => {
   let counts = state.counts;
   if (procOccurs) {
@@ -98,16 +104,19 @@ const nextState = (
     }
   }
 
-  return applyBurnsSinceLast(counts, state.phase, attackSpeed, hitsPerStack);
+  const next = applyBurnsSinceLast(counts, state.phase, attackSpeed, hitsPerStack);
+  const prevAttackMissed = conflictionReroll ? !procOccurs : false;
+
+  return { ...next, prevAttackMissed };
 };
 
-const buildStateSpace = (attackSpeed: number, hitsPerStack: number, burnStacksPerProc: number): BurnStateSpace => {
+const buildStateSpace = (attackSpeed: number, hitsPerStack: number, burnStacksPerProc: number, conflictionReroll: boolean): BurnStateSpace => {
   const states: BurnState[] = [];
   const steps: StateStep[] = [];
   const stateToIndex = new Map<number, number>();
 
   const getOrAddStateIndex = (state: BurnState): number => {
-    const key = stateToInt(state.phase, state.counts, hitsPerStack);
+    const key = stateToInt(state, hitsPerStack);
     let index = stateToIndex.get(key);
     if (index === undefined) {
       // Add a new state space entry if this state hasn't been added yet
@@ -119,12 +128,12 @@ const buildStateSpace = (attackSpeed: number, hitsPerStack: number, burnStacksPe
     return index;
   };
 
-  getOrAddStateIndex(zeroStackState(0, hitsPerStack));
+  getOrAddStateIndex(zeroStackState(0, hitsPerStack, false));
 
   for (let i = 0; i < states.length; i++) {
     const state = states[i];
-    const noProcState = nextState(state, false, attackSpeed, hitsPerStack, burnStacksPerProc);
-    const procState = nextState(state, true, attackSpeed, hitsPerStack, burnStacksPerProc);
+    const noProcState = nextState(state, false, attackSpeed, hitsPerStack, burnStacksPerProc, conflictionReroll);
+    const procState = nextState(state, true, attackSpeed, hitsPerStack, burnStacksPerProc, conflictionReroll);
 
     steps[i] = { noProcIndex: getOrAddStateIndex(noProcState), procIndex: getOrAddStateIndex(procState) };
   }
@@ -132,7 +141,7 @@ const buildStateSpace = (attackSpeed: number, hitsPerStack: number, burnStacksPe
   return { states, steps };
 };
 
-const steadyStateBurnDist = (stateSpace: BurnStateSpace, procChance: number, tol = CONVERGENCE_TOL, maxIter = MAX_ITER): Float64Array => {
+const steadyStateBurnDist = (stateSpace: BurnStateSpace, procChances: Float64Array, tol = CONVERGENCE_TOL, maxIter = MAX_ITER): Float64Array => {
   const { steps } = stateSpace;
   let dist = new Float64Array(steps.length);
   dist[0] = 1;
@@ -152,8 +161,8 @@ const steadyStateBurnDist = (stateSpace: BurnStateSpace, procChance: number, tol
         continue;
       }
 
-      next[noProcIndex] += prob * (1 - procChance);
-      next[procIndex] += prob * procChance;
+      next[noProcIndex] += prob * (1 - procChances[i]);
+      next[procIndex] += prob * procChances[i];
     }
 
     let diff = 0;
@@ -173,7 +182,7 @@ const steadyStateBurnDist = (stateSpace: BurnStateSpace, procChance: number, tol
 
 // eslint-disable-next-line import/prefer-default-export
 export const getExpectedBurn = (
-  hitChance: number,
+  hitChance: number | number[],
   attackSpeed: number,
   opts: BurnOptions,
 ): number => {
@@ -184,16 +193,24 @@ export const getExpectedBurn = (
     tol = CONVERGENCE_TOL,
     maxIter = MAX_ITER,
   } = opts;
-  const procChance = hitChance * burnChance;
-  const stateSpace = buildStateSpace(attackSpeed, hitsPerStack, burnStacksPerProc);
-  const steadyStateDist = steadyStateBurnDist(stateSpace, procChance, tol, maxIter);
+  const stateSpace = buildStateSpace(attackSpeed, hitsPerStack, burnStacksPerProc, opts.rerollHitChance !== undefined);
+  const procChances = new Float64Array(stateSpace.states.length);
 
-  // Determine the expected number of stacks available to be added when a burn procs (i.e.,
-  // accounting for both the burn cap and the number of stacks added per proc)
+  const hitChanceForStacks = (numStacks: number): number => (typeof hitChance === 'number' ? hitChance : hitChance[numStacks]);
+  for (let i = 0; i < stateSpace.states.length; i++) {
+    const state = stateSpace.states[i];
+    const numStacks = totalStacks(state.counts);
+    const p = (opts.rerollHitChance !== undefined && state.prevAttackMissed) ? opts.rerollHitChance![numStacks] : hitChanceForStacks(numStacks);
+    procChances[i] = p * burnChance;
+  }
+  const steadyStateDist = steadyStateBurnDist(stateSpace, procChances, tol, maxIter);
+
+  // Determine the expected number of stacks available to be added on a given attack (i.e.,
+  // accounting for the burn cap, proc chance, and number of stacks added per proc)
   let expectedStacksAdded = 0;
   for (let i = 0; i < stateSpace.states.length; i++) {
-    expectedStacksAdded += steadyStateDist[i] * burnStacksAdded(stateSpace.states[i].counts, burnStacksPerProc);
+    expectedStacksAdded += steadyStateDist[i] * procChances[i] * burnStacksAdded(stateSpace.states[i].counts, burnStacksPerProc);
   }
 
-  return hitsPerStack * procChance * expectedStacksAdded;
+  return hitsPerStack * expectedStacksAdded;
 };

@@ -34,6 +34,7 @@ import {
   IMMUNE_TO_NON_SALAMANDER_MELEE_DAMAGE_NPC_IDS,
   IMMUNE_TO_RANGED_DAMAGE_NPC_IDS,
   KEPHRI_OVERLORD_IDS,
+  MAX_BURN_STACKS,
   NIGHTMARE_TOTEM_IDS,
   OLM_HEAD_IDS,
   OLM_MAGE_HAND_IDS,
@@ -1290,10 +1291,23 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     }
 
     if (this.player.spell?.element === 'fire' && this.monster.id === 15742) {
-      ret = getExpectedBurn(hitChance, attackSpeed, {
+      const atk = this.getMaxAttackRoll();
+      const baseMagicDef = this.monster.defensive.magic;
+      const usingConfliction = this.wearing('Confliction gauntlets') && !this.player.equipment.weapon?.isTwoHanded;
+      const normalHitChances: number[] = [];
+      const rerollHitChances: number[] = [];
+      for (let i = 0; i <= MAX_BURN_STACKS; i++) {
+        const magicDef = Math.max(0, baseMagicDef - 20 * Math.max(i, 1));
+        const def = (this.monster.skills.magic + 9) * (magicDef + 64);
+        normalHitChances[i] = BaseCalc.getNormalAccuracyRoll(atk, def);
+        rerollHitChances[i] = BaseCalc.getFangAccuracyRoll(atk, def);
+      }
+
+      ret = getExpectedBurn(normalHitChances, attackSpeed, {
         burnChance: 1.0,
         hitsPerStack: 5,
         burnStacksPerProc: this.isTwinflameDoubleHitSpell() ? 2 : 1,
+        rerollHitChance: usingConfliction ? rerollHitChances : undefined,
       });
     }
 

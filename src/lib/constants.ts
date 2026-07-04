@@ -545,3 +545,5 @@ export const INFINITE_HEALTH_MONSTERS: number[] = [
 ];
 
 export const ECLIPSE_MOON_IDS = [13012];
+
+export const MAX_BURN_STACKS = 5;
