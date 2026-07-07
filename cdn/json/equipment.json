@@ -92261,15 +92261,15 @@
     "speed": 0,
     "category": "",
     "bonuses": {
-      "str": 4,
+      "str": 6,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 1
     },
     "offensive": {
-      "stab": -2,
-      "slash": -2,
-      "crush": 8,
+      "stab": 0,
+      "slash": 0,
+      "crush": 10,
       "magic": -5,
       "ranged": -5
     },
@@ -92298,9 +92298,9 @@
       "prayer": 2
     },
     "offensive": {
-      "stab": -3,
-      "slash": -3,
-      "crush": 12,
+      "stab": 0,
+      "slash": 0,
+      "crush": 16,
       "magic": -11,
       "ranged": -10
     },
@@ -92323,7 +92323,7 @@
     "speed": 4,
     "category": "Spiked",
     "bonuses": {
-      "str": 89,
+      "str": 96,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 2
@@ -92331,7 +92331,7 @@
     "offensive": {
       "stab": 52,
       "slash": -4,
-      "crush": 95,
+      "crush": 102,
       "magic": 0,
       "ranged": 0
     },
@@ -92360,8 +92360,8 @@
       "prayer": 2
     },
     "offensive": {
-      "stab": -3,
-      "slash": -3,
+      "stab": 0,
+      "slash": 0,
       "crush": 12,
       "magic": -9,
       "ranged": -5
