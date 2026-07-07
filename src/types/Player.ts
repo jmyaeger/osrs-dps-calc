@@ -142,9 +142,9 @@ export interface Player extends EquipmentStats {
      */
     usingSunfireRunes: boolean;
     /**
-     * Whether the crimson kisten spec should re-roll defence for each accuracy roll.
+     * Whether the player is currently receiving the buff from a Gatekeeper's Cane special attack.
      */
-    crimsonKistenDefReroll: boolean;
+    hitGatekeepersCaneSpec: boolean;
   };
   spell: Spell | null;
 }

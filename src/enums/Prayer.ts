@@ -19,6 +19,7 @@ import Augury from '@/public/img/prayers/Augury.png';
 import ThickSkin from '@/public/img/prayers/Thick Skin.png';
 import RockSkin from '@/public/img/prayers/Rock Skin.png';
 import SteelSkin from '@/public/img/prayers/Steel Skin.png';
+import Zeal from '@/public/img/prayers/Zeal.png';
 // import ProtectMagic from '@/public/img/prayers/Protect_from_Magic.png';
 // import ProtectMelee from '@/public/img/prayers/Protect_from_Melee.png';
 // import ProtectRanged from '@/public/img/prayers/Protect_from_Missiles.png';
@@ -50,6 +51,7 @@ export enum Prayer {
   STEEL_SKIN = 18,
   DEADEYE = 19,
   MYSTIC_VIGOUR = 20,
+  ZEAL = 21,
   // PROTECT_MAGIC,
   // PROTECT_RANGED,
   // PROTECT_MELEE,
@@ -60,13 +62,13 @@ export enum Prayer {
 
 export const DEFENSIVE_PRAYERS: Prayer[] = [
   Prayer.THICK_SKIN, Prayer.ROCK_SKIN, Prayer.STEEL_SKIN,
-  Prayer.CHIVALRY, Prayer.PIETY, Prayer.RIGOUR, Prayer.AUGURY,
+  Prayer.CHIVALRY, Prayer.PIETY, Prayer.RIGOUR, Prayer.AUGURY, Prayer.ZEAL,
 ];
 
 export const OFFENSIVE_PRAYERS: Prayer[] = [
   Prayer.BURST_OF_STRENGTH, Prayer.CLARITY_OF_THOUGHT, Prayer.SHARP_EYE, Prayer.MYSTIC_WILL, Prayer.SUPERHUMAN_STRENGTH,
   Prayer.IMPROVED_REFLEXES, Prayer.HAWK_EYE, Prayer.MYSTIC_LORE, Prayer.ULTIMATE_STRENGTH, Prayer.INCREDIBLE_REFLEXES,
-  Prayer.EAGLE_EYE, Prayer.MYSTIC_MIGHT, Prayer.DEADEYE, Prayer.MYSTIC_VIGOUR, Prayer.CHIVALRY, Prayer.PIETY, Prayer.RIGOUR, Prayer.AUGURY,
+  Prayer.EAGLE_EYE, Prayer.MYSTIC_MIGHT, Prayer.DEADEYE, Prayer.MYSTIC_VIGOUR, Prayer.CHIVALRY, Prayer.PIETY, Prayer.RIGOUR, Prayer.AUGURY, Prayer.ZEAL,
 ];
 
 export const BRAIN_PRAYERS: Prayer[] = [
@@ -286,6 +288,16 @@ export const PrayerMap: { [k in Prayer]: PrayerData } = {
     factorAccuracy: [118, 100],
     factorDefenceMagic: [118, 100],
     factorDefence: [105, 100],
+  },
+  [Prayer.ZEAL]: {
+    renderOrder: 22,
+    name: 'Zeal',
+    image: Zeal,
+    drainRate: 24,
+    combatStyle: 'melee',
+    factorAccuracy: [125, 100],
+    factorStrength: [128, 100],
+    factorDefence: [125, 100],
   },
   // [Prayer.PROTECT_MAGIC]: {
   //   name: 'Protect from Magic',

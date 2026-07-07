@@ -95,17 +95,17 @@ const ExtraOptions: React.FC = observer(() => {
           )}
         />
         <Toggle
-          checked={player.buffs.crimsonKistenDefReroll}
-          setChecked={(c) => store.updatePlayer({ buffs: { crimsonKistenDefReroll: c } })}
+          checked={player.buffs.hitGatekeepersCaneSpec}
+          setChecked={(c) => store.updatePlayer({ buffs: { hitGatekeepersCaneSpec: c } })}
           label={(
             <>
               {' '}
-              Crimson kisten spec re-rolls defence
+              Hit Gatekeeper`&apos;`s Cane spec
               {' '}
               <span
                 className="align-super underline decoration-dotted cursor-help text-xs text-gray-300"
                 data-tooltip-id="tooltip"
-                data-tooltip-content="Crimson kisten spec re-rolls defence for all four accuracy rolls."
+                data-tooltip-content="Player has hit a Gatekeeper's Cane spec and is under the effect of its buff."
               >
                 ?
               </span>

@@ -463,7 +463,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     }
 
     if (this.wearing('TzHaar-Ket Breaker') && (this.player.style.name === 'Thrust (Aggressive)' || this.player.style.name === 'Thrust (Controlled)')) {
-      const modifier = 25 * Math.max(0, Math.min(2, this.monster.size - this.player.buffs.chinchompaDistance));
+      const modifier = 20 * Math.max(0, Math.min(2, this.monster.size - 1));
       maxHit = this.trackFactor(DetailKey.MAX_HIT_BREAKER, maxHit, [100 + modifier, 100]);
     }
 
@@ -872,12 +872,16 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_TOME, attackRoll, [6, 5]);
     }
 
+    if (!this.opts.usingSpecialAttack && this.wearing("Gatekeeper's Cane") && this.player.buffs.hitGatekeepersCaneSpec) {
+      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_GATEKEEPER, attackRoll, [2, 1]);
+    }
+
     if (this.opts.usingSpecialAttack) {
       if (this.isWearingAccursedSceptre()) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
       } else if (this.wearing('Volatile nightmare staff')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
-      } else if (this.wearing('Eye of ayak')) {
+      } else if (this.wearing(['Eye of ayak', "Gatekeeper's Cane"])) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [2, 1]);
       }
     }
@@ -936,6 +940,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) + 1);
     } else if (this.wearing('Eye of ayak')) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) - 6);
+    } else if (this.wearing("Gatekeeper's Cane")) {
+      maxHit = Math.max(1, Math.trunc(magicLevel / 3) - 9);
     } else if (this.wearing('Warped sceptre')) {
       maxHit = Math.max(1, Math.trunc((8 * magicLevel + 96) / 37));
     } else if (this.wearing('Bone staff')) {
@@ -973,6 +979,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     if (this.opts.usingSpecialAttack && this.wearing('Eye of ayak')) {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [13, 10]);
+    }
+
+    if (this.wearing("Gatekeeper's Cane") && (this.opts.usingSpecialAttack || this.player.buffs.hitGatekeepersCaneSpec)) {
+      maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [3, 2]);
     }
 
     if (this.wearing('Chaos gauntlets') && spell?.name.toLowerCase()
@@ -1469,11 +1479,6 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (this.opts.usingSpecialAttack && this.wearing('Crimson kisten')) {
       const hitDist = new HitDistribution([]);
 
-      // For Case 2
-      const atk = this.getMaxAttackRoll();
-      const def = this.getNPCDefenceRoll();
-      const successProbs = BaseCalc.getCrimsonSpecProbabilities(atk, def);
-
       for (let successfulRolls = 1; successfulRolls <= 4; successfulRolls++) {
         const low = Math.trunc(max * (2 * successfulRolls + 5) / 10);
         let high = Math.trunc(max * (2 * successfulRolls + 9) / 10);
@@ -1481,23 +1486,15 @@ export default class PlayerVsNPCCalc extends BaseCalc {
           high -= 1;
         }
 
-        // Case 1: Defense is re-rolled each time (like fang inside ToA)
-        // Case 2: Defense is only rolled once and compared to each attack roll (like fang outside ToA)
-        const prob = this.player.buffs.crimsonKistenDefReroll ? binomialProbability(4, successfulRolls, acc) : successProbs[successfulRolls];
+        // Assuming based on in-game data that defense is re-rolled each time (like fang inside ToA)
+        const prob = binomialProbability(4, successfulRolls, acc);
 
         const chanceOfDmg = prob / (high - low + 1);
         for (let dmg = low; dmg <= high; dmg++) {
           hitDist.addHit(new WeightedHit(chanceOfDmg, [new Hitsplat(dmg)]));
         }
       }
-
-      if (this.player.buffs.crimsonKistenDefReroll) {
-        // Case 1
-        hitDist.addHit(new WeightedHit(binomialProbability(4, 0, acc), [Hitsplat.INACCURATE]));
-      } else {
-        // Case 2
-        hitDist.addHit(new WeightedHit(successProbs[0], [Hitsplat.INACCURATE]));
-      }
+      hitDist.addHit(new WeightedHit(binomialProbability(4, 0, acc), [Hitsplat.INACCURATE]));
 
       dist = new AttackDistribution([hitDist.flatten()]);
     }
@@ -1594,8 +1591,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     if (this.isUsingMeleeStyle() && this.wearing('TzHaar-Ket Breaker') && (this.player.style.name === 'Thrust (Aggressive)' || this.player.style.name === 'Thrust (Controlled)')) {
       const defs = this.monster.defensive;
-      const rolls = 1 + [defs.stab, defs.slash, defs.light, defs.standard, defs.heavy, defs.magic]
-        .filter((d) => d > defs.crush).length;
+      const rolls = 1 + 2 * ([defs.stab, defs.slash]
+        .filter((d) => d > defs.crush).length);
       dist = new AttackDistribution([HitDistribution.maxOfDamageRolls(acc, min, max, rolls)]);
     }
 
@@ -2058,6 +2055,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     if (this.opts.usingSpecialAttack && this.wearing('Eye of ayak')) {
       return 5;
+    }
+
+    if (this.wearing("Gatekeeper's Cane") && this.player.buffs.hitGatekeepersCaneSpec) {
+      return 2;
     }
 
     return this.getAttackSpeed();

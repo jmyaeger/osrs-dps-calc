@@ -177,40 +177,6 @@ export default class BaseCalc {
     return doubleRoll / (1 + doubleRoll - singleRoll);
   }
 
-  public static getCrimsonSpecProbabilities(atk: number, def: number): [number, number, number, number, number] {
-    if (atk >= def) {
-      const n1 = atk * def ** 4 + 6 * atk * def ** 3 + 13 * atk * def ** 2 + 12 * atk * def + 4 * atk
-          - 4 / 5 * def ** 5 - 5 * def ** 4 - 34 / 3 * def ** 3 - 11 * def ** 2 - 58 / 15 * def;
-      const n2 = 2 * atk ** 2 * def ** 3 + 9 * atk ** 2 * def ** 2 + 13 * atk ** 2 * def + 6 * atk ** 2
-          - 3 * atk * def ** 4 - 14 * atk * def ** 3 - 21 * atk * def ** 2 - 10 * atk * def + 6 / 5 * def ** 5
-          + 6 * def ** 4 + 10 * def ** 3 + 6 * def ** 2 + 4 / 5 * def;
-      const n3 = 2 * atk ** 3 * def ** 2 + 6 * atk ** 3 * def + 4 * atk ** 3 - 4 * atk ** 2 * def ** 3
-          - 12 * atk ** 2 * def ** 2 - 8 * atk ** 2 * def + 3 * atk * def ** 4 + 10 * atk * def ** 3 + 9 * atk * def ** 2
-          + 2 * atk * def - 4 / 5 * def ** 5 - 3 * def ** 4 - 10 / 3 * def ** 3 - def ** 2 + 2 / 15 * def;
-      const n4 = atk ** 4 * def + atk ** 4 - 2 * atk ** 3 * def ** 2 - 2 * atk ** 3 * def + 2 * atk ** 2 * def ** 3
-          + 3 * atk ** 2 * def ** 2 + atk ** 2 * def - atk * def ** 4 - 2 * atk * def ** 3 - atk * def ** 2 + def ** 5 / 5
-          + def ** 4 / 2 + def ** 3 / 3 - def / 30;
-      const p1 = n1 / (def + 1) / (atk + 1) ** 4;
-      const p2 = n2 / (def + 1) / (atk + 1) ** 4;
-      const p3 = n3 / (def + 1) / (atk + 1) ** 4;
-      const p4 = n4 / (def + 1) / (atk + 1) ** 4;
-      const p0 = 1 - (p1 + p2 + p3 + p4);
-
-      return [p0, p1, p2, p3, p4];
-    }
-
-    const n1 = atk * (3 * atk ** 4 + 15 * atk ** 3 + 25 * atk ** 2 + 15 * atk + 2) / 15;
-    const n2 = atk * (atk ** 4 + 5 * atk ** 3 + 10 * atk ** 2 + 10 * atk + 4) / 5;
-    const n4 = atk ** 5 / 5 + atk ** 4 / 2 + atk ** 3 / 3 - atk / 30;
-    const p1 = n1 / (def + 1) / (atk + 1) ** 4;
-    const p2 = n2 / (def + 1) / (atk + 1) ** 4;
-    const p3 = p1;
-    const p4 = n4 / (def + 1) / (atk + 1) ** 4;
-    const p0 = 1 - (p1 + p2 + p3 + p4);
-
-    return [p0, p1, p2, p3, p4];
-  }
-
   /**
    * Simple utility function for checking if an item name is equipped. If an array of string is passed instead, this
    * function will return a boolean indicating whether ANY of the provided items are equipped.

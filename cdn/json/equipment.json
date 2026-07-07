@@ -13613,7 +13613,7 @@
     "id": 99996,
     "version": "",
     "slot": "weapon",
-    "image": "",
+    "image": "Ascension crossbows.png",
     "speed": 3,
     "category": "Crossbow",
     "bonuses": {
@@ -61631,7 +61631,7 @@
     "id": 99998,
     "version": "",
     "slot": "ammo",
-    "image": "",
+    "image": "Diamond fractured bolts (e).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -70838,7 +70838,7 @@
     "weight": 1.587,
     "version": "",
     "slot": "weapon",
-    "image": "Enchanted diamond sickle.png",
+    "image": "Enchanted diamond sickle (b).png",
     "speed": 5,
     "category": "Slash Sword",
     "bonuses": {
@@ -74588,7 +74588,7 @@
     "id": 99997,
     "version": "",
     "slot": "ammo",
-    "image": "",
+    "image": "Fractured bolts.png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -76066,6 +76066,36 @@
       "slash": 0,
       "crush": 0,
       "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Gatekeeper's Cane",
+    "id": -18,
+    "version": "",
+    "slot": "weapon",
+    "image": "Gatekeeper's Cane.png",
+    "speed": 3,
+    "category": "Powered Staff",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 2
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 30,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 1,
+      "slash": 5,
+      "crush": 5,
+      "magic": 10,
       "ranged": 0
     },
     "isTwoHanded": false
@@ -89459,96 +89489,6 @@
       "crush": 0,
       "magic": 0,
       "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Hybrid Body",
-    "id": -14,
-    "version": "",
-    "slot": "body",
-    "image": "",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 4,
-      "ranged_str": 0,
-      "magic_str": 20,
-      "prayer": 5
-    },
-    "offensive": {
-      "stab": 8,
-      "slash": 8,
-      "crush": 8,
-      "magic": 31,
-      "ranged": -23
-    },
-    "defensive": {
-      "stab": 110,
-      "slash": 108,
-      "crush": 112,
-      "magic": 14,
-      "ranged": 120
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Hybrid Helmet",
-    "id": -13,
-    "version": "",
-    "slot": "head",
-    "image": "",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 6,
-      "ranged_str": 0,
-      "magic_str": 20,
-      "prayer": 6
-    },
-    "offensive": {
-      "stab": 5,
-      "slash": 5,
-      "crush": 5,
-      "magic": 8,
-      "ranged": -15
-    },
-    "defensive": {
-      "stab": 58,
-      "slash": 58,
-      "crush": 60,
-      "magic": 3,
-      "ranged": 55
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Hybrid Legs",
-    "id": -15,
-    "version": "",
-    "slot": "head",
-    "image": "",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 3,
-      "ranged_str": 0,
-      "magic_str": 20,
-      "prayer": 6
-    },
-    "offensive": {
-      "stab": 6,
-      "slash": 6,
-      "crush": 6,
-      "magic": 24,
-      "ranged": -21
-    },
-    "defensive": {
-      "stab": 79,
-      "slash": 84,
-      "crush": 77,
-      "magic": 11,
-      "ranged": 96
     },
     "isTwoHanded": false
   },
@@ -110482,7 +110422,7 @@
     "id": 99999,
     "version": "",
     "slot": "ammo",
-    "image": "",
+    "image": "Onyx fractured bolts (e).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -123315,7 +123255,7 @@
     "id": -16,
     "version": "",
     "slot": "shield",
-    "image": "",
+    "image": "Rondache.png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -153445,7 +153385,7 @@
     "id": -17,
     "version": "",
     "slot": "weapon",
-    "image": "",
+    "image": "TzHaar-Ket Breaker.png",
     "speed": 5,
     "category": "Breaker",
     "bonuses": {
@@ -157382,7 +157322,7 @@
     "weight": 0.453,
     "version": "Locked",
     "slot": "head",
-    "image": "Void melee helm.png",
+    "image": "Void melee helm (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
