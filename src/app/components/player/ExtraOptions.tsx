@@ -100,7 +100,7 @@ const ExtraOptions: React.FC = observer(() => {
           label={(
             <>
               {' '}
-              Hit Gatekeeper`&apos;`s Cane spec
+              Hit Gatekeeper&apos;s Cane spec
               {' '}
               <span
                 className="align-super underline decoration-dotted cursor-help text-xs text-gray-300"
