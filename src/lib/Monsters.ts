@@ -22,7 +22,7 @@ export function getMonsters(): Omit<Monster, 'inputs'>[] {
       attributes: m.attributes as MonsterAttribute[],
       weakness: <Monster['weakness']>m.weakness || null,
       immunities: {
-        burn: m.immunities.burn as BurnImmunity,
+        burn: m.immunities.burn as BurnImmunity | null,
       },
     };
   });

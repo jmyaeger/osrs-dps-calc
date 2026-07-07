@@ -382,6 +382,12 @@ export default class BaseCalc {
     return this.wearing(['Ancient godsword', 'Armadyl godsword', 'Bandos godsword', 'Saradomin godsword', 'Zamorak godsword']);
   }
 
+  protected isTwinflameDoubleHitSpell(): boolean {
+    return this.player.style.type === 'magic'
+      && this.wearing('Twinflame staff')
+      && ['Bolt', 'Blast', 'Wave'].some((spellType) => this.player.spell?.name.includes(spellType) ?? false);
+  }
+
   /**
    * Whether the player is using any variant of the scythe of vitur.
    * @see https://oldschool.runescape.wiki/w/Scythe_of_vitur
@@ -492,13 +498,13 @@ export default class BaseCalc {
    */
   protected wearingVampyrebane(tier: MonsterAttribute.VAMPYRE_2 | MonsterAttribute.VAMPYRE_3): boolean {
     const t2 = tier === MonsterAttribute.VAMPYRE_2;
-    return (t2 || this.isUsingMeleeStyle())
+    return this.wearing('Blisterwood stake') || ((t2 || this.isUsingMeleeStyle())
       && this.wearing([
         ...(t2 ? ['Rod of ivandis'] : []),
         'Ivandis flail',
         'Blisterwood sickle',
-        'Blisterwood flail', 'Flail Upgrade', 'New Spec Weapon',
-      ]);
+        'Blisterwood flail', 'Hallowed flail', 'Sunspear', 'Blisterwood stake',
+      ]));
   }
 
   protected isWearingMsb(): boolean {
@@ -629,6 +635,10 @@ export default class BaseCalc {
     ]);
   }
 
+  protected isWearingEclipseMoonSet(): boolean {
+    return this.wearingAll(['Eclipse moon helm', 'Eclipse moon chestplate', 'Eclipse moon tassets', 'Eclipse atlatl']);
+  }
+
   protected isUsingDemonbane(): boolean {
     switch (this.player.style.type) {
       case 'magic':
@@ -649,10 +659,6 @@ export default class BaseCalc {
 
   protected isWearingOgreBow(): boolean {
     return this.wearing(['Ogre bow', 'Comp ogre bow']);
-  }
-
-  protected isWearingSeekerArrow(): boolean {
-    return this.wearing(['Bronze seeker arrows', 'Iron seeker arrows', 'Steel seeker arrows', 'Mithril seeker arrows', 'Adamant seeker arrows', 'Rune seeker arrows', 'Amethyst seeker arrows', 'Dragon seeker arrows']);
   }
 
   protected tdUnshieldedBonusApplies(): boolean {
@@ -680,9 +686,12 @@ export default class BaseCalc {
   }
 
   protected seekerArrowBuffApplies(): boolean {
-    return this.isWearingSeekerArrow()
+    if (this.player.equipment.ammo?.name.includes('Seeking')
         && ammoApplicability(this.player.equipment.weapon?.id, this.player.equipment.ammo?.id) === AmmoApplicability.INCLUDED
-        && this.player.style.type === 'ranged';
+        && this.player.style.type === 'ranged') {
+      return true;
+    }
+    return false;
   }
 
   protected isImmuneToNormalBurns(): boolean {
@@ -813,7 +822,6 @@ export default class BaseCalc {
     // Some set effects are currently not accounted for
     if (
       this.wearingAll(['Blue moon helm', 'Blue moon chestplate', 'Blue moon tassets', 'Blue moon spear'])
-      || this.wearingAll(['Eclipse moon helm', 'Eclipse moon chestplate', 'Eclipse moon tassets', 'Eclipse atlatl'])
     ) {
       this.addIssue(UserIssueType.EQUIPMENT_SET_EFFECT_UNSUPPORTED, 'The calculator currently does not account for your equipment set effect.');
     }

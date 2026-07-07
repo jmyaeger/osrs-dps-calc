@@ -34,6 +34,7 @@ import {
   IMMUNE_TO_NON_SALAMANDER_MELEE_DAMAGE_NPC_IDS,
   IMMUNE_TO_RANGED_DAMAGE_NPC_IDS,
   KEPHRI_OVERLORD_IDS,
+  MAX_BURN_STACKS,
   NIGHTMARE_TOTEM_IDS,
   OLM_HEAD_IDS,
   OLM_MAGE_HAND_IDS,
@@ -76,6 +77,7 @@ import {
   rubyBolts,
 } from '@/lib/dists/bolts';
 import { burningClawDoT, burningClawSpec, dClawDist } from '@/lib/dists/claws';
+import { ExpectedBurnResult, getExpectedBurn } from '@/lib/Burn';
 
 const PARTIALLY_IMPLEMENTED_SPECS: string[] = [
   'Ancient godsword',
@@ -117,11 +119,16 @@ const UNIMPLEMENTED_SPECS: string[] = [
 export default class PlayerVsNPCCalc extends BaseCalc {
   private memoizedDist?: AttackDistribution;
 
+  private memoizedBurnDist?: ExpectedBurnResult;
+
   constructor(player: Player, monster: Monster, opts: Partial<CalcOpts> = {}) {
     super(player, monster, opts);
 
     if (!this.opts.noInit && this.isSpecSupported() === FeatureStatus.UNIMPLEMENTED) {
       this.addIssue(UserIssueType.EQUIPMENT_SPEC_UNSUPPORTED, 'This loadout\'s weapon special attack is not yet supported in the calculator.');
+    }
+    if (!this.opts.noInit && this.isBurnIncludedInDps()) {
+      this.addIssue(UserIssueType.TTK_DOES_NOT_INCLUDE_BURN, 'The effects of burn are included in DPS but not TTK.');
     }
   }
 
@@ -262,12 +269,15 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (this.wearing(['Blisterwood flail', 'Blisterwood sickle']) && isVampyre(mattrs)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_VAMPYREBANE, attackRoll, [21, 20]);
     }
-    if (this.wearing('Flail Upgrade') && isVampyre(mattrs)) {
+    if (this.wearing('Hallowed flail') && isVampyre(mattrs)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_VAMPYREBANE, attackRoll, [5, 4]);
     }
     if (this.isWearingSilverWeapon() && this.wearing("Efaritay's aid") && isVampyre(mattrs)) {
-      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_EFARITAY, attackRoll, [23, 20]); // todo ordering? does this stack multiplicatively with vampyrebane?
+      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_EFARITAY, attackRoll, [23, 20]);
     }
+
+    // TODO: find out the accuracy boosts of the sunspear and blisterwood stakes
+
     if (this.wearing('Granite hammer') && mattrs.includes(MonsterAttribute.GOLEM)) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_GOLEMBANE, attackRoll, [13, 10]);
     }
@@ -489,7 +499,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         const stacks = Math.max(0, Math.min(5, this.player.buffs.soulreaperStacks));
         minHit = this.trackAdd(DetailKey.MIN_HIT_SPEC, minHit, Math.trunc(maxHit * 6 * stacks / 100));
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [100 + 6 * stacks, 100]);
-      } else if (this.wearing('New Spec Weapon')) {
+      } else if (this.wearing('Sunspear')) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [7, 10]);
         minHit = this.track(DetailKey.MIN_HIT_SPEC, maxHit);
       }
@@ -1231,11 +1241,15 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const atk = this.getMaxAttackRoll();
     const def = this.getNPCDefenceRoll();
 
-    if (this.opts.usingSpecialAttack && this.wearing('New Spec Weapon')) {
+    if (this.opts.usingSpecialAttack && this.wearing('Sunspear')) {
       const specMaxHit = Math.trunc(this.getMinAndMax()[1]);
       if (this.monster.inputs.monsterCurrentHp < specMaxHit) {
         return this.track(DetailKey.PLAYER_ACCURACY_FINAL, BaseCalc.getFixedAccuracyRoll(atk, def));
       }
+    }
+
+    if (this.player.spell?.element === 'fire' && this.monster.id === 15742 && !this.opts.usingSpecialAttack) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, this.getMaggotKingBurn().expectedHitChance);
     }
 
     let hitChance = this.track(
@@ -1273,10 +1287,58 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
+    const hitChance = this.getHitChance();
+    const attackSpeed = this.getExpectedAttackSpeed();
+    if (this.isWearingEclipseMoonSet() && !this.isImmuneToStrongBurns()) {
+      ret = getExpectedBurn(hitChance, attackSpeed, {
+        burnChance: 0.2,
+        hitsPerStack: 10,
+      }).expectedBurn;
+    }
+
+    if (this.player.spell?.element === 'fire' && this.monster.id === 15742) {
+      ret = this.getMaggotKingBurn().expectedBurn;
+    }
+
     if (ret !== 0) {
       this.track(DetailKey.DOT_EXPECTED, ret);
     }
     return ret;
+  }
+
+  private getMaggotKingBurn(): ExpectedBurnResult {
+    if (this.memoizedBurnDist === undefined) {
+      const attackSpeed = this.getExpectedAttackSpeed();
+      const atk = this.getMaxAttackRoll();
+      const baseMagicDef = this.monster.defensive.magic;
+      const usingConfliction = this.wearing('Confliction gauntlets') && !this.player.equipment.weapon?.isTwoHanded;
+      const normalHitChances: number[] = [];
+      const rerollHitChances: number[] = [];
+      for (let i = 0; i <= MAX_BURN_STACKS; i++) {
+        const magicDef = Math.max(0, baseMagicDef - 20 * Math.max(i, 1));
+        const def = (this.monster.skills.magic + 9) * (magicDef + 64);
+        normalHitChances[i] = BaseCalc.getNormalAccuracyRoll(atk, def);
+        rerollHitChances[i] = BaseCalc.getFangAccuracyRoll(atk, def);
+      }
+
+      this.memoizedBurnDist = getExpectedBurn(normalHitChances, attackSpeed, {
+        burnChance: 1.0,
+        hitsPerStack: 5,
+        burnStacksPerProc: this.isTwinflameDoubleHitSpell() ? 2 : 1,
+        rerollHitChance: usingConfliction ? rerollHitChances : undefined,
+      });
+    }
+
+    return this.memoizedBurnDist;
+  }
+
+  private isBurnIncludedInDps(): boolean {
+    if (this.opts.usingSpecialAttack) {
+      return false;
+    }
+
+    return (this.isWearingEclipseMoonSet() && !this.isImmuneToStrongBurns())
+      || (this.player.spell?.element === 'fire' && this.monster.id === 15742);
   }
 
   public getDoTMax(): number {
@@ -1644,7 +1706,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       const efaritay = this.wearing("Efaritay's aid");
       const doEfaritay = (d: AttackDistribution) => (efaritay ? d.scaleDamage(11, 10) : d);
 
-      if (this.wearing(['Blisterwood flail', 'Flail Upgrade'])) {
+      if (this.wearing(['Blisterwood flail', 'Hallowed flail', 'Sunspear', 'Blisterwood stake'])) {
         dist = doEfaritay(dist);
         dist = dist.scaleDamage(5, 4);
       } else if (this.wearing('Blisterwood sickle')) {
@@ -1712,9 +1774,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       );
     }
 
-    if (this.player.style.type === 'magic'
-      && this.wearing('Twinflame staff')
-      && ['Bolt', 'Blast', 'Wave'].some((spellClass) => this.player.spell?.name.includes(spellClass) ?? false)) {
+    if (this.isTwinflameDoubleHitSpell()) {
       dist = dist.transform(
         (h) => HitDistribution.single(1.0, [
           new Hitsplat(h.damage),
@@ -1994,6 +2054,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     if (this.tdUnshieldedBonusApplies()) {
       return this.getAttackSpeed() - 1;
+    }
+
+    if (this.opts.usingSpecialAttack && this.wearing('Eye of ayak')) {
+      return 5;
     }
 
     return this.getAttackSpeed();
