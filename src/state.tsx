@@ -32,7 +32,13 @@ import { getMonsters, INITIAL_MONSTER_INPUTS } from '@/lib/Monsters';
 import { availableEquipment, calculateEquipmentBonusesFromGear } from '@/lib/Equipment';
 import { CalcWorker } from '@/worker/CalcWorker';
 import { spellByName } from '@/types/Spell';
-import { DEFAULT_ATTACK_SPEED, INFINITE_HEALTH_MONSTERS, NUMBER_OF_LOADOUTS } from '@/lib/constants';
+import {
+  DEFAULT_ATTACK_SPEED,
+  INFINITE_HEALTH_MONSTERS,
+  MAD_ANGEL_IDS,
+  NUMBER_OF_LOADOUTS,
+} from '@/lib/constants';
+import UserIssueType from '@/enums/UserIssueType';
 import { EquipmentCategory } from './enums/EquipmentCategory';
 import {
   ARM_PRAYERS,
@@ -335,6 +341,10 @@ class GlobalState implements State {
    */
   get userIssues() {
     let is: UserIssue[] = [];
+
+    if (MAD_ANGEL_IDS.includes(this.monster.id)) {
+      is.push({ type: UserIssueType.MONSTER_UNIQUE_EFFECTS, message: 'This monster is new and has potentially unknown mechanics. Results may be inaccurate.' });
+    }
 
     // Determine the current global/UI-related issues
     // ex. is.push({ type: UserIssueType.MONSTER_UNIQUE_EFFECTS, message: 'This monster has unique effects that are not yet accounted for. Results may be inaccurate.' });

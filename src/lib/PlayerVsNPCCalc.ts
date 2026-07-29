@@ -42,6 +42,7 @@ import {
   IMMUNE_TO_NON_SALAMANDER_MELEE_DAMAGE_NPC_IDS,
   IMMUNE_TO_RANGED_DAMAGE_NPC_IDS,
   KEPHRI_OVERLORD_IDS,
+  MAD_ANGEL_IDS,
   MAGGOT_KING_ID,
   NIGHTMARE_TOTEM_IDS,
   OLM_HEAD_IDS,
@@ -514,6 +515,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       minHit = this.trackAdd(DetailKey.REPIRATORY_SYSTEM_MIN_HIT, minHit, Math.trunc(maxHit / 2));
     }
 
+    if (MAD_ANGEL_IDS.includes(this.monster.id) && this.monster.inputs.phase === 'Sword Cleave') {
+      minHit = this.trackFactor(DetailKey.MIN_HIT_MAD_ANGEL, maxHit, [1, 2]);
+    }
+    if (MAD_ANGEL_IDS.includes(this.monster.id) && this.monster.inputs.phase === 'Perfect Lightning') {
+      minHit = this.trackFactor(DetailKey.MIN_HIT_MAD_ANGEL, maxHit, [1, 1]);
+    }
+
     return [minHit, maxHit];
   }
 
@@ -791,6 +799,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       minHit = this.trackAdd(DetailKey.REPIRATORY_SYSTEM_MIN_HIT, minHit, Math.trunc(maxHit / 2));
     }
 
+    if (MAD_ANGEL_IDS.includes(this.monster.id) && this.monster.inputs.phase === 'Sword Cleave') {
+      minHit = this.trackFactor(DetailKey.MIN_HIT_MAD_ANGEL, maxHit, [1, 2]);
+    }
+    if (MAD_ANGEL_IDS.includes(this.monster.id) && this.monster.inputs.phase === 'Perfect Lightning') {
+      minHit = this.trackFactor(DetailKey.MIN_HIT_MAD_ANGEL, maxHit, [1, 1]);
+    }
+
     return [minHit, maxHit];
   }
 
@@ -1059,6 +1074,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       minHit = this.trackAdd(DetailKey.REPIRATORY_SYSTEM_MIN_HIT, minHit, Math.trunc(maxHit / 2));
     }
 
+    if (MAD_ANGEL_IDS.includes(this.monster.id) && this.monster.inputs.phase === 'Sword Cleave') {
+      minHit = this.trackFactor(DetailKey.MIN_HIT_MAD_ANGEL, maxHit, [1, 2]);
+    }
+    if (MAD_ANGEL_IDS.includes(this.monster.id) && this.monster.inputs.phase === 'Perfect Lightning') {
+      minHit = this.trackFactor(DetailKey.MIN_HIT_MAD_ANGEL, maxHit, [1, 1]);
+    }
+
     return [minHit, maxHit];
   }
 
@@ -1242,6 +1264,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
     }
     if (this.isUsingMeleeStyle() && ALWAYS_MAX_HIT_MONSTERS.melee.includes(this.monster.id)) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
+    }
+
+    if (MAD_ANGEL_IDS.includes(this.monster.id) && (this.monster.inputs.phase === 'Sword Cleave' || this.monster.inputs.phase === 'Perfect Lightning')) {
       return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
     }
 
