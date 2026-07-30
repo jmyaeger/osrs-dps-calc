@@ -3113,11 +3113,11 @@
     "speed": 5,
     "style": [
       "Slash",
-      "Typeless Magic",
+      "Typeless Ranged",
       "Icy breath"
     ],
     "size": 5,
-    "max_hit": "10 (Magic)",
+    "max_hit": "10 (Ranged)",
     "skills": {
       "atk": 150,
       "def": 150,
@@ -3700,7 +3700,7 @@
     },
     "attributes": [],
     "immunities": {
-      "burn": null
+      "burn": "Strong"
     },
     "is_slayer_monster": false,
     "weakness": {
@@ -3748,7 +3748,7 @@
     },
     "attributes": [],
     "immunities": {
-      "burn": "Weak"
+      "burn": "Strong"
     },
     "is_slayer_monster": false,
     "weakness": {
@@ -3796,7 +3796,7 @@
     },
     "attributes": [],
     "immunities": {
-      "burn": null
+      "burn": "Strong"
     },
     "is_slayer_monster": false,
     "weakness": {
@@ -3844,7 +3844,7 @@
     },
     "attributes": [],
     "immunities": {
-      "burn": null
+      "burn": "Strong"
     },
     "is_slayer_monster": false,
     "weakness": {
@@ -3892,7 +3892,7 @@
     },
     "attributes": [],
     "immunities": {
-      "burn": null
+      "burn": "Strong"
     },
     "is_slayer_monster": false,
     "weakness": {
@@ -3940,7 +3940,7 @@
     },
     "attributes": [],
     "immunities": {
-      "burn": null
+      "burn": "Strong"
     },
     "is_slayer_monster": false,
     "weakness": {
@@ -4036,7 +4036,7 @@
     },
     "attributes": [],
     "immunities": {
-      "burn": null
+      "burn": "Strong"
     },
     "is_slayer_monster": false,
     "weakness": {
@@ -11291,7 +11291,7 @@
   {
     "id": 9283,
     "name": "Basilisk (The Fremennik Exiles)",
-    "version": "1",
+    "version": "Adult",
     "image": "Basilisk.png",
     "level": 61,
     "speed": 4,
@@ -11339,7 +11339,7 @@
   {
     "id": 9285,
     "name": "Basilisk (The Fremennik Exiles)",
-    "version": "2",
+    "version": "Baby",
     "image": "Basilisk (unused).png",
     "level": 61,
     "speed": 4,
@@ -15052,6 +15052,53 @@
       "element": "earth",
       "severity": 50
     }
+  },
+  {
+    "id": 15770,
+    "name": "Blood-starved venator",
+    "version": "",
+    "image": "Blood-starved venator.png",
+    "level": 246,
+    "speed": 5,
+    "style": [
+      "Stab"
+    ],
+    "size": 3,
+    "max_hit": "21 (Melee/ranged)",
+    "skills": {
+      "atk": 200,
+      "def": 120,
+      "hp": 345,
+      "magic": 100,
+      "ranged": 75,
+      "str": 200
+    },
+    "offensive": {
+      "atk": 0,
+      "magic": 0,
+      "magic_str": 0,
+      "ranged": 0,
+      "ranged_str": 0,
+      "str": 0
+    },
+    "defensive": {
+      "flat_armour": 0,
+      "crush": 130,
+      "magic": 110,
+      "heavy": -5,
+      "standard": -5,
+      "light": -5,
+      "slash": 60,
+      "stab": -5
+    },
+    "attributes": [
+      "vampyre3"
+    ],
+    "immunities": {
+      "burn": "Strong"
+    },
+    "is_slayer_monster": true,
+    "weakness": null
   },
   {
     "id": 3138,
@@ -20287,6 +20334,58 @@
     }
   },
   {
+    "id": 15612,
+    "name": "Cerberus (Echo)",
+    "version": "",
+    "image": "Cerberus (Echo).png",
+    "level": 477,
+    "speed": 6,
+    "style": [
+      "Stab",
+      "Ranged",
+      "Magic"
+    ],
+    "size": 5,
+    "max_hit": "79",
+    "skills": {
+      "atk": 275,
+      "def": 115,
+      "hp": 1620,
+      "magic": 275,
+      "ranged": 275,
+      "str": 275
+    },
+    "offensive": {
+      "atk": 50,
+      "magic": 50,
+      "magic_str": 0,
+      "ranged": 50,
+      "ranged_str": 0,
+      "str": 0
+    },
+    "defensive": {
+      "flat_armour": 0,
+      "crush": 25,
+      "magic": 70,
+      "heavy": 70,
+      "standard": 70,
+      "light": 70,
+      "slash": 100,
+      "stab": 50
+    },
+    "attributes": [
+      "demon"
+    ],
+    "immunities": {
+      "burn": null
+    },
+    "is_slayer_monster": true,
+    "weakness": {
+      "element": "water",
+      "severity": 40
+    }
+  },
+  {
     "id": 11482,
     "name": "Champion of Scabaras",
     "version": "",
@@ -20531,10 +20630,10 @@
     "level": 202,
     "speed": 2,
     "style": [
-      "Magic"
+      "Ranged magic"
     ],
     "size": 1,
-    "max_hit": "31",
+    "max_hit": "21 (Magic attack)<br>\n31 (Special attack)",
     "skills": {
       "atk": 1,
       "def": 220,
@@ -21738,7 +21837,7 @@
     "style": [
       "Stab"
     ],
-    "size": 2,
+    "size": 3,
     "max_hit": "5",
     "skills": {
       "atk": 22,
@@ -22293,8 +22392,8 @@
     "max_hit": "11",
     "skills": {
       "atk": 36,
-      "def": 2,
-      "hp": 14,
+      "def": 4,
+      "hp": 12,
       "magic": 2,
       "ranged": 0,
       "str": 102
@@ -22510,7 +22609,7 @@
     "name": "Corrupted Rat",
     "version": "",
     "image": "Corrupted Rat.png",
-    "level": 34,
+    "level": 33,
     "speed": 4,
     "style": [
       "Crush"
@@ -22519,8 +22618,8 @@
     "max_hit": "14",
     "skills": {
       "atk": 42,
-      "def": 6,
-      "hp": 14,
+      "def": 4,
+      "hp": 12,
       "magic": 6,
       "ranged": 0,
       "str": 48
@@ -22645,7 +22744,7 @@
     "name": "Corrupted Unicorn",
     "version": "",
     "image": "Corrupted Unicorn.png",
-    "level": 64,
+    "level": 61,
     "speed": 4,
     "style": [
       "Stab"
@@ -22654,8 +22753,8 @@
     "max_hit": "17",
     "skills": {
       "atk": 75,
-      "def": 24,
-      "hp": 44,
+      "def": 18,
+      "hp": 38,
       "magic": 24,
       "ranged": 0,
       "str": 72
@@ -22690,7 +22789,7 @@
     "name": "Corrupted Wolf",
     "version": "",
     "image": "Corrupted Wolf.png",
-    "level": 102,
+    "level": 97,
     "speed": 4,
     "style": [
       "Crush"
@@ -22699,8 +22798,8 @@
     "max_hit": "19",
     "skills": {
       "atk": 159,
-      "def": 22,
-      "hp": 52,
+      "def": 18,
+      "hp": 38,
       "magic": 22,
       "ranged": 0,
       "str": 99
@@ -25226,8 +25325,8 @@
     "max_hit": "8",
     "skills": {
       "atk": 24,
-      "def": 2,
-      "hp": 14,
+      "def": 4,
+      "hp": 12,
       "magic": 2,
       "ranged": 0,
       "str": 68
@@ -25443,7 +25542,7 @@
     "name": "Crystalline Rat",
     "version": "",
     "image": "Crystalline Rat.png",
-    "level": 24,
+    "level": 23,
     "speed": 4,
     "style": [
       "Crush"
@@ -25452,8 +25551,8 @@
     "max_hit": "4",
     "skills": {
       "atk": 28,
-      "def": 6,
-      "hp": 14,
+      "def": 4,
+      "hp": 12,
       "magic": 6,
       "ranged": 0,
       "str": 32
@@ -25578,7 +25677,7 @@
     "name": "Crystalline Unicorn",
     "version": "",
     "image": "Crystalline Unicorn.png",
-    "level": 48,
+    "level": 45,
     "speed": 4,
     "style": [
       "Stab"
@@ -25587,8 +25686,8 @@
     "max_hit": "6",
     "skills": {
       "atk": 50,
-      "def": 24,
-      "hp": 44,
+      "def": 18,
+      "hp": 38,
       "magic": 24,
       "ranged": 0,
       "str": 48
@@ -25623,7 +25722,7 @@
     "name": "Crystalline Wolf",
     "version": "",
     "image": "Crystalline Wolf.png",
-    "level": 74,
+    "level": 69,
     "speed": 4,
     "style": [
       "Crush"
@@ -25632,8 +25731,8 @@
     "max_hit": "8",
     "skills": {
       "atk": 106,
-      "def": 22,
-      "hp": 52,
+      "def": 18,
+      "hp": 38,
       "magic": 22,
       "ranged": 0,
       "str": 66
@@ -28546,7 +28645,7 @@
     "level": 46,
     "speed": 4,
     "style": [
-      "Typeless Slash"
+      "Slash (100% prayer penetration)"
     ],
     "size": 1,
     "max_hit": "2",
@@ -30094,7 +30193,7 @@
     "level": 142,
     "speed": 4,
     "style": [
-      "Stab"
+      "Typeless Stab"
     ],
     "size": 2,
     "max_hit": "6",
@@ -36569,7 +36668,7 @@
     "level": 112,
     "speed": 4,
     "style": [
-      "Typeless Magical ranged"
+      "Magical ranged (100% prayer penetration)"
     ],
     "size": 2,
     "max_hit": "2",
@@ -36617,7 +36716,7 @@
     "level": 0,
     "speed": 4,
     "style": [
-      "Typeless Magical ranged"
+      "Magical ranged (100% prayer penetration)"
     ],
     "size": 2,
     "max_hit": "2",
@@ -47475,7 +47574,7 @@
     "level": 149,
     "speed": 4,
     "style": [
-      "Typeless Crush"
+      "Crush (100% prayer penetration)"
     ],
     "size": 2,
     "max_hit": "14",
@@ -47520,7 +47619,7 @@
     "level": 145,
     "speed": 4,
     "style": [
-      "Typeless Crush"
+      "Crush (100% prayer penetration)"
     ],
     "size": 2,
     "max_hit": "14",
@@ -50408,8 +50507,53 @@
   {
     "id": 5185,
     "name": "Guard (dwarf)",
-    "version": "",
+    "version": "1",
     "image": "Guard (dwarf).png",
+    "level": 10,
+    "speed": 4,
+    "style": [
+      "Stab"
+    ],
+    "size": 1,
+    "max_hit": "2",
+    "skills": {
+      "atk": 8,
+      "def": 9,
+      "hp": 16,
+      "magic": 1,
+      "ranged": 1,
+      "str": 6
+    },
+    "offensive": {
+      "atk": 5,
+      "magic": 0,
+      "magic_str": 0,
+      "ranged": 0,
+      "ranged_str": 0,
+      "str": 7
+    },
+    "defensive": {
+      "flat_armour": 0,
+      "crush": 4,
+      "magic": 2,
+      "heavy": 3,
+      "standard": 3,
+      "light": 3,
+      "slash": 4,
+      "stab": 3
+    },
+    "attributes": [],
+    "immunities": {
+      "burn": null
+    },
+    "is_slayer_monster": true,
+    "weakness": null
+  },
+  {
+    "id": 5187,
+    "name": "Guard (dwarf)",
+    "version": "2",
+    "image": "Guard (dwarf, 2).png",
     "level": 10,
     "speed": 4,
     "style": [
@@ -57766,7 +57910,7 @@
       "Ranged"
     ],
     "size": 1,
-    "max_hit": "17",
+    "max_hit": "6",
     "skills": {
       "atk": 80,
       "def": 40,
@@ -57814,7 +57958,7 @@
       "Ranged"
     ],
     "size": 1,
-    "max_hit": "17",
+    "max_hit": "6",
     "skills": {
       "atk": 80,
       "def": 40,
@@ -62899,6 +63043,101 @@
     }
   },
   {
+    "id": 15617,
+    "name": "Kalphite Queen (Echo)",
+    "version": "Airborne",
+    "image": "Kalphite Queen (Echo) 2nd form.png",
+    "level": 748,
+    "speed": 4,
+    "style": [
+      "Magic",
+      "Ranged"
+    ],
+    "size": 5,
+    "max_hit": "38 (melee) 35 (ranged)",
+    "skills": {
+      "atk": 375,
+      "def": 300,
+      "hp": 561,
+      "magic": 165,
+      "ranged": 1,
+      "str": 375
+    },
+    "offensive": {
+      "atk": 0,
+      "magic": 0,
+      "magic_str": 0,
+      "ranged": 0,
+      "ranged_str": 0,
+      "str": 0
+    },
+    "defensive": {
+      "flat_armour": 0,
+      "crush": 50,
+      "magic": 10,
+      "heavy": 10,
+      "standard": 10,
+      "light": 10,
+      "slash": 50,
+      "stab": 50
+    },
+    "attributes": [
+      "kalphite"
+    ],
+    "immunities": {
+      "burn": null
+    },
+    "is_slayer_monster": true,
+    "weakness": null
+  },
+  {
+    "id": 15616,
+    "name": "Kalphite Queen (Echo)",
+    "version": "Crawling",
+    "image": "Kalphite Queen (Echo).png",
+    "level": 499,
+    "speed": 4,
+    "style": [
+      "All"
+    ],
+    "size": 5,
+    "max_hit": "38 (melee) 35 (ranged)",
+    "skills": {
+      "atk": 375,
+      "def": 300,
+      "hp": 561,
+      "magic": 165,
+      "ranged": 1,
+      "str": 375
+    },
+    "offensive": {
+      "atk": 0,
+      "magic": 0,
+      "magic_str": 0,
+      "ranged": 0,
+      "ranged_str": 0,
+      "str": 0
+    },
+    "defensive": {
+      "flat_armour": 0,
+      "crush": 10,
+      "magic": 65,
+      "heavy": 65,
+      "standard": 65,
+      "light": 65,
+      "slash": 50,
+      "stab": 50
+    },
+    "attributes": [
+      "kalphite"
+    ],
+    "immunities": {
+      "burn": null
+    },
+    "is_slayer_monster": true,
+    "weakness": null
+  },
+  {
     "id": 965,
     "name": "Kalphite Queen",
     "version": "Airborne",
@@ -66259,7 +66498,7 @@
     "level": 291,
     "speed": 4,
     "style": [
-      "Typeless Magic"
+      "Magic (100% prayer penetration)"
     ],
     "size": 4,
     "max_hit": "28",
@@ -66307,7 +66546,7 @@
     "level": 0,
     "speed": 4,
     "style": [
-      "Typeless Magic"
+      "Magic (100% prayer penetration)"
     ],
     "size": 5,
     "max_hit": "28",
@@ -68426,7 +68665,7 @@
     "speed": 6,
     "style": [
       "Slash",
-      "Typeless Magic",
+      "Typeless Ranged",
       "Icy breath"
     ],
     "size": 3,
@@ -68877,12 +69116,114 @@
     "weakness": null
   },
   {
+    "id": 16305,
+    "name": "Mad Angel",
+    "version": "Post-quest",
+    "image": "Mad Angel.png",
+    "level": 588,
+    "speed": 6,
+    "style": [
+      "Melee",
+      "Magic"
+    ],
+    "size": 3,
+    "max_hit": "31",
+    "skills": {
+      "atk": 150,
+      "def": 175,
+      "hp": 755,
+      "magic": 150,
+      "ranged": 250,
+      "str": 230
+    },
+    "offensive": {
+      "atk": 200,
+      "magic": 280,
+      "magic_str": 180,
+      "ranged": 64,
+      "ranged_str": 6,
+      "str": 11
+    },
+    "defensive": {
+      "flat_armour": 0,
+      "crush": 40,
+      "magic": 185,
+      "heavy": 165,
+      "standard": 185,
+      "light": 205,
+      "slash": 80,
+      "stab": 60
+    },
+    "attributes": [
+      "golem"
+    ],
+    "immunities": {
+      "burn": "Strong"
+    },
+    "is_slayer_monster": false,
+    "weakness": {
+      "element": "earth",
+      "severity": 15
+    }
+  },
+  {
+    "id": 16309,
+    "name": "Mad Angel",
+    "version": "Quest",
+    "image": "Mad Angel.png",
+    "level": 270,
+    "speed": 6,
+    "style": [
+      "Melee",
+      "Magic"
+    ],
+    "size": 3,
+    "max_hit": "31",
+    "skills": {
+      "atk": 100,
+      "def": 125,
+      "hp": 565,
+      "magic": 100,
+      "ranged": 170,
+      "str": 160
+    },
+    "offensive": {
+      "atk": 120,
+      "magic": 180,
+      "magic_str": 140,
+      "ranged": 30,
+      "ranged_str": 0,
+      "str": 4
+    },
+    "defensive": {
+      "flat_armour": 0,
+      "crush": 20,
+      "magic": 165,
+      "heavy": 135,
+      "standard": 155,
+      "light": 175,
+      "slash": 60,
+      "stab": 40
+    },
+    "attributes": [
+      "golem"
+    ],
+    "immunities": {
+      "burn": "Strong"
+    },
+    "is_slayer_monster": false,
+    "weakness": {
+      "element": "earth",
+      "severity": 15
+    }
+  },
+  {
     "id": 15742,
     "name": "Maggot King",
     "version": "Far",
     "image": "Maggot King.png",
     "level": 741,
-    "speed": 6,
+    "speed": 0,
     "style": [
       "Ranged",
       "Magic",
@@ -68932,7 +69273,7 @@
     "version": "Nearby",
     "image": "Maggot King.png",
     "level": 741,
-    "speed": 6,
+    "speed": 0,
     "style": [
       "Ranged",
       "Magic",
@@ -68974,6 +69315,56 @@
     "weakness": {
       "element": "fire",
       "severity": 5
+    }
+  },
+  {
+    "id": 15742,
+    "name": "Maggot King",
+    "version": "Roaring",
+    "image": "Maggot King.png",
+    "level": 741,
+    "speed": 0,
+    "style": [
+      "Ranged",
+      "Magic",
+      "Melee"
+    ],
+    "size": 5,
+    "max_hit": "46 (Magic / Ranged)",
+    "skills": {
+      "atk": 200,
+      "def": 100,
+      "hp": 1500,
+      "magic": 200,
+      "ranged": 300,
+      "str": 250
+    },
+    "offensive": {
+      "atk": 400,
+      "magic": 200,
+      "magic_str": 57,
+      "ranged": 200,
+      "ranged_str": 10,
+      "str": 50
+    },
+    "defensive": {
+      "flat_armour": 0,
+      "crush": 45,
+      "magic": 150,
+      "heavy": 43,
+      "standard": 158,
+      "light": 232,
+      "slash": 100,
+      "stab": 172
+    },
+    "attributes": [],
+    "immunities": {
+      "burn": null
+    },
+    "is_slayer_monster": true,
+    "weakness": {
+      "element": "fire",
+      "severity": 80
     }
   },
   {
@@ -70524,6 +70915,49 @@
       "element": "fire",
       "severity": 30
     }
+  },
+  {
+    "id": 16233,
+    "name": "Maxilla beast",
+    "version": "",
+    "image": "Maxilla beast.png",
+    "level": 194,
+    "speed": 0,
+    "style": null,
+    "size": 2,
+    "max_hit": "53",
+    "skills": {
+      "atk": 0,
+      "def": 0,
+      "hp": 200,
+      "magic": 0,
+      "ranged": 0,
+      "str": 0
+    },
+    "offensive": {
+      "atk": 0,
+      "magic": 0,
+      "magic_str": 0,
+      "ranged": 0,
+      "ranged_str": 0,
+      "str": 0
+    },
+    "defensive": {
+      "flat_armour": 0,
+      "crush": 0,
+      "magic": 0,
+      "heavy": 0,
+      "standard": 0,
+      "light": 0,
+      "slash": 0,
+      "stab": 0
+    },
+    "attributes": [],
+    "immunities": {
+      "burn": null
+    },
+    "is_slayer_monster": false,
+    "weakness": null
   },
   {
     "id": 6320,
@@ -86316,7 +86750,7 @@
     "name": "Rabbit (Prifddinas)",
     "version": "",
     "image": "Rabbit (Prifddinas).png",
-    "level": 2,
+    "level": 0,
     "speed": 3,
     "style": [
       "Typeless Crush"
@@ -90917,7 +91351,7 @@
   {
     "id": 421,
     "name": "Rockslug",
-    "version": "Cave",
+    "version": "Adult",
     "image": "Rockslug.png",
     "level": 29,
     "speed": 4,
@@ -90965,8 +91399,8 @@
   {
     "id": 422,
     "name": "Rockslug",
-    "version": "Swamp",
-    "image": "Rockslug (Swamp).png",
+    "version": "Baby",
+    "image": "Rockslug (baby).png",
     "level": 29,
     "speed": 4,
     "style": [
@@ -93274,7 +93708,10 @@
       "burn": null
     },
     "is_slayer_monster": true,
-    "weakness": null
+    "weakness": {
+      "element": "fire",
+      "severity": 35
+    }
   },
   {
     "id": 6616,
@@ -101092,7 +101529,10 @@
       "burn": null
     },
     "is_slayer_monster": false,
-    "weakness": null
+    "weakness": {
+      "element": "earth",
+      "severity": 40
+    }
   },
   {
     "id": 6324,
@@ -106906,53 +107346,6 @@
     }
   },
   {
-    "id": 15770,
-    "name": "Superior venator",
-    "version": "",
-    "image": "Superior venator.png",
-    "level": 246,
-    "speed": 5,
-    "style": [
-      "Stab"
-    ],
-    "size": 3,
-    "max_hit": "21",
-    "skills": {
-      "atk": 200,
-      "def": 120,
-      "hp": 345,
-      "magic": 100,
-      "ranged": 75,
-      "str": 200
-    },
-    "offensive": {
-      "atk": 0,
-      "magic": 0,
-      "magic_str": 0,
-      "ranged": 0,
-      "ranged_str": 0,
-      "str": 0
-    },
-    "defensive": {
-      "flat_armour": 0,
-      "crush": 130,
-      "magic": 110,
-      "heavy": -5,
-      "standard": -5,
-      "light": -5,
-      "slash": 60,
-      "stab": -5
-    },
-    "attributes": [
-      "vampyre3"
-    ],
-    "immunities": {
-      "burn": "Strong"
-    },
-    "is_slayer_monster": false,
-    "weakness": null
-  },
-  {
     "id": 787,
     "name": "Suqah",
     "version": "1",
@@ -107766,11 +108159,11 @@
     "speed": 6,
     "style": [
       "Slash",
-      "Typeless Magic",
+      "Typeless Ranged",
       "Icy breath"
     ],
     "size": 3,
-    "max_hit": "10 (Magic)",
+    "max_hit": "10 (Ranged)",
     "skills": {
       "atk": 120,
       "def": 90,
@@ -110569,7 +110962,7 @@
     "level": 301,
     "speed": 2,
     "style": [
-      "Typeless Magical ranged"
+      "Magical ranged (100% prayer penetration)"
     ],
     "size": 4,
     "max_hit": "8",
@@ -111697,11 +112090,10 @@
     "level": 67,
     "speed": 7,
     "style": [
-      "Ranged",
-      "Crush(?)"
+      "Ranged"
     ],
     "size": 1,
-    "max_hit": "10 Ranged",
+    "max_hit": "6",
     "skills": {
       "atk": 30,
       "def": 30,
@@ -118371,7 +118763,7 @@
     "id": 3734,
     "name": "Vanstrom Klause",
     "version": "Vampyre",
-    "image": "Vanstrom Klause (vampyre).png",
+    "image": "Vanstrom Klause (vampyre, Darkness of Hallowvale).png",
     "level": 169,
     "speed": 8,
     "style": [
@@ -118683,9 +119075,9 @@
       "flat_armour": 0,
       "crush": 90,
       "magic": 100,
-      "heavy": -5,
-      "standard": -5,
-      "light": -5,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 20,
       "stab": -5
     },
@@ -118730,9 +119122,9 @@
       "flat_armour": 0,
       "crush": 90,
       "magic": 100,
-      "heavy": -5,
-      "standard": -5,
-      "light": -5,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 20,
       "stab": -5
     },
@@ -118777,9 +119169,9 @@
       "flat_armour": 0,
       "crush": 90,
       "magic": 100,
-      "heavy": -5,
-      "standard": -5,
-      "light": -5,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 20,
       "stab": -5
     },
@@ -118824,9 +119216,9 @@
       "flat_armour": 0,
       "crush": 90,
       "magic": 100,
-      "heavy": -5,
-      "standard": -5,
-      "light": -5,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 20,
       "stab": -5
     },
@@ -118871,9 +119263,9 @@
       "flat_armour": 0,
       "crush": 90,
       "magic": 100,
-      "heavy": -5,
-      "standard": -5,
-      "light": -5,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 20,
       "stab": -5
     },
@@ -120443,9 +120835,9 @@
       "flat_armour": 0,
       "crush": 0,
       "magic": 0,
-      "heavy": 0,
-      "standard": 0,
-      "light": 0,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 0,
       "stab": 0
     },
@@ -120490,9 +120882,9 @@
       "flat_armour": 0,
       "crush": 0,
       "magic": 0,
-      "heavy": 0,
-      "standard": 0,
-      "light": 0,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 0,
       "stab": 0
     },
@@ -120537,9 +120929,9 @@
       "flat_armour": 0,
       "crush": 0,
       "magic": 0,
-      "heavy": 0,
-      "standard": 0,
-      "light": 0,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 0,
       "stab": 0
     },
@@ -120584,9 +120976,9 @@
       "flat_armour": 0,
       "crush": 0,
       "magic": 0,
-      "heavy": 0,
-      "standard": 0,
-      "light": 0,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 0,
       "stab": 0
     },
@@ -120631,9 +121023,9 @@
       "flat_armour": 0,
       "crush": 0,
       "magic": 0,
-      "heavy": 0,
-      "standard": 0,
-      "light": 0,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 0,
       "stab": 0
     },
@@ -120678,9 +121070,9 @@
       "flat_armour": 0,
       "crush": 0,
       "magic": 0,
-      "heavy": 0,
-      "standard": 0,
-      "light": 0,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 0,
       "stab": 0
     },
@@ -120725,9 +121117,9 @@
       "flat_armour": 0,
       "crush": 0,
       "magic": 0,
-      "heavy": 0,
-      "standard": 0,
-      "light": 0,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 0,
       "stab": 0
     },
@@ -120772,9 +121164,9 @@
       "flat_armour": 0,
       "crush": 0,
       "magic": 0,
-      "heavy": 0,
-      "standard": 0,
-      "light": 0,
+      "heavy": 100,
+      "standard": 100,
+      "light": 100,
       "slash": 0,
       "stab": 0
     },
@@ -122127,7 +122519,7 @@
   },
   {
     "id": 16226,
-    "name": "Webbed-winged crow",
+    "name": "Webbed-winged Crow",
     "version": "",
     "image": "Webbed-winged crow.png",
     "level": 98,
@@ -125593,7 +125985,7 @@
       "Crush"
     ],
     "size": 3,
-    "max_hit": "30",
+    "max_hit": "30 (melee)",
     "skills": {
       "atk": 250,
       "def": 180,
@@ -125614,9 +126006,9 @@
       "flat_armour": 0,
       "crush": 30,
       "magic": 30,
-      "heavy": 30,
-      "standard": 30,
-      "light": 30,
+      "heavy": 150,
+      "standard": 150,
+      "light": 150,
       "slash": 30,
       "stab": 30
     },
@@ -130609,7 +131001,7 @@
     "version": "10",
     "image": "Zombie pirate (Harmony Island) (10).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -130659,7 +131051,7 @@
     "version": "11",
     "image": "Zombie pirate (Harmony Island) (11).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -130709,7 +131101,7 @@
     "version": "12",
     "image": "Zombie pirate (Harmony Island) (12).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -130759,7 +131151,7 @@
     "version": "13",
     "image": "Zombie pirate (Harmony Island) (13).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -130809,7 +131201,7 @@
     "version": "14",
     "image": "Zombie pirate (Harmony Island) (14).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -130859,7 +131251,7 @@
     "version": "15",
     "image": "Zombie pirate (Harmony Island) (15).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -130909,7 +131301,7 @@
     "version": "16",
     "image": "Zombie pirate (Harmony Island) (16).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -130959,7 +131351,7 @@
     "version": "17",
     "image": "Zombie pirate (Harmony Island) (17).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131009,7 +131401,7 @@
     "version": "18",
     "image": "Zombie pirate (Harmony Island) (18).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131059,7 +131451,7 @@
     "version": "19",
     "image": "Zombie pirate (Harmony Island) (19).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131109,7 +131501,7 @@
     "version": "2",
     "image": "Zombie pirate (Harmony Island) (2).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131159,7 +131551,7 @@
     "version": "20",
     "image": "Zombie pirate (Harmony Island) (20).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131209,7 +131601,7 @@
     "version": "21",
     "image": "Zombie pirate (Harmony Island) (21).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131259,7 +131651,7 @@
     "version": "22",
     "image": "Zombie pirate (Harmony Island) (22).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131309,7 +131701,7 @@
     "version": "23",
     "image": "Zombie pirate (Harmony Island) (23).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131359,7 +131751,7 @@
     "version": "24",
     "image": "Zombie pirate (Harmony Island) (24).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131409,7 +131801,7 @@
     "version": "25",
     "image": "Zombie pirate (Harmony Island) (25).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131459,7 +131851,7 @@
     "version": "26",
     "image": "Zombie pirate (Harmony Island) (26).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131509,7 +131901,7 @@
     "version": "3",
     "image": "Zombie pirate (Harmony Island) (3).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131559,7 +131951,7 @@
     "version": "4",
     "image": "Zombie pirate (Harmony Island) (4).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131609,7 +132001,7 @@
     "version": "5",
     "image": "Zombie pirate (Harmony Island) (5).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131659,7 +132051,7 @@
     "version": "6",
     "image": "Zombie pirate (Harmony Island) (6).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131709,7 +132101,7 @@
     "version": "7",
     "image": "Zombie pirate (Harmony Island) (7).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131759,7 +132151,7 @@
     "version": "8",
     "image": "Zombie pirate (Harmony Island) (8).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -131809,7 +132201,7 @@
     "version": "9",
     "image": "Zombie pirate (Harmony Island) (9).png",
     "level": 57,
-    "speed": 4,
+    "speed": 3,
     "style": [
       "Crush"
     ],
@@ -132467,7 +132859,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132517,7 +132909,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132567,7 +132959,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132617,7 +133009,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132667,7 +133059,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132717,7 +133109,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132767,7 +133159,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132817,7 +133209,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132867,7 +133259,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132917,7 +133309,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -132967,7 +133359,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -133017,7 +133409,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,
@@ -133067,7 +133459,7 @@
       "Crush"
     ],
     "size": 1,
-    "max_hit": "3",
+    "max_hit": "2",
     "skills": {
       "atk": 8,
       "def": 10,

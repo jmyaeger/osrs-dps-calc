@@ -8,12 +8,12 @@ be deployed separately to our file storage solution.
 Written for Python 3.9.
 """
 
+import json
 import os.path
+import re
+import urllib.parse
 
 import requests
-import json
-import urllib.parse
-import re
 
 FILE_NAME = "../cdn/json/monsters.json"
 WIKI_BASE = "https://oldschool.runescape.wiki"

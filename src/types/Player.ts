@@ -142,9 +142,9 @@ export interface Player extends EquipmentStats {
      */
     usingSunfireRunes: boolean;
     /**
-     * Whether the player is currently receiving the buff from a Gatekeeper's Cane special attack.
+     * Whether the player is currently receiving the buff from a Zorya's Tome special attack.
      */
-    hitGatekeepersCaneSpec: boolean;
+    hitZoryasTomeSpec: boolean;
   };
   spell: Spell | null;
 }

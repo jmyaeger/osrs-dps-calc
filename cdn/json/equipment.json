@@ -10793,13 +10793,13 @@
     "weight": 2.267,
     "version": "Locked",
     "slot": "weapon",
-    "image": "Ancient sceptre.png",
+    "image": "Ancient sceptre (l).png",
     "speed": 4,
     "category": "Staff",
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -10830,7 +10830,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -22080,14 +22080,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 94,
+      "slash": 100,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22142,14 +22142,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 94,
+      "slash": 100,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22173,14 +22173,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 94,
+      "slash": 100,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22204,14 +22204,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 94,
+      "slash": 100,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22235,14 +22235,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 94,
+      "slash": 100,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22266,14 +22266,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 94,
+      "slash": 100,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22297,14 +22297,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 94,
+      "slash": 100,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22328,14 +22328,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 94,
+      "slash": 100,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22359,14 +22359,14 @@
     "speed": 4,
     "category": "Slash Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
       "stab": 55,
-      "slash": 94,
+      "slash": 100,
       "crush": 0,
       "magic": 0,
       "ranged": 0
@@ -22733,7 +22733,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -22758,13 +22758,13 @@
     "weight": 2.267,
     "version": "Locked",
     "slot": "weapon",
-    "image": "Blood ancient sceptre.png",
+    "image": "Blood ancient sceptre (l).png",
     "speed": 4,
     "category": "Staff",
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -22795,7 +22795,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -50970,7 +50970,7 @@
     "slot": "weapon",
     "image": "Crimson kisten.png",
     "speed": 4,
-    "category": "Axe",
+    "category": "Spiked",
     "bonuses": {
       "str": 56,
       "ranged_str": 0,
@@ -69753,7 +69753,7 @@
     "weight": 8.164,
     "version": "Locked",
     "slot": "legs",
-    "image": "Elite void robe.png",
+    "image": "Elite void robe (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -69908,7 +69908,7 @@
     "weight": 6.803,
     "version": "Locked",
     "slot": "body",
-    "image": "Elite void top.png",
+    "image": "Elite void top (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -72915,7 +72915,7 @@
     "weight": 4,
     "version": "Locked",
     "slot": "body",
-    "image": "Fighter torso.png",
+    "image": "Fighter torso (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -76071,36 +76071,6 @@
     "isTwoHanded": false
   },
   {
-    "name": "Gatekeeper's Cane",
-    "id": -18,
-    "version": "",
-    "slot": "weapon",
-    "image": "Gatekeeper's Cane.png",
-    "speed": 3,
-    "category": "Powered Staff",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 0,
-      "magic_str": 0,
-      "prayer": 2
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 30,
-      "ranged": 0
-    },
-    "defensive": {
-      "stab": 1,
-      "slash": 5,
-      "crush": 5,
-      "magic": 10,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
     "name": "Gauntlet cape",
     "id": 23859,
     "weight": 0.453,
@@ -76947,13 +76917,13 @@
     "speed": 4,
     "category": "Stab Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
-      "stab": 94,
+      "stab": 100,
       "slash": 55,
       "crush": 0,
       "magic": 0,
@@ -86120,7 +86090,7 @@
     "version": "",
     "slot": "weapon",
     "image": "Guthix staff.png",
-    "speed": 5,
+    "speed": 4,
     "category": "Staff",
     "bonuses": {
       "str": 2,
@@ -86577,6 +86547,37 @@
       "ranged": 0
     },
     "isTwoHanded": false
+  },
+  {
+    "name": "Hallowfell",
+    "id": 34027,
+    "weight": 10,
+    "version": "",
+    "slot": "weapon",
+    "image": "Hallowfell.png",
+    "speed": 6,
+    "category": "2h Sword",
+    "bonuses": {
+      "str": 110,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 4
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 117,
+      "crush": 25,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": true
   },
   {
     "name": "Ham boots",
@@ -88355,13 +88356,13 @@
     "speed": 4,
     "category": "Stab Sword",
     "bonuses": {
-      "str": 89,
+      "str": 93,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
     },
     "offensive": {
-      "stab": 94,
+      "stab": 100,
       "slash": 55,
       "crush": 0,
       "magic": 0,
@@ -89814,7 +89815,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -89839,13 +89840,13 @@
     "weight": 2.267,
     "version": "Locked",
     "slot": "weapon",
-    "image": "Ice ancient sceptre.png",
+    "image": "Ice ancient sceptre (l).png",
     "speed": 4,
     "category": "Staff",
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -89876,7 +89877,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -91637,7 +91638,7 @@
     "weight": 0.453,
     "version": "Locked",
     "slot": "cape",
-    "image": "Infernal max cape.png",
+    "image": "Infernal max cape (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -101718,7 +101719,7 @@
     "bonuses": {
       "str": 0,
       "ranged_str": 0,
-      "magic_str": 0,
+      "magic_str": 100,
       "prayer": 0
     },
     "offensive": {
@@ -108806,6 +108807,223 @@
     "isTwoHanded": false
   },
   {
+    "name": "Noble robe top",
+    "id": 33851,
+    "weight": 0.907,
+    "version": "Black",
+    "slot": "body",
+    "image": "Noble robe top (black).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Noble robe top",
+    "id": 33839,
+    "weight": 0.907,
+    "version": "Blue",
+    "slot": "body",
+    "image": "Noble robe top (blue).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Noble robe top",
+    "id": 33836,
+    "weight": 0.907,
+    "version": "Green",
+    "slot": "body",
+    "image": "Noble robe top (green).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Noble robe top",
+    "id": 33854,
+    "weight": 0.907,
+    "version": "Pink",
+    "slot": "body",
+    "image": "Noble robe top (pink).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Noble robe top",
+    "id": 33842,
+    "weight": 0.907,
+    "version": "Red",
+    "slot": "body",
+    "image": "Noble robe top (red).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Noble robe top",
+    "id": 33848,
+    "weight": 0.907,
+    "version": "White",
+    "slot": "body",
+    "image": "Noble robe top (white).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Noble robe top",
+    "id": 33845,
+    "weight": 0.907,
+    "version": "Yellow",
+    "slot": "body",
+    "image": "Noble robe top (yellow).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Noose wand",
     "id": 10150,
     "weight": 1.814,
@@ -111853,7 +112071,7 @@
     "category": "",
     "bonuses": {
       "str": 0,
-      "ranged_str": 0,
+      "ranged_str": 1,
       "magic_str": 0,
       "prayer": 0
     },
@@ -130913,7 +131131,7 @@
     "version": "",
     "slot": "weapon",
     "image": "Saradomin staff.png",
-    "speed": 5,
+    "speed": 4,
     "category": "Staff",
     "bonuses": {
       "str": 2,
@@ -131498,12 +131716,12 @@
   {
     "name": "Seeking adamant arrow",
     "id": 33577,
-    "weight": 0.018,
+    "weight": 0,
     "version": "",
     "slot": "ammo",
     "image": "Seeking adamant arrow 5.png",
     "speed": 0,
-    "category": "Unarmed",
+    "category": "",
     "bonuses": {
       "str": 0,
       "ranged_str": 31,
@@ -131529,12 +131747,12 @@
   {
     "name": "Seeking amethyst arrow",
     "id": 33589,
-    "weight": 0.016,
+    "weight": 0,
     "version": "",
     "slot": "ammo",
     "image": "Seeking amethyst arrow 5.png",
     "speed": 0,
-    "category": "Unarmed",
+    "category": "",
     "bonuses": {
       "str": 0,
       "ranged_str": 55,
@@ -131560,12 +131778,12 @@
   {
     "name": "Seeking broad arrows",
     "id": 33601,
-    "weight": 0.016,
+    "weight": 0,
     "version": "",
     "slot": "ammo",
     "image": "Seeking broad arrows 5.png",
     "speed": 0,
-    "category": "Unarmed",
+    "category": "",
     "bonuses": {
       "str": 0,
       "ranged_str": 28,
@@ -131591,12 +131809,12 @@
   {
     "name": "Seeking bronze arrow",
     "id": 33553,
-    "weight": 0.016,
+    "weight": 0,
     "version": "",
     "slot": "ammo",
     "image": "Seeking bronze arrow 5.png",
     "speed": 0,
-    "category": "Unarmed",
+    "category": "",
     "bonuses": {
       "str": 0,
       "ranged_str": 7,
@@ -131622,12 +131840,12 @@
   {
     "name": "Seeking dragon arrow",
     "id": 33595,
-    "weight": 0.016,
+    "weight": 0,
     "version": "",
     "slot": "ammo",
     "image": "Seeking dragon arrow 5.png",
     "speed": 0,
-    "category": "Unarmed",
+    "category": "",
     "bonuses": {
       "str": 0,
       "ranged_str": 60,
@@ -131653,12 +131871,12 @@
   {
     "name": "Seeking iron arrow",
     "id": 33559,
-    "weight": 0.016,
+    "weight": 0,
     "version": "",
     "slot": "ammo",
     "image": "Seeking iron arrow 5.png",
     "speed": 0,
-    "category": "Unarmed",
+    "category": "",
     "bonuses": {
       "str": 0,
       "ranged_str": 10,
@@ -131684,12 +131902,12 @@
   {
     "name": "Seeking mithril arrow",
     "id": 33571,
-    "weight": 0.014,
+    "weight": 0,
     "version": "",
     "slot": "ammo",
     "image": "Seeking mithril arrow 5.png",
     "speed": 0,
-    "category": "Unarmed",
+    "category": "",
     "bonuses": {
       "str": 0,
       "ranged_str": 22,
@@ -131715,12 +131933,12 @@
   {
     "name": "Seeking rune arrow",
     "id": 33583,
-    "weight": 0.016,
+    "weight": 0,
     "version": "",
     "slot": "ammo",
     "image": "Seeking rune arrow 5.png",
     "speed": 0,
-    "category": "Unarmed",
+    "category": "",
     "bonuses": {
       "str": 0,
       "ranged_str": 49,
@@ -131746,12 +131964,12 @@
   {
     "name": "Seeking steel arrow",
     "id": 33565,
-    "weight": 0.016,
+    "weight": 0,
     "version": "",
     "slot": "ammo",
     "image": "Seeking steel arrow 5.png",
     "speed": 0,
-    "category": "Unarmed",
+    "category": "",
     "bonuses": {
       "str": 0,
       "ranged_str": 16,
@@ -132189,7 +132407,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -132214,13 +132432,13 @@
     "weight": 2.267,
     "version": "Locked",
     "slot": "weapon",
-    "image": "Shadow ancient sceptre.png",
+    "image": "Shadow ancient sceptre (l).png",
     "speed": 4,
     "category": "Staff",
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -132251,7 +132469,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -132351,7 +132569,7 @@
       "stab": 0,
       "slash": 0,
       "crush": 0,
-      "magic": -6,
+      "magic": 2,
       "ranged": -2
     },
     "defensive": {
@@ -136839,7 +137057,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -136864,13 +137082,13 @@
     "weight": 2.267,
     "version": "Locked",
     "slot": "weapon",
-    "image": "Smoke ancient sceptre.png",
+    "image": "Smoke ancient sceptre (l).png",
     "speed": 4,
     "category": "Staff",
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -136901,7 +137119,7 @@
     "bonuses": {
       "str": 60,
       "ranged_str": 0,
-      "magic_str": 50,
+      "magic_str": 100,
       "prayer": -1
     },
     "offensive": {
@@ -137797,7 +138015,7 @@
     "speed": 5,
     "category": "Axe",
     "bonuses": {
-      "str": 121,
+      "str": 125,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
@@ -137828,7 +138046,7 @@
     "speed": 5,
     "category": "Axe",
     "bonuses": {
-      "str": 121,
+      "str": 125,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
@@ -143346,7 +143564,7 @@
     "speed": 6,
     "category": "Blunt",
     "bonuses": {
-      "str": 16,
+      "str": 18,
       "ranged_str": 0,
       "magic_str": 0,
       "prayer": 0
@@ -151415,7 +151633,7 @@
       "stab": 0,
       "slash": 0,
       "crush": 0,
-      "magic": 25,
+      "magic": 15,
       "ranged": 0
     },
     "defensive": {
@@ -151446,7 +151664,7 @@
       "stab": 0,
       "slash": 0,
       "crush": 0,
-      "magic": 25,
+      "magic": 15,
       "ranged": 0
     },
     "defensive": {
@@ -151477,7 +151695,7 @@
       "stab": 0,
       "slash": 0,
       "crush": 0,
-      "magic": 25,
+      "magic": 15,
       "ranged": 0
     },
     "defensive": {
@@ -151508,7 +151726,7 @@
       "stab": 0,
       "slash": 0,
       "crush": 0,
-      "magic": 25,
+      "magic": 15,
       "ranged": 0
     },
     "defensive": {
@@ -156609,7 +156827,7 @@
     "weight": 0.453,
     "version": "Locked",
     "slot": "hands",
-    "image": "Void knight gloves.png",
+    "image": "Void knight gloves (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -156857,7 +157075,7 @@
     "weight": 8.164,
     "version": "Locked",
     "slot": "legs",
-    "image": "Void knight robe.png",
+    "image": "Void knight robe (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -157012,7 +157230,7 @@
     "weight": 6.803,
     "version": "Locked",
     "slot": "body",
-    "image": "Void knight top.png",
+    "image": "Void knight top (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -157167,7 +157385,7 @@
     "weight": 0.453,
     "version": "Locked",
     "slot": "head",
-    "image": "Void mage helm.png",
+    "image": "Void mage helm (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -157477,7 +157695,7 @@
     "weight": 0.453,
     "version": "Locked",
     "slot": "head",
-    "image": "Void ranger helm.png",
+    "image": "Void ranger helm (l).png",
     "speed": 0,
     "category": "",
     "bonuses": {
@@ -161170,24 +161388,24 @@
     "speed": 0,
     "category": "",
     "bonuses": {
-      "str": null,
-      "ranged_str": null,
+      "str": 50,
+      "ranged_str": 0,
       "magic_str": 0,
-      "prayer": null
+      "prayer": 50
     },
     "offensive": {
-      "stab": null,
-      "slash": null,
-      "crush": null,
-      "magic": null,
-      "ranged": null
+      "stab": 100,
+      "slash": 100,
+      "crush": 100,
+      "magic": 100,
+      "ranged": 100
     },
     "defensive": {
-      "stab": null,
-      "slash": null,
-      "crush": null,
-      "magic": null,
-      "ranged": null
+      "stab": 100,
+      "slash": 100,
+      "crush": 100,
+      "magic": 100,
+      "ranged": 100
     },
     "isTwoHanded": false
   },
@@ -162347,6 +162565,1649 @@
     "image": "Wrath tiara.png",
     "speed": 0,
     "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig boots",
+    "id": 33881,
+    "weight": 0.34,
+    "version": "",
+    "slot": "feet",
+    "image": "Wyrmscraig boots.png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig noble skirt",
+    "id": 33872,
+    "weight": 0.907,
+    "version": "Black",
+    "slot": "legs",
+    "image": "Wyrmscraig noble skirt (black).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig noble skirt",
+    "id": 33860,
+    "weight": 0.907,
+    "version": "Blue",
+    "slot": "legs",
+    "image": "Wyrmscraig noble skirt (blue).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig noble skirt",
+    "id": 33857,
+    "weight": 0.907,
+    "version": "Green",
+    "slot": "legs",
+    "image": "Wyrmscraig noble skirt (green).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig noble skirt",
+    "id": 33875,
+    "weight": 0.907,
+    "version": "Pink",
+    "slot": "legs",
+    "image": "Wyrmscraig noble skirt (pink).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig noble skirt",
+    "id": 33863,
+    "weight": 0.907,
+    "version": "Red",
+    "slot": "legs",
+    "image": "Wyrmscraig noble skirt (red).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig noble skirt",
+    "id": 33869,
+    "weight": 0.907,
+    "version": "White",
+    "slot": "legs",
+    "image": "Wyrmscraig noble skirt (white).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig noble skirt",
+    "id": 33866,
+    "weight": 0.907,
+    "version": "Yellow",
+    "slot": "legs",
+    "image": "Wyrmscraig noble skirt (yellow).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig shoes",
+    "id": 33878,
+    "weight": 0.34,
+    "version": "",
+    "slot": "feet",
+    "image": "Wyrmscraig shoes.png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (A)",
+    "id": 33923,
+    "weight": 0.907,
+    "version": "Black",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (A, black).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (A)",
+    "id": 33911,
+    "weight": 0.907,
+    "version": "Blue",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (A, blue).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (A)",
+    "id": 33908,
+    "weight": 0.907,
+    "version": "Green",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (A, green).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (A)",
+    "id": 33926,
+    "weight": 0.907,
+    "version": "Pink",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (A, pink).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (A)",
+    "id": 33914,
+    "weight": 0.907,
+    "version": "Red",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (A, red).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (A)",
+    "id": 33920,
+    "weight": 0.907,
+    "version": "White",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (A, white).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (A)",
+    "id": 33917,
+    "weight": 0.907,
+    "version": "Yellow",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (A, yellow).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (B)",
+    "id": 33944,
+    "weight": 0.907,
+    "version": "Black",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (B, black).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (B)",
+    "id": 33932,
+    "weight": 0.907,
+    "version": "Blue",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (B, blue).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (B)",
+    "id": 33929,
+    "weight": 0.907,
+    "version": "Green",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (B, green).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (B)",
+    "id": 33947,
+    "weight": 0.907,
+    "version": "Pink",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (B, pink).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (B)",
+    "id": 33935,
+    "weight": 0.907,
+    "version": "Red",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (B, red).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (B)",
+    "id": 33941,
+    "weight": 0.907,
+    "version": "White",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (B, white).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe bottom (B)",
+    "id": 33938,
+    "weight": 0.907,
+    "version": "Yellow",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe bottom (B, yellow).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (A)",
+    "id": 33905,
+    "weight": 0.907,
+    "version": "Beige",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (A, beige).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (A)",
+    "id": 33899,
+    "weight": 0.907,
+    "version": "Black",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (A, black).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (A)",
+    "id": 33887,
+    "weight": 0.907,
+    "version": "Blue",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (A, blue).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (A)",
+    "id": 33884,
+    "weight": 0.907,
+    "version": "Green",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (A, green).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (A)",
+    "id": 33902,
+    "weight": 0.907,
+    "version": "Pink",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (A, pink).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (A)",
+    "id": 33890,
+    "weight": 0.907,
+    "version": "Red",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (A, red).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (A)",
+    "id": 33896,
+    "weight": 0.907,
+    "version": "White",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (A, white).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (A)",
+    "id": 33893,
+    "weight": 0.907,
+    "version": "Yellow",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (A, yellow).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (B)",
+    "id": 33965,
+    "weight": 0.907,
+    "version": "Black",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (B, black).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (B)",
+    "id": 33953,
+    "weight": 0.907,
+    "version": "Blue",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (B, blue).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (B)",
+    "id": 33950,
+    "weight": 0.907,
+    "version": "Green",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (B, green).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (B)",
+    "id": 33968,
+    "weight": 0.907,
+    "version": "Pink",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (B, pink).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (B)",
+    "id": 33956,
+    "weight": 0.907,
+    "version": "Red",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (B, red).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (B)",
+    "id": 33962,
+    "weight": 0.907,
+    "version": "White",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (B, white).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager robe top (B)",
+    "id": 33959,
+    "weight": 0.907,
+    "version": "Yellow",
+    "slot": "body",
+    "image": "Wyrmscraig villager robe top (B, yellow).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager skirt",
+    "id": 33986,
+    "weight": 0.907,
+    "version": "Black",
+    "slot": "legs",
+    "image": "Wyrmscraig villager skirt (black).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager skirt",
+    "id": 33974,
+    "weight": 0.907,
+    "version": "Blue",
+    "slot": "legs",
+    "image": "Wyrmscraig villager skirt (blue).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager skirt",
+    "id": 33971,
+    "weight": 0.907,
+    "version": "Green",
+    "slot": "legs",
+    "image": "Wyrmscraig villager skirt (green).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager skirt",
+    "id": 33989,
+    "weight": 0.907,
+    "version": "Pink",
+    "slot": "legs",
+    "image": "Wyrmscraig villager skirt (pink).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager skirt",
+    "id": 33977,
+    "weight": 0.907,
+    "version": "Red",
+    "slot": "legs",
+    "image": "Wyrmscraig villager skirt (red).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager skirt",
+    "id": 33983,
+    "weight": 0.907,
+    "version": "White",
+    "slot": "legs",
+    "image": "Wyrmscraig villager skirt (white).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager skirt",
+    "id": 33980,
+    "weight": 0.907,
+    "version": "Yellow",
+    "slot": "legs",
+    "image": "Wyrmscraig villager skirt (yellow).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager work skirt",
+    "id": 34013,
+    "weight": 0.907,
+    "version": "Beige",
+    "slot": "legs",
+    "image": "Wyrmscraig villager work skirt (beige).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager work skirt",
+    "id": 34007,
+    "weight": 0.907,
+    "version": "Black",
+    "slot": "legs",
+    "image": "Wyrmscraig villager work skirt (black).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager work skirt",
+    "id": 33995,
+    "weight": 0.907,
+    "version": "Blue",
+    "slot": "legs",
+    "image": "Wyrmscraig villager work skirt (blue).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager work skirt",
+    "id": 33992,
+    "weight": 0.907,
+    "version": "Green",
+    "slot": "legs",
+    "image": "Wyrmscraig villager work skirt (green).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager work skirt",
+    "id": 34010,
+    "weight": 0.907,
+    "version": "Pink",
+    "slot": "legs",
+    "image": "Wyrmscraig villager work skirt (pink).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager work skirt",
+    "id": 33998,
+    "weight": 0.907,
+    "version": "Red",
+    "slot": "legs",
+    "image": "Wyrmscraig villager work skirt (red).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager work skirt",
+    "id": 34004,
+    "weight": 0.907,
+    "version": "White",
+    "slot": "legs",
+    "image": "Wyrmscraig villager work skirt (white).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Wyrmscraig villager work skirt",
+    "id": 34001,
+    "weight": 0.907,
+    "version": "Yellow",
+    "slot": "legs",
+    "image": "Wyrmscraig villager work skirt (yellow).png",
+    "speed": 0,
+    "category": "Unarmed",
     "bonuses": {
       "str": 0,
       "ranged_str": 0,
@@ -164391,7 +166252,7 @@
     "version": "",
     "slot": "weapon",
     "image": "Zamorak staff.png",
-    "speed": 5,
+    "speed": 4,
     "category": "Staff",
     "bonuses": {
       "str": 2,
@@ -165158,6 +167019,36 @@
       "ranged": 0
     },
     "isTwoHanded": false
+  },
+  {
+    "name": "Zorya's Tome",
+    "id": -18,
+    "version": "",
+    "slot": "weapon",
+    "image": "Zorya's Tome.png",
+    "speed": 3,
+    "category": "Powered Staff",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 150,
+      "prayer": 2
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 45,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 1,
+      "slash": 5,
+      "crush": 5,
+      "magic": 10,
+      "ranged": 0
+    },
+    "isTwoHanded": true
   },
   {
     "name": "Zuriel's hood (Deadman Mode)",

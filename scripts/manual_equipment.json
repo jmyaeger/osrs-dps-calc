@@ -210,24 +210,24 @@
 		"isTwoHanded": true
 	},
 	{
-		"name": "Gatekeeper's Cane",
+		"name": "Zorya's Tome",
 		"id": -18,
 		"version": "",
 		"slot": "weapon",
-		"image": "Gatekeeper's Cane.png",
+		"image": "Zorya's Tome.png",
 		"speed": 3,
-    	"category": "Powered Staff",
-    	"bonuses": {
+		"category": "Powered Staff",
+		"bonuses": {
 			"str": 0,
 			"ranged_str": 0,
-			"magic_str": 0,
+			"magic_str": 150,
 			"prayer": 2
 		},
 		"offensive": {
 			"stab": 0,
 			"slash": 0,
 			"crush": 0,
-			"magic": 30,
+			"magic": 45,
 			"ranged": 0
 		},
 		"defensive": {
@@ -237,6 +237,6 @@
 			"magic": 10,
 			"ranged": 0
 		},
-		"isTwoHanded": false
+		"isTwoHanded": true
 	}
 ]

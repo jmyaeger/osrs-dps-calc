@@ -872,8 +872,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_TOME, attackRoll, [6, 5]);
     }
 
-    if (!this.opts.usingSpecialAttack && this.wearing("Gatekeeper's Cane") && this.player.buffs.hitGatekeepersCaneSpec) {
-      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_GATEKEEPER, attackRoll, [2, 1]);
+    if (this.wearing("Zorya's Tome") && this.player.buffs.hitZoryasTomeSpec) {
+      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_ZORYA, attackRoll, [5, 2]);
     }
 
     if (this.opts.usingSpecialAttack) {
@@ -881,8 +881,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
       } else if (this.wearing('Volatile nightmare staff')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
-      } else if (this.wearing(['Eye of ayak', "Gatekeeper's Cane"])) {
+      } else if (this.wearing('Eye of ayak')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [2, 1]);
+      } else if (this.wearing("Zorya's Tome")) {
+        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [5, 2]);
       }
     }
 
@@ -940,7 +942,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) + 1);
     } else if (this.wearing('Eye of ayak')) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) - 6);
-    } else if (this.wearing("Gatekeeper's Cane")) {
+    } else if (this.wearing("Zorya's Tome")) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) - 9);
     } else if (this.wearing('Warped sceptre')) {
       maxHit = Math.max(1, Math.trunc((8 * magicLevel + 96) / 37));
@@ -981,8 +983,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [13, 10]);
     }
 
-    if (this.wearing("Gatekeeper's Cane") && (this.opts.usingSpecialAttack || this.player.buffs.hitGatekeepersCaneSpec)) {
-      maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [3, 2]);
+    if (this.wearing("Zorya's Tome") && (this.opts.usingSpecialAttack || this.player.buffs.hitZoryasTomeSpec)) {
+      maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [8, 5]);
     }
 
     if (this.wearing('Chaos gauntlets') && spell?.name.toLowerCase()
@@ -1591,7 +1593,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     if (this.isUsingMeleeStyle() && this.wearing('TzHaar-Ket Breaker') && (this.player.style.name === 'Thrust (Aggressive)' || this.player.style.name === 'Thrust (Controlled)')) {
       const defs = this.monster.defensive;
-      const rolls = 1 + 2 * ([defs.stab, defs.slash]
+      const rolls = 2 + 2 * ([defs.stab, defs.slash]
         .filter((d) => d > defs.crush).length);
       dist = new AttackDistribution([HitDistribution.maxOfDamageRolls(acc, min, max, rolls)]);
     }
@@ -2057,7 +2059,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       return 5;
     }
 
-    if (this.wearing("Gatekeeper's Cane") && this.player.buffs.hitGatekeepersCaneSpec) {
+    if (this.wearing("Zorya's Tome") && this.player.buffs.hitZoryasTomeSpec) {
       return 2;
     }
 
