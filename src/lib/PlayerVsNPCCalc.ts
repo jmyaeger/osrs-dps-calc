@@ -1698,16 +1698,6 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       dist = dist.transform(multiplyTransformer(factor, divisor));
     }
 
-    if (this.wearing(['Sanguinesti staff', 'Holy sanguinesti staff'])) {
-      dist = dist.transform(
-        (h) => new HitDistribution([
-          new WeightedHit(0.8, [h]),
-          new WeightedHit(0.2, [new Hitsplat(h.damage + 8, h.accurate)]),
-        ]),
-        { transformInaccurate: false },
-      );
-    }
-
     if (this.player.buffs.markOfDarknessSpell && this.player.spell?.name.includes('Demonbane') && mattrs.includes(MonsterAttribute.DEMON)) {
       const demonbaneFactor = this.wearing('Purging staff') ? 50 : 25;
       dist = dist.transform(
@@ -1897,10 +1887,20 @@ export default class PlayerVsNPCCalc extends BaseCalc {
           || (this.player.style.type === 'ranged' && ALWAYS_MAX_HIT_MONSTERS.ranged.includes(this.monster.id))) {
       if (YAMA_VOID_FLARE_IDS.includes(this.monster.id) && this.player.buffs.markOfDarknessSpell && this.player.spell?.name.includes('Demonbane')) {
         const demonbaneFactor = this.wearing('Purging staff') ? 50 : 25;
-        return new AttackDistribution([HitDistribution.single(1.0, [new Hitsplat(max + Math.trunc(Math.trunc(max * demonbaneFactor / 100) * this.demonbaneVulnerability() / 100))])]);
+        dist = new AttackDistribution([HitDistribution.single(1.0, [new Hitsplat(max + Math.trunc(Math.trunc(max * demonbaneFactor / 100) * this.demonbaneVulnerability() / 100))])]);
       }
 
-      return new AttackDistribution([HitDistribution.single(1.0, [new Hitsplat(dist.getMax())])]);
+      dist = new AttackDistribution([HitDistribution.single(1.0, [new Hitsplat(dist.getMax())])]);
+    }
+
+    if (this.wearing(['Sanguinesti staff', 'Holy sanguinesti staff'])) {
+      dist = dist.transform(
+        (h) => new HitDistribution([
+          new WeightedHit(0.8, [h]),
+          new WeightedHit(0.2, [new Hitsplat(h.damage + 8, h.accurate)]),
+        ]),
+        { transformInaccurate: false },
+      );
     }
 
     if (process.env.NEXT_PUBLIC_HIT_DIST_SANITY_CHECK) {
