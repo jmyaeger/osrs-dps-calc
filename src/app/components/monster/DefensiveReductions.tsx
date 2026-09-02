@@ -11,7 +11,7 @@ import dwh from '@/public/img/def_reductions/Dragon_warhammer.webp';
 import arc from '@/public/img/def_reductions/Arclight.png';
 import emberlight from '@/public/img/def_reductions/Emberlight.png';
 import seercull from '@/public/img/def_reductions/Seercull.png';
-import ayak from '@/public/img/def_reductions/Eye_of_ayak.png';
+import ayak from '@/public/img/def_reductions/Eye_of_Ayak.png';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '@/state';
 import { getDefenceFloor } from '@/lib/scaling/DefenceReduction';
