@@ -104,9 +104,9 @@ const UNIMPLEMENTED_SPECS: string[] = [
   'Excalibur',
   'Granite maul',
   'Rune claws',
-  'Staff of balance',
-  'Staff of light',
-  'Staff of the dead',
+  'Staff of Balance',
+  'Staff of Light',
+  'Staff of the Dead',
   'Toxic staff of the dead',
   'Ursine chainmace',
   'Zamorakian hasta',
@@ -606,7 +606,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [5, 4]);
       } else if (this.wearing('Rosewood blowpipe')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [4, 5]);
-      } else if (this.wearing('Tonalztics of ralos')) {
+      } else if (this.wearing('Tonalztics of Ralos')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
       }
     }
@@ -752,7 +752,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       maxHit = this.trackAdd(DetailKey.MAX_HIT_RATBANE, maxHit, 10);
     }
 
-    if (this.wearing('Tonalztics of ralos')) {
+    if (this.wearing('Tonalztics of Ralos')) {
       // rolls 75% of max hit, but can hit twice
       // double hit is implemented in hit distribution
       maxHit = this.trackFactor(DetailKey.MAX_HIT_TONALZTICS, maxHit, [3, 4]);
@@ -868,7 +868,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (this.isRevWeaponBuffApplicable()) {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_REV_WEAPON, attackRoll, [3, 2]);
     }
-    if (this.wearing('Tome of water') && (this.player.spell?.element === 'water' || isBindSpell(this.player.spell))) { // todo does this go here?
+    if (this.wearing('Tome of Water') && (this.player.spell?.element === 'water' || isBindSpell(this.player.spell))) { // todo does this go here?
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_TOME, attackRoll, [6, 5]);
     }
 
@@ -879,9 +879,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     if (this.opts.usingSpecialAttack) {
       if (this.isWearingAccursedSceptre()) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
-      } else if (this.wearing('Volatile nightmare staff')) {
+      } else if (this.wearing('Volatile Nightmare staff')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
-      } else if (this.wearing('Eye of ayak')) {
+      } else if (this.wearing('Eye of Ayak')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [2, 1]);
       } else if (this.wearing("Zorya's Tome")) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [5, 2]);
@@ -923,13 +923,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     } else if (this.wearing('Starter staff')) {
       maxHit = 8;
-    } else if (this.wearing(['Trident of the seas', 'Trident of the seas (e)'])) {
+    } else if (this.wearing(['Trident of the Seas', 'Trident of the Seas (e)'])) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3 - 5));
     } else if (this.wearing("Thammaron's sceptre")) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3 - 8));
     } else if (this.wearing('Accursed sceptre') || (this.wearing('Accursed sceptre (a)') && this.opts.usingSpecialAttack)) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3 - 6));
-    } else if (this.wearing(['Trident of the swamp', 'Trident of the swamp (e)'])) {
+    } else if (this.wearing(['Trident of the Swamp', 'Trident of the Swamp (e)'])) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3 - 2));
     } else if (this.wearing(['Sanguinesti staff', 'Holy sanguinesti staff'])) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3));
@@ -940,7 +940,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     } else if (this.wearing("Tumeken's shadow")) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) + 1);
-    } else if (this.wearing('Eye of ayak')) {
+    } else if (this.wearing('Eye of Ayak')) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) - 6);
     } else if (this.wearing("Zorya's Tome")) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) - 9);
@@ -950,9 +950,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       // although the +10 is technically a ratbane bonus, the weapon can't be used against non-rats
       // and shows this max hit against the combat dummy as well
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) - 5) + 10;
-    } else if (this.wearing('Eldritch nightmare staff') && this.opts.usingSpecialAttack) {
+    } else if (this.wearing('Eldritch Nightmare staff') && this.opts.usingSpecialAttack) {
       maxHit = Math.max(1, Math.min(44, 44 * Math.trunc(magicLevel / 99) + 1));
-    } else if (this.wearing('Volatile nightmare staff') && this.opts.usingSpecialAttack) {
+    } else if (this.wearing('Volatile Nightmare staff') && this.opts.usingSpecialAttack) {
       maxHit = Math.max(1, Math.min(58, 58 * Math.trunc(magicLevel / 99) + 1));
     } else if (this.wearing(['Crystal staff (basic)', 'Corrupted staff (basic)'])) {
       maxHit = 23;
@@ -979,7 +979,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     }
     this.track(DetailKey.MAX_HIT_BASE, maxHit);
 
-    if (this.opts.usingSpecialAttack && this.wearing('Eye of ayak')) {
+    if (this.opts.usingSpecialAttack && this.wearing('Eye of Ayak')) {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [13, 10]);
     }
 
@@ -1057,9 +1057,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       minHit = this.trackFactor(DetailKey.MIN_HIT_SUNFIRE, maxHit, [1, 10]);
     }
 
-    if ((this.wearing('Tome of fire') && this.player.equipment.shield?.version === 'Charged' && this.player.spell?.element === 'fire')
-      || (this.wearing('Tome of water') && this.player.equipment.shield?.version === 'Charged' && this.player.spell?.element === 'water')
-       || (this.wearing('Tome of earth') && this.player.equipment.shield?.version === 'Charged' && this.player.spell?.element === 'earth')) {
+    if ((this.wearing('Tome of Fire') && this.player.equipment.shield?.version === 'Charged' && this.player.spell?.element === 'fire')
+      || (this.wearing('Tome of Water') && this.player.equipment.shield?.version === 'Charged' && this.player.spell?.element === 'water')
+       || (this.wearing('Tome of Earth') && this.player.equipment.shield?.version === 'Charged' && this.player.spell?.element === 'earth')) {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_TOME, maxHit, [11, 10]);
     }
 
@@ -1435,7 +1435,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       ]);
     }
 
-    if (style === 'ranged' && this.wearing('Tonalztics of ralos') && this.player.equipment.weapon?.version === 'Charged') {
+    if (style === 'ranged' && this.wearing('Tonalztics of Ralos') && this.player.equipment.weapon?.version === 'Charged') {
       // roll two independent hits
       if (!this.opts.usingSpecialAttack) {
         dist = new AttackDistribution([standardHitDist, standardHitDist]);
@@ -1714,7 +1714,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       } else if (this.wearing('Ivandis flail')) {
         dist = doEfaritay(dist);
         dist = dist.scaleDamage(6, 5);
-      } else if (this.wearing('Rod of ivandis') && !mattrs.includes(MonsterAttribute.VAMPYRE_3)) {
+      } else if (this.wearing('Rod of Ivandis') && !mattrs.includes(MonsterAttribute.VAMPYRE_3)) {
         dist = doEfaritay(dist);
         dist = dist.scaleDamage(11, 10);
       } else if (this.isWearingSilverWeapon() && mattrs.includes(MonsterAttribute.VAMPYRE_1)) {
@@ -2055,7 +2055,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       return this.getAttackSpeed() - 1;
     }
 
-    if (this.opts.usingSpecialAttack && this.wearing('Eye of ayak')) {
+    if (this.opts.usingSpecialAttack && this.wearing('Eye of Ayak')) {
       return 5;
     }
 

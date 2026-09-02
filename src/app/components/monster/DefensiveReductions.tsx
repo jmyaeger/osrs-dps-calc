@@ -6,7 +6,7 @@ import vuln from '@/public/img/def_reductions/Vulnerability.png';
 import bgs from '@/public/img/def_reductions/Bandos_godsword.webp';
 import sceptre from '@/public/img/def_reductions/Accursed sceptre.png';
 import elderMaul from '@/public/img/def_reductions/Elder_maul.png';
-import tonalztic from '@/public/img/def_reductions/Tonalztics_of_ralos.png';
+import tonalztic from '@/public/img/def_reductions/Tonalztics_of_Ralos.png';
 import dwh from '@/public/img/def_reductions/Dragon_warhammer.webp';
 import arc from '@/public/img/def_reductions/Arclight.png';
 import emberlight from '@/public/img/def_reductions/Emberlight.png';
@@ -118,7 +118,7 @@ const DefensiveReductions: React.FC = observer(() => {
           <span className="pl-2">
             <img src={tonalztic.src} width={18} className="inline-block" alt="" />
             {' '}
-            Tonalztics of ralos&apos; hits
+            Tonalztics of Ralos&apos; hits
           </span>
         </div>
         <div className="w-full">
@@ -160,7 +160,7 @@ const DefensiveReductions: React.FC = observer(() => {
           <span className="pl-2">
             <img src={ayak.src} width={18} className="inline-block" alt="" />
             {' '}
-            Eye of ayak spec damage
+            Eye of Ayak spec damage
           </span>
         </div>
         <Toggle

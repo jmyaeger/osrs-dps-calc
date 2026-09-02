@@ -110,7 +110,7 @@ const Changelog: React.FC = () => {
               Fixed a bug with salamander accuracy bonus and attack speed.
             </li>
             <li>
-              Added tonalztics of ralos to defensive reductions section of the monster panel.
+              Added tonalztics of Ralos to defensive reductions section of the monster panel.
             </li>
           </ChangelogEntry>
           <ChangelogEntry date="7 June 2024">

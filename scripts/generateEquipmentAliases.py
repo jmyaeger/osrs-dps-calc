@@ -6,11 +6,12 @@ a way of bootstrapping that file.
 Written for Python 3.9.
 """
 
-from collections import namedtuple
-import requests
-import urllib.parse
-import re
 import json
+import re
+import urllib.parse
+from collections import namedtuple
+
+import requests
 
 FILE_NAME = "../src/lib/EquipmentAliases.ts"
 MAPPING_DICT_FILE_NAME = "../cdn/json/equipment_aliases.json"
@@ -106,16 +107,16 @@ one_off_renames = {
     "Frozen abyssal whip": "Abyssal whip",
     "Holy ghrazi rapier": "Ghrazi rapier",
     "Holy sanguinesti staff": "Sanguinesti staff",
-    "Holy scythe of vitur": "Scythe of vitur",
-    "Sanguine scythe of vitur": "Scythe of vitur",
+    "Holy scythe of vitur": "Scythe of Vitur",
+    "Sanguine scythe of vitur": "Scythe of Vitur",
     "Dragon hunter crossbow (b)": "Dragon hunter crossbow",
     "Obsidian cape (r)": "Obsidian cape",
     "Elidinis' ward (or)": "Elidinis' ward (f)",
     "Amulet of rancour (s)": "Amulet of rancour",
-    "Trident of the seas (e) (o)": "Trident of the seas (e)",
-    "Trident of the seas (o)": "Trident of the seas",
-    "Trident of the swamp (e) (o)": "Trident of the swamp (e)",
-    "Trident of the swamp (o)": "Trident of the swamp",
+    "Trident of the Seas (e) (o)": "Trident of the Seas (e)",
+    "Trident of the Seas (o)": "Trident of the Seas",
+    "Trident of the Swamp (e) (o)": "Trident of the Swamp (e)",
+    "Trident of the Swamp (o)": "Trident of the Swamp",
     "Iban's staff (o)": "Iban's staff",
     "Iban's staff (u) (o)": "Iban's staff (u)",
     "Soulreaper axe (o)": "Soulreaper axe",

@@ -148,8 +148,8 @@ const ammoForRangedWeapons: { [weapon: number]: number[] } = {
   24123: [], // Crystal bow (new)
   27652: [], // Webweaver bow (empty)
   27655: [], // Webweaver bow (charged)
-  25862: [], // Bow of faerdhinen (empty)
-  25865: [], // Bow of faerdhinen (charged)
+  25862: [], // Bow of Faerdhinen (empty)
+  25865: [], // Bow of Faerdhinen (charged)
   10149: [10142], // Swamp lizard, Guam tar
   10146: [10143], // Orange salamander, Marrentill tar
   10147: [10144], // Red salamander, Tarromin tar
@@ -249,7 +249,7 @@ export const calculateAttackSpeed = (player: Player, monster: Monster): number =
   if (player.style.type === 'ranged' && player.style.stance === 'Rapid') {
     attackSpeed -= 1;
   } else if (CAST_STANCES.includes(player.style.stance)) {
-    if (player.equipment.weapon?.name === 'Harmonised nightmare staff'
+    if (player.equipment.weapon?.name === 'Harmonised Nightmare staff'
       && player.spell?.spellbook === 'standard'
       && player.style.stance !== 'Manual Cast') {
       attackSpeed = 4;
@@ -367,7 +367,7 @@ export const calculateEquipmentBonusesFromGear = (player: Player, monster: Monst
 
   const cape = playerEquipment.cape;
   const dizanasQuiverCharged = cape?.name === "Dizana's max cape"
-    || cape?.name === "Blessed dizana's quiver"
+    || cape?.name === "Blessed Dizana's quiver"
     || (cape?.name === "Dizana's quiver" && cape?.version === 'Charged');
   if (dizanasQuiverCharged && ammoApplicability(player.equipment.weapon?.id, player.equipment.ammo?.id) === AmmoApplicability.INCLUDED) {
     totals.offensive.ranged += 10;
@@ -414,7 +414,7 @@ export const WEAPON_SPEC_COSTS: { [canonicalName: string]: number } = {
   'Accursed sceptre (a)': 50,
   'Arclight': 50,
   'Emberlight': 50,
-  'Tonalztics of ralos': 50,
+  'Tonalztics of Ralos': 50,
   'Dragon claws': 50,
   'Voidwaker': 50,
   'Toxic blowpipe': 50,
@@ -427,13 +427,13 @@ export const WEAPON_SPEC_COSTS: { [canonicalName: string]: number } = {
   'Abyssal bludgeon': 50,
   'Abyssal whip': 50,
   'Barrelchest anchor': 50,
-  'Eye of ayak': 50,
+  'Eye of Ayak': 50,
   "Zorya's Tome": 50,
 
   'Magic shortbow': 55,
   'Dark bow': 55,
-  'Eldritch nightmare staff': 55,
-  'Volatile nightmare staff': 55,
+  'Eldritch Nightmare staff': 55,
+  'Volatile Nightmare staff': 55,
   'Dragon scimitar': 55,
 
   'Granite hammer': 60,

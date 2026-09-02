@@ -39,10 +39,10 @@ const EquipmentPresets: React.FC = () => {
           name: v.label,
           equipment: {
             head: findItemById(23971), // Crystal helm
-            cape: findItemById(28955), // Blessed dizana's quiver
+            cape: findItemById(28955), // Blessed Dizana's quiver
             neck: findItemById(19547), // Necklace of anguish
             ammo: findItemById(22947), // Rada's blessing 4
-            weapon: findItemById(25865), // Bow of faerdhinen
+            weapon: findItemById(25865), // Bow of Faerdhinen
             body: findItemById(23975), // Crystal body
             legs: findItemById(23979), // Crystal legs
             hands: findItemById(26235), // Zaryte vambraces
@@ -89,7 +89,7 @@ const EquipmentPresets: React.FC = () => {
           name: v.label,
           equipment: {
             head: findItemById(21018), // Ancestral hat
-            cape: findItemById(21791), // Imbued saradomin cape
+            cape: findItemById(21791), // Imbued Saradomin cape
             neck: findItemById(12002), // Occult necklace
             ammo: findItemById(22947), // Rada's blessing 4
             body: findItemById(21021), // Ancestral robe top
@@ -124,7 +124,7 @@ const EquipmentPresets: React.FC = () => {
           name: v.label,
           equipment: {
             head: findItemById(27235), // Masori mask (f)
-            cape: findItemById(28955), // Blessed dizana's quiver
+            cape: findItemById(28955), // Blessed Dizana's quiver
             neck: findItemById(19547), // Necklace of anguish
             ammo: findItemById(11212), // Dragon arrow
             body: findItemById(27238), // Masori body (f)
@@ -141,7 +141,7 @@ const EquipmentPresets: React.FC = () => {
           name: v.label,
           equipment: {
             head: findItemById(4708), // Ahrim's hood#Undamaged
-            cape: findItemById(21791), // Imbued saradomin cape
+            cape: findItemById(21791), // Imbued Saradomin cape
             neck: findItemById(12002), // Occult necklace
             ammo: findItemById(20229), // Honourable blessing
             body: findItemById(4712), // Ahrim's robetop#Undamaged
@@ -157,7 +157,7 @@ const EquipmentPresets: React.FC = () => {
         newPlayer = {
           name: v.label,
           equipment: {
-            head: findItemById(10828), // Helm of neitiznot
+            head: findItemById(10828), // Helm of Neitiznot
             cape: findItemById(6570), // Fire cape
             neck: findItemById(6585), // Amulet of fury
             ammo: findItemById(20229), // Honourable blessing
@@ -193,7 +193,7 @@ const EquipmentPresets: React.FC = () => {
           name: v.label,
           equipment: {
             head: findItemById(11663), // Void mage helm
-            cape: findItemById(21791), // Imbued saradomin cape
+            cape: findItemById(21791), // Imbued Saradomin cape
             neck: findItemById(12002), // Occult necklace
             ammo: findItemById(22947), // Rada's blessing 4
             body: findItemById(13072), // Elite void top
@@ -228,7 +228,7 @@ const EquipmentPresets: React.FC = () => {
           name: v.label,
           equipment: {
             head: findItemById(11664), // Void ranger helm
-            cape: findItemById(28955), // Blessed dizana's quiver
+            cape: findItemById(28955), // Blessed Dizana's quiver
             neck: findItemById(19547), // Necklace of anguish
             ammo: findItemById(11212), // Dragon arrow
             body: findItemById(13072), // Elite void top
