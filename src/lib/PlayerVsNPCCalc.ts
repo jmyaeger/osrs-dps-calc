@@ -991,6 +991,14 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       .includes('bolt')) {
       maxHit += 3;
     }
+    if (
+      (this.wearing(['Elemental amulet', 'Amulet of fire']) && spell?.element === 'fire')
+      || (this.wearing(['Elemental amulet', 'Amulet of water']) && spell?.element === 'water')
+      || (this.wearing(['Elemental amulet', 'Amulet of earth']) && spell?.element === 'earth')
+      || (this.wearing(['Elemental amulet', 'Amulet of air']) && spell?.element === 'air')
+    ) {
+      maxHit += 2;
+    }
     if (this.isChargeSpellApplicable()) {
       maxHit += 10;
     }
