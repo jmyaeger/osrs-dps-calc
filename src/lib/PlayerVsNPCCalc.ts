@@ -1491,10 +1491,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
       for (let successfulRolls = 1; successfulRolls <= 4; successfulRolls++) {
         const low = Math.trunc(max * (2 * successfulRolls + 5) / 10);
-        let high = Math.trunc(max * (2 * successfulRolls + 9) / 10);
-        if (successfulRolls === 4) {
-          high -= 1;
-        }
+        const high = Math.trunc(max * (2 * successfulRolls + 9) / 10);
 
         // Assuming based on in-game data that defense is re-rolled each time (like fang inside ToA)
         const prob = binomialProbability(4, successfulRolls, acc);
