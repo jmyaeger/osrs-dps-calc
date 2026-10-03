@@ -444,6 +444,7 @@ export const WEAPON_SPEC_COSTS: { [canonicalName: string]: number } = {
 
   'Brine sabre': 75,
   'Zaryte crossbow': 75,
+  "Zanik's modified crossbow": 75,
 
   'Saradomin sword': 100,
   'Seercull': 100,
