@@ -48,6 +48,7 @@ export const INITIAL_MONSTER_INPUTS: Monster['inputs'] = {
     tonalztic: 0,
     seercull: 0,
     ayak: 0,
+    zanik: 0,
   },
 };
 

@@ -83,6 +83,13 @@ const applyDefenceReductions = (m: Monster): Monster => {
     });
   };
 
+  const zanikDmg = reductions.zanik;
+  if (zanikDmg > 0) {
+    m = newSkills(m, {
+      def: m.skills.def - Math.trunc(m.skills.def / 10) - zanikDmg,
+    });
+  }
+
   if (reductions.accursed) {
     m = newSkills(m, {
       def: Math.trunc(m.skills.def * 17 / 20),

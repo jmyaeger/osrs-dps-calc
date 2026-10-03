@@ -12,6 +12,7 @@ import arc from '@/public/img/def_reductions/Arclight.png';
 import emberlight from '@/public/img/def_reductions/Emberlight.png';
 import seercull from '@/public/img/def_reductions/Seercull.png';
 import ayak from '@/public/img/def_reductions/Eye_of_Ayak.png';
+import defence from '@/public/img/bonuses/ranged_heavy.webp';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '@/state';
 import { getDefenceFloor } from '@/lib/scaling/DefenceReduction';
@@ -161,6 +162,20 @@ const DefensiveReductions: React.FC = observer(() => {
             <img src={ayak.src} width={18} className="inline-block" alt="" />
             {' '}
             Eye of Ayak spec damage
+          </span>
+        </div>
+        <div className="w-full">
+          <NumberInput
+            className="form-control w-1/6"
+            required
+            min={0}
+            value={defenceReductions.zanik}
+            onChange={(v) => store.updateMonster({ inputs: { defenceReductions: { zanik: v } } })}
+          />
+          <span className="pl-2">
+            <img src={defence.src} width={18} className="inline-block" alt="" />
+            {' '}
+            Zanik&apos;s crossbow spec damage
           </span>
         </div>
         <Toggle

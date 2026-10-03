@@ -78,6 +78,7 @@ import {
 } from '@/lib/dists/bolts';
 import { burningClawDoT, burningClawSpec, dClawDist } from '@/lib/dists/claws';
 import { ExpectedBurnResult, getExpectedBurn } from '@/lib/Burn';
+import { INITIAL_MONSTER_INPUTS } from './Monsters';
 
 const PARTIALLY_IMPLEMENTED_SPECS: string[] = [
   'Ancient godsword',
@@ -89,7 +90,7 @@ const UNIMPLEMENTED_SPECS: string[] = [
   'Abyssal tentacle',
   'Ancient mace',
   'Armadyl crossbow',
-  'Blue moon spear',
+  'Blue Moon spear',
   'Bone dagger',
   'Brine sabre',
   'Darklight',
@@ -107,7 +108,7 @@ const UNIMPLEMENTED_SPECS: string[] = [
   'Staff of Balance',
   'Staff of Light',
   'Staff of the Dead',
-  'Toxic staff of the dead',
+  'Toxic Staff of the dead',
   'Ursine chainmace',
   'Zamorakian hasta',
   'Zamorakian spear',
@@ -768,6 +769,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [5, 4]);
       } else if (this.wearing('Rosewood blowpipe')) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [11, 10]);
+      } else if (this.wearing("Zanik's modified crossbow")) {
+        minHit = this.trackFactor(DetailKey.MIN_HIT_SPEC, maxHit, [1, 2]);
       }
     }
 
@@ -1260,6 +1263,23 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     const atk = this.getMaxAttackRoll();
     const def = this.getNPCDefenceRoll();
+
+    if (this.opts.usingSpecialAttack && this.wearing("Zanik's modified crossbow")) {
+      const unreducedDef = scaleMonster({
+        ...this.baseMonster,
+        inputs: {
+          ...this.baseMonster.inputs,
+          defenceReductions: INITIAL_MONSTER_INPUTS.defenceReductions,
+        },
+      }).skills.def;
+
+      if (
+        this.monster.inputs.monsterCurrentHp === this.monster.skills.hp
+        && this.monster.skills.def >= unreducedDef
+      ) {
+        return this.track(DetailKey.PLAYER_ACCURACY_FINAL, BaseCalc.getFixedAccuracyRoll(atk, def));
+      }
+    }
 
     if (this.opts.usingSpecialAttack && this.wearing('Sunspear')) {
       const specMaxHit = Math.trunc(this.getMinAndMax()[1]);
@@ -2031,7 +2051,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         return true;
       }
     }
-    // Eclipse moon clone is immune to non-melee attacks
+    // Eclipse Moon clone is immune to non-melee attacks
     if (ECLIPSE_MOON_IDS.includes(this.monster.id) && this.monster.version === 'Clone' && !this.isUsingMeleeStyle()) {
       return true;
     }
