@@ -2435,7 +2435,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const t2 = Math.trunc((3 * magic - factor) / 100);
     const t3 = Math.trunc((Math.trunc(3 * magic / 10) - (10 * factor)) ** 2 / 100);
 
-    const bonus = base + t2 - t3;
+    const bonus = Math.max(0, Math.min(base, base + t2 - t3));
     return Math.trunc(current * bonus / 100);
   };
 
