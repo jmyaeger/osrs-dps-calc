@@ -62,7 +62,7 @@ import {
 } from '@/lib/Math';
 import { calculateAttackSpeed, WEAPON_SPEC_COSTS } from '@/lib/Equipment';
 import BaseCalc, { CalcOpts, InternalOpts } from '@/lib/BaseCalc';
-import { scaleMonster, scaleMonsterHpOnly } from '@/lib/MonsterScaling';
+import { scaleMonster } from '@/lib/MonsterScaling';
 import { CombatStyleType, getRangedDamageType } from '@/types/PlayerCombatStyle';
 import { range, some, sum } from 'd3-array';
 import { FeatureStatus } from '@/utils';
@@ -2171,7 +2171,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       } else {
         const subCalc = this.noInitSubCalc(
           this.player,
-          scaleMonsterHpOnly({
+          scaleMonster({
             ...this.baseMonster,
             inputs: {
               ...this.baseMonster.inputs,
@@ -2384,7 +2384,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     const subCalc = this.noInitSubCalc(
       this.player,
-      scaleMonsterHpOnly({
+      scaleMonster({
         ...this.baseMonster,
         inputs: {
           ...this.baseMonster.inputs,
