@@ -94,24 +94,6 @@ const ExtraOptions: React.FC = observer(() => {
             </>
           )}
         />
-        <Toggle
-          checked={player.buffs.hitZoryasTomeSpec}
-          setChecked={(c) => store.updatePlayer({ buffs: { hitZoryasTomeSpec: c } })}
-          label={(
-            <>
-              {' '}
-              Hit Zorya&apos;s Tome spec
-              {' '}
-              <span
-                className="align-super underline decoration-dotted cursor-help text-xs text-gray-300"
-                data-tooltip-id="tooltip"
-                data-tooltip-content="Player has hit a Zorya's Tome spec and is under the effect of its buff."
-              >
-                ?
-              </span>
-            </>
-              )}
-        />
         <div className="w-full">
           <NumberInput
             className="form-control w-12"

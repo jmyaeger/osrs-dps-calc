@@ -141,10 +141,6 @@ export interface Player extends EquipmentStats {
      * @see https://oldschool.runescape.wiki/w/Sunfire_rune
      */
     usingSunfireRunes: boolean;
-    /**
-     * Whether the player is currently receiving the buff from a Zorya's Tome special attack.
-     */
-    hitZoryasTomeSpec: boolean;
   };
   spell: Spell | null;
 }

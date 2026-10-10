@@ -875,10 +875,6 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_TOME, attackRoll, [6, 5]);
     }
 
-    if (this.wearing("Zorya's Tome") && this.player.buffs.hitZoryasTomeSpec) {
-      attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_ZORYA, attackRoll, [5, 2]);
-    }
-
     if (this.opts.usingSpecialAttack) {
       if (this.isWearingAccursedSceptre()) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
@@ -986,7 +982,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [13, 10]);
     }
 
-    if (this.wearing("Zorya's Tome") && (this.opts.usingSpecialAttack || this.player.buffs.hitZoryasTomeSpec)) {
+    if (this.wearing("Zorya's Tome") && this.opts.usingSpecialAttack) {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [8, 5]);
     }
 
@@ -2084,8 +2080,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       return 5;
     }
 
-    if (this.wearing("Zorya's Tome") && this.player.buffs.hitZoryasTomeSpec) {
-      return 2;
+    if (this.wearing("Zorya's Tome") && this.opts.usingSpecialAttack) {
+      const speed = this.getAttackSpeed();
+      return speed + 3 * this.getDisplayHitChance() * (speed - 1);
     }
 
     return this.getAttackSpeed();
@@ -2095,6 +2092,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
    * Returns the expected damage per tick, based on the player's attack speed.
    */
   public getDpt() {
+    if (this.wearing("Zorya's Tome") && this.opts.usingSpecialAttack) {
+      const expectedCasts = 1 + 3 * this.getDisplayHitChance();
+      return this.getExpectedDamage() * expectedCasts / this.getExpectedAttackSpeed();
+    }
     return this.getExpectedDamage() / this.getExpectedAttackSpeed();
   }
 
