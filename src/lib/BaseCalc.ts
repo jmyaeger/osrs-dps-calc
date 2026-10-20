@@ -683,6 +683,10 @@ export default class BaseCalc {
       return 120;
     } if (YAMA_VOID_FLARE_IDS.includes(this.monster.id)) {
       return 200;
+    } if (this.monster.name === 'Ocellus' || this.monster.name === 'Xarth') {
+      return 80;
+    } if (this.monster.name === 'Dreadnoth the Jellied') {
+      return 25;
     }
 
     return 100;
