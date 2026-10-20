@@ -463,9 +463,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
-    if (this.wearing('TzHaar-Ket Breaker') && (this.player.style.name === 'Thrust (Aggressive)' || this.player.style.name === 'Thrust (Controlled)')) {
+    if (this.wearing('Obligator') && (this.player.style.name === 'Thrust (Aggressive)' || this.player.style.name === 'Thrust (Accurate)')) {
       const modifier = 20 * Math.max(0, Math.min(2, this.monster.size - 1));
-      maxHit = this.trackFactor(DetailKey.MAX_HIT_BREAKER, maxHit, [100 + modifier, 100]);
+      maxHit = this.trackFactor(DetailKey.MAX_HIT_OBLIGATOR, maxHit, [100 + modifier, 100]);
     }
 
     if (this.opts.usingSpecialAttack) {
@@ -882,7 +882,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [3, 2]);
       } else if (this.wearing('Eye of Ayak')) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [2, 1]);
-      } else if (this.wearing("Zorya's Tome")) {
+      } else if (this.wearing("Zorya's tome")) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [5, 2]);
       }
     }
@@ -941,7 +941,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) + 1);
     } else if (this.wearing('Eye of Ayak')) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) - 6);
-    } else if (this.wearing("Zorya's Tome")) {
+    } else if (this.wearing("Zorya's tome")) {
       maxHit = Math.max(1, Math.trunc(magicLevel / 3) - 10);
     } else if (this.wearing('Warped sceptre')) {
       maxHit = Math.max(1, Math.trunc((8 * magicLevel + 96) / 37));
@@ -982,7 +982,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [13, 10]);
     }
 
-    if (this.wearing("Zorya's Tome") && this.opts.usingSpecialAttack) {
+    if (this.wearing("Zorya's tome") && this.opts.usingSpecialAttack) {
       maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [8, 5]);
     }
 
@@ -1612,7 +1612,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       dist = new AttackDistribution(hits);
     }
 
-    if (this.isUsingMeleeStyle() && this.wearing('TzHaar-Ket Breaker') && (this.player.style.name === 'Thrust (Aggressive)' || this.player.style.name === 'Thrust (Controlled)')) {
+    if (this.isUsingMeleeStyle() && this.wearing('Obligator') && (this.player.style.name === 'Thrust (Aggressive)' || this.player.style.name === 'Thrust (Accurate)')) {
       const defs = this.monster.defensive;
       const rolls = 2 + ([defs.stab, defs.slash]
         .filter((d) => d > defs.crush).length);
@@ -1773,9 +1773,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     }
 
     if (this.wearing('Ascension crossbows') && this.player.style.type === 'ranged') {
-      if (this.wearing('Diamond fractured bolts (e)')) {
+      if (this.wearing('Diamond ascension bolts (e)')) {
         dist = dist.transform(diamondBolts(boltContext));
-      } else if (this.wearing('Onyx fractured bolts (e)')) {
+      } else if (this.wearing('Onyx ascension bolts (e)')) {
         dist = dist.transform(onyxBolts(boltContext));
       }
     }
@@ -2080,7 +2080,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       return 5;
     }
 
-    if (this.wearing("Zorya's Tome") && this.opts.usingSpecialAttack) {
+    if (this.wearing("Zorya's tome") && this.opts.usingSpecialAttack) {
       const speed = this.getAttackSpeed();
       return speed + 3 * this.getDisplayHitChance() * (speed - 1);
     }
@@ -2092,7 +2092,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
    * Returns the expected damage per tick, based on the player's attack speed.
    */
   public getDpt() {
-    if (this.wearing("Zorya's Tome") && this.opts.usingSpecialAttack) {
+    if (this.wearing("Zorya's tome") && this.opts.usingSpecialAttack) {
       const expectedCasts = 1 + 3 * this.getDisplayHitChance();
       return this.getExpectedDamage() * expectedCasts / this.getExpectedAttackSpeed();
     }

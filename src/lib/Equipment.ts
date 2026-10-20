@@ -259,7 +259,7 @@ export const calculateAttackSpeed = (player: Player, monster: Monster): number =
     } else {
       attackSpeed = 5;
     }
-  } else if (player.equipment.weapon?.name === 'TzHaar-Ket Breaker' && player.style.name === 'Smash') {
+  } else if (player.equipment.weapon?.name === 'Obligator' && player.style.name === 'Smash') {
     attackSpeed = 3;
   }
 
@@ -429,7 +429,7 @@ export const WEAPON_SPEC_COSTS: { [canonicalName: string]: number } = {
   'Abyssal whip': 50,
   'Barrelchest anchor': 50,
   'Eye of Ayak': 50,
-  "Zorya's Tome": 50,
+  "Zorya's tome": 50,
 
   'Magic shortbow': 55,
   'Dark bow': 55,

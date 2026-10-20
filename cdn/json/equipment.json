@@ -13733,8 +13733,40 @@
     "isTwoHanded": false
   },
   {
+    "name": "Ascension bolts",
+    "id": 34684,
+    "weight": 0,
+    "version": "",
+    "slot": "ammo",
+    "image": "Ascension bolts 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 53,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Ascension crossbows",
-    "id": 99996,
+    "id": 34681,
+    "weight": 6,
     "version": "",
     "slot": "weapon",
     "image": "Ascension crossbows.png",
@@ -61720,6 +61752,68 @@
     "isTwoHanded": false
   },
   {
+    "name": "Diamond ascension bolts",
+    "id": 34690,
+    "weight": 0,
+    "version": "",
+    "slot": "ammo",
+    "image": "Diamond ascension bolts 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 58,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Diamond ascension bolts (e)",
+    "id": 34696,
+    "weight": 0,
+    "version": "",
+    "slot": "ammo",
+    "image": "Diamond ascension bolts (e) 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 58,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Diamond bolts",
     "id": 9340,
     "weight": 0,
@@ -61855,36 +61949,6 @@
     "bonuses": {
       "str": 0,
       "ranged_str": 122,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Diamond fractured bolts (e)",
-    "id": 99998,
-    "version": "",
-    "slot": "ammo",
-    "image": "Diamond fractured bolts (e).png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 58,
       "magic_str": 0,
       "prayer": 0
     },
@@ -74905,36 +74969,6 @@
     "bonuses": {
       "str": 0,
       "ranged_str": 0,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Fractured bolts",
-    "id": 99997,
-    "version": "",
-    "slot": "ammo",
-    "image": "Fractured bolts.png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 53,
       "magic_str": 0,
       "prayer": 0
     },
@@ -91354,6 +91388,223 @@
     "isTwoHanded": false
   },
   {
+    "name": "Imbued ancient cape",
+    "id": 34635,
+    "weight": 0.453,
+    "version": "Broken",
+    "slot": "cape",
+    "image": "Imbued ancient cape (broken).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 20,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 15,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 3,
+      "slash": 3,
+      "crush": 3,
+      "magic": 15,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Imbued ancient cape",
+    "id": 34637,
+    "weight": 0.453,
+    "version": "Locked",
+    "slot": "cape",
+    "image": "Imbued ancient cape.png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 20,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 15,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 3,
+      "slash": 3,
+      "crush": 3,
+      "magic": 15,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Imbued ancient cape",
+    "id": 34633,
+    "weight": 0.453,
+    "version": "Normal",
+    "slot": "cape",
+    "image": "Imbued ancient cape.png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 20,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 15,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 3,
+      "slash": 3,
+      "crush": 3,
+      "magic": 15,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Imbued ancient cape (Deadman)",
+    "id": 34607,
+    "weight": 0.453,
+    "version": "",
+    "slot": "cape",
+    "image": "Imbued ancient cape (Deadman).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 20,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 15,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 3,
+      "slash": 3,
+      "crush": 3,
+      "magic": 15,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Imbued ancient max cape",
+    "id": 34629,
+    "weight": 0.453,
+    "version": "Broken",
+    "slot": "cape",
+    "image": "Imbued ancient max cape (broken).png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Imbued ancient max cape",
+    "id": 34625,
+    "weight": 0.453,
+    "version": "Normal",
+    "slot": "cape",
+    "image": "Imbued ancient max cape.png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 20,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 15,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 3,
+      "slash": 3,
+      "crush": 3,
+      "magic": 15,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Imbued ancient max hood",
+    "id": 34627,
+    "weight": 0.453,
+    "version": "",
+    "slot": "head",
+    "image": "Imbued ancient max hood.png",
+    "speed": 0,
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Imbued tephra",
     "id": 23907,
     "weight": 0,
@@ -99378,6 +99629,161 @@
       "slash": 10,
       "crush": 10,
       "magic": 20,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Living record (tier 1)",
+    "id": 34659,
+    "weight": 0.453,
+    "version": "",
+    "slot": "cape",
+    "image": "Living record (tier 1).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Living record (tier 2)",
+    "id": 34661,
+    "weight": 0.453,
+    "version": "",
+    "slot": "cape",
+    "image": "Living record (tier 2).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Living record (tier 3)",
+    "id": 34663,
+    "weight": 0.453,
+    "version": "",
+    "slot": "cape",
+    "image": "Living record (tier 3).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Living record (tier 4)",
+    "id": 34665,
+    "weight": 0.453,
+    "version": "",
+    "slot": "cape",
+    "image": "Living record (tier 4).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Living record (tier 5)",
+    "id": 34667,
+    "weight": 0.453,
+    "version": "",
+    "slot": "cape",
+    "image": "Living record (tier 5).png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
       "ranged": 0
     },
     "isTwoHanded": false
@@ -110264,6 +110670,68 @@
     "isTwoHanded": false
   },
   {
+    "name": "Obligator",
+    "id": 34715,
+    "weight": 4.989,
+    "version": "Charged",
+    "slot": "weapon",
+    "image": "Obligator.png",
+    "speed": 5,
+    "category": "Extending Chain Mace",
+    "bonuses": {
+      "str": 40,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 3
+    },
+    "offensive": {
+      "stab": 22,
+      "slash": -8,
+      "crush": 120,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 16,
+      "crush": 0,
+      "magic": 3,
+      "ranged": 8
+    },
+    "isTwoHanded": true
+  },
+  {
+    "name": "Obligator",
+    "id": 34717,
+    "weight": 4.989,
+    "version": "Uncharged",
+    "slot": "weapon",
+    "image": "Obligator (uncharged).png",
+    "speed": 5,
+    "category": "Extending Chain Mace",
+    "bonuses": {
+      "str": 40,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": 3
+    },
+    "offensive": {
+      "stab": 22,
+      "slash": -8,
+      "crush": 120,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 16,
+      "crush": 0,
+      "magic": 3,
+      "ranged": 8
+    },
+    "isTwoHanded": true
+  },
+  {
     "name": "Obsidian cape",
     "id": 6568,
     "weight": 1.814,
@@ -110853,6 +111321,68 @@
     "isTwoHanded": false
   },
   {
+    "name": "Onyx ascension bolts",
+    "id": 34702,
+    "weight": 0,
+    "version": "",
+    "slot": "ammo",
+    "image": "Onyx ascension bolts 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 58,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
+    "name": "Onyx ascension bolts (e)",
+    "id": 34708,
+    "weight": 0,
+    "version": "",
+    "slot": "ammo",
+    "image": "Onyx ascension bolts (e) 5.png",
+    "speed": 0,
+    "category": "",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 58,
+      "magic_str": 0,
+      "prayer": 0
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  },
+  {
     "name": "Onyx bolts",
     "id": 9342,
     "weight": 0,
@@ -110988,36 +111518,6 @@
     "bonuses": {
       "str": 0,
       "ranged_str": 122,
-      "magic_str": 0,
-      "prayer": 0
-    },
-    "offensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 0,
-      "crush": 0,
-      "magic": 0,
-      "ranged": 0
-    },
-    "isTwoHanded": false
-  },
-  {
-    "name": "Onyx fractured bolts (e)",
-    "id": 99999,
-    "version": "",
-    "slot": "ammo",
-    "image": "Onyx fractured bolts (e).png",
-    "speed": 0,
-    "category": "",
-    "bonuses": {
-      "str": 0,
-      "ranged_str": 58,
       "magic_str": 0,
       "prayer": 0
     },
@@ -123842,12 +124342,13 @@
   },
   {
     "name": "Rondache",
-    "id": -16,
+    "id": 34719,
+    "weight": 4.122,
     "version": "",
     "slot": "shield",
     "image": "Rondache.png",
     "speed": 0,
-    "category": "",
+    "category": "Unarmed",
     "bonuses": {
       "str": 8,
       "ranged_str": 0,
@@ -153971,36 +154472,6 @@
     "isTwoHanded": false
   },
   {
-    "name": "TzHaar-Ket Breaker",
-    "id": -17,
-    "version": "",
-    "slot": "weapon",
-    "image": "TzHaar-Ket Breaker.png",
-    "speed": 5,
-    "category": "Breaker",
-    "bonuses": {
-      "str": 40,
-      "ranged_str": 0,
-      "magic_str": 0,
-      "prayer": 3
-    },
-    "offensive": {
-      "stab": 22,
-      "slash": -8,
-      "crush": 120,
-      "magic": 0,
-      "ranged": 0
-    },
-    "defensive": {
-      "stab": 0,
-      "slash": 10,
-      "crush": 0,
-      "magic": 3,
-      "ranged": 8
-    },
-    "isTwoHanded": true
-  },
-  {
     "name": "Tzhaar-ket-em",
     "id": 6527,
     "weight": 1.814,
@@ -167764,13 +168235,45 @@
     "isTwoHanded": false
   },
   {
-    "name": "Zorya's Tome",
-    "id": -18,
-    "version": "",
+    "name": "Zorya's tome",
+    "id": 34725,
+    "weight": 5,
+    "version": "Charged",
     "slot": "weapon",
-    "image": "Zorya's Tome.png",
+    "image": "Zorya's tome.png",
     "speed": 3,
-    "category": "Powered Staff",
+    "category": "Unarmed",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 150,
+      "prayer": 2
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 45,
+      "ranged": 0
+    },
+    "defensive": {
+      "stab": 1,
+      "slash": 5,
+      "crush": 5,
+      "magic": 10,
+      "ranged": 0
+    },
+    "isTwoHanded": true
+  },
+  {
+    "name": "Zorya's tome",
+    "id": 34727,
+    "weight": 4,
+    "version": "Uncharged",
+    "slot": "weapon",
+    "image": "Zorya's tome (uncharged).png",
+    "speed": 3,
+    "category": "Unarmed",
     "bonuses": {
       "str": 0,
       "ranged_str": 0,

@@ -563,11 +563,10 @@ export const CombatStyleMap: { [k in EquipmentCategory]: { [k: string]: { image:
     Kick: { image: '248' },
     Block: { image: '249' },
   },
-  [EquipmentCategory.BREAKER]: {
-    'Thrust (Aggressive)': { image: '284' },
-    'Thrust (Controlled)': { image: '284' },
-    'Smash (Aggressive)': { image: '275' },
-    'Smash (Controlled)': { image: '275' },
+  [EquipmentCategory.EXTENDINGCHAINMACE]: {
+    'Thrust (Accurate)': { image: '266' },
+    'Thrust (Aggressive)': { image: '267' },
+    Smash: { image: '256' },
   },
 };
 
@@ -606,12 +605,11 @@ export const getCombatStylesForCategory = (style: EquipmentCategory): PlayerComb
     case EquipmentCategory.BLASTER:
       // TODO?
       return [];
-    case EquipmentCategory.BREAKER:
+    case EquipmentCategory.EXTENDINGCHAINMACE:
       ret = [
+        { name: 'Thrust (Accurate)', type: 'crush', stance: 'Accurate' },
         { name: 'Thrust (Aggressive)', type: 'crush', stance: 'Aggressive' },
-        { name: 'Thrust (Controlled)', type: 'crush', stance: 'Controlled' },
-        { name: 'Smash (Aggressive)', type: 'crush', stance: 'Aggressive' },
-        { name: 'Smash (Controlled)', type: 'crush', stance: 'Controlled' },
+        { name: 'Smash', type: 'crush', stance: 'Aggressive' },
       ];
       break;
     case EquipmentCategory.BOW:
