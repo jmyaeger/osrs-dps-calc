@@ -554,5 +554,5 @@ export const TFA_DEF_FLOOR_NPCS = [
   16652, // Ezekiel
   16667, // Moia
   16684, // Xarth
-  16674, 16677, // Ocellus
+  16673, 16674, 16677, // Ocellus
 ];
