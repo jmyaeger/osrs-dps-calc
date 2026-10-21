@@ -10,6 +10,7 @@ import {
   NIGHTMARE_IDS,
   P3_WARDEN_IDS,
   SOTETSEG_IDS,
+  TFA_DEF_FLOOR_NPCS,
   TOA_OBELISK_IDS,
   VARDORVIS_IDS,
   VERZIK_IDS, YAMA_IDS,
@@ -58,6 +59,9 @@ export const getDefenceFloor = (m: Monster): number => {
   }
   if (YAMA_IDS.includes(m.id)) {
     return 145;
+  }
+  if (TFA_DEF_FLOOR_NPCS.includes(m.id)) {
+    return Math.trunc(m.skills.def * 3 / 5);
   }
 
   // no limit
