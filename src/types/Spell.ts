@@ -68,5 +68,9 @@ export function canUseSunfireRunes(spell: Spell | null): boolean {
   return spell?.element === 'fire';
 }
 
+export function isElementalSpell(spell: Spell | null): boolean {
+  return !!spell?.element;
+}
+
 // The available spellbooks
 export type Spellbook = 'standard' | 'ancient' | 'lunar' | 'arceuus';

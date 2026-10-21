@@ -131,6 +131,7 @@ export const generateEmptyPlayer = (name?: string): Player => ({
     baAttackerLevel: 0,
     chinchompaDistance: 1,
     usingSunfireRunes: false,
+    hasElementalFragment: false,
   },
   spell: null,
 });

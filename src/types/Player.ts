@@ -141,6 +141,10 @@ export interface Player extends EquipmentStats {
      * @see https://oldschool.runescape.wiki/w/Sunfire_rune
      */
     usingSunfireRunes: boolean;
+    /**
+     * Whether the player has the relevant elemental spell fragment from The Fractured Archives, which increases the base max hit by 2.
+     */
+    hasElementalFragment: boolean;
   };
   spell: Spell | null;
 }

@@ -14,7 +14,9 @@ import {
   WeaponDelayProvider,
   WeightedHit,
 } from '@/lib/HitDist';
-import { canUseSunfireRunes, getSpellMaxHit, isBindSpell } from '@/types/Spell';
+import {
+  canUseSunfireRunes, getSpellMaxHit, isBindSpell, isElementalSpell,
+} from '@/types/Spell';
 import { PrayerData, PrayerMap } from '@/enums/Prayer';
 import { isVampyre, MonsterAttribute } from '@/enums/MonsterAttribute';
 import {
@@ -996,6 +998,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       || (this.wearing(['Elemental amulet', 'Amulet of earth']) && spell?.element === 'earth')
       || (this.wearing(['Elemental amulet', 'Amulet of air']) && spell?.element === 'air')
     ) {
+      maxHit += 2;
+    }
+    if (isElementalSpell(spell) && this.player.buffs.hasElementalFragment) {
       maxHit += 2;
     }
     if (this.isChargeSpellApplicable()) {

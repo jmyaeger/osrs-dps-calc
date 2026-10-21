@@ -6,7 +6,7 @@ import SpellSelect from '@/app/components/player/combat/SpellSelect';
 import Toggle from '@/app/components/generic/Toggle';
 import SpellContainer from '@/app/components/player/combat/SpellContainer';
 import UserIssueWarning from '@/app/components/generic/UserIssueWarning';
-import { canUseSunfireRunes } from '@/types/Spell';
+import { canUseSunfireRunes, isElementalSpell } from '@/types/Spell';
 import sunfire_rune from '@/public/img/misc/sunfire_rune.webp';
 
 const Combat: React.FC = observer(() => {
@@ -83,6 +83,17 @@ const Combat: React.FC = observer(() => {
                       store.updatePlayer({ buffs: { markOfDarknessSpell: v } });
                     }}
                     label="Using Mark of Darkness"
+                  />
+                )
+              }
+              {
+                isElementalSpell(spell) && (
+                  <Toggle
+                    checked={buffs.hasElementalFragment}
+                    setChecked={(v) => {
+                      store.updatePlayer({ buffs: { hasElementalFragment: v } });
+                    }}
+                    label="Has Elemental Spell Fragment"
                   />
                 )
               }
