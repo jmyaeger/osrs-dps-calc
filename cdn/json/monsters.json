@@ -31630,7 +31630,9 @@
       "slash": 20,
       "stab": 15
     },
-    "attributes": [],
+    "attributes": [
+      "demon"
+    ],
     "immunities": {
       "burn": null
     },
