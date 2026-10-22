@@ -540,6 +540,10 @@ export const YAMA_IDS = [14176];
 export const YAMA_PHASES = ['Tank using magic', 'Tank not using magic'];
 YAMA_IDS.forEach((id) => { MONSTER_PHASES_BY_ID[id] = YAMA_PHASES; });
 
+export const BORK_IDS = [16640];
+export const BORK_PHASES = ['Normal', 'Stunned'];
+BORK_IDS.forEach((id) => { MONSTER_PHASES_BY_ID[id] = BORK_PHASES; });
+
 export const INFINITE_HEALTH_MONSTERS: number[] = [
   14779, // gemstone crab
 ];

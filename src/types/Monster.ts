@@ -123,5 +123,7 @@ export interface Monster {
     tormentedDemonPhase?: typeof TD_PHASES[number];
 
     phase?: string;
+
+    smorksHp?: number;
   }
 }

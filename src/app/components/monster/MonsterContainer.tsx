@@ -359,6 +359,26 @@ const MonsterContainer: React.FC = observer(() => {
       );
     }
 
+    if (monster.name === 'Bork' && monster.inputs.phase !== 'Stunned') {
+      comps.push(
+        <div key="smorks-hp">
+          <h4 className="font-bold font-serif">
+            Smorks&apos; HP
+          </h4>
+          <div className="mt-2">
+            <NumberInput
+              value={monster.inputs.smorksHp ?? 100}
+              min={0}
+              max={100}
+              step={1}
+              onChange={(v) => store.updateMonster({ inputs: { smorksHp: v } })}
+            />
+            %
+          </div>
+        </div>,
+      );
+    }
+
     comps.push(
       <div key="monster-current-hp">
         <h4 className="font-bold font-serif">
