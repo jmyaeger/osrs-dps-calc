@@ -157,7 +157,7 @@ const ammoForRangedWeapons: { [weapon: number]: number[] } = {
   28834: [28837], // Tecu salamander, Irit tar
   28869: [28872, 28878], // Hunters' sunlight crossbow
   29000: [28991], // Eclipse atlatl
-  99996: [99997, 99998, 99999], // Ascension crossbows
+  34681: [34684, 34690, 34696, 34702, 34708], // Ascension crossbows
   99995: commonAmmoCategories().cb_t61, // Zanik's modified crossbow
 };
 
