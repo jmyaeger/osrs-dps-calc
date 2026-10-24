@@ -168242,7 +168242,7 @@
     "slot": "weapon",
     "image": "Zorya's tome.png",
     "speed": 3,
-    "category": "Unarmed",
+    "category": "Powered Staff",
     "bonuses": {
       "str": 0,
       "ranged_str": 0,
@@ -168273,7 +168273,7 @@
     "slot": "weapon",
     "image": "Zorya's tome (uncharged).png",
     "speed": 3,
-    "category": "Unarmed",
+    "category": "Powered Staff",
     "bonuses": {
       "str": 0,
       "ranged_str": 0,
