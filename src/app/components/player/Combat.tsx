@@ -8,6 +8,7 @@ import SpellContainer from '@/app/components/player/combat/SpellContainer';
 import UserIssueWarning from '@/app/components/generic/UserIssueWarning';
 import { canUseSunfireRunes, isElementalSpell } from '@/types/Spell';
 import sunfire_rune from '@/public/img/misc/sunfire_rune.webp';
+import elemental_fragment from '@/public/img/misc/Fragment_of_whispering_wind.png';
 
 const Combat: React.FC = observer(() => {
   const store = useStore();
@@ -93,7 +94,21 @@ const Combat: React.FC = observer(() => {
                     setChecked={(v) => {
                       store.updatePlayer({ buffs: { hasElementalFragment: v } });
                     }}
-                    label="Has Elemental Spell Fragment"
+                    label={(
+                      <>
+                        <img src={elemental_fragment.src} width={18} className="inline-block" alt="" />
+                        {' '}
+                        Has elemental fragment
+                        {' '}
+                        <span
+                          className="align-super underline decoration-dotted cursor-help text-xs text-gray-300"
+                          data-tooltip-id="tooltip"
+                          data-tooltip-content="Increases base maximum hit of an elemental spell by 2."
+                        >
+                          ?
+                        </span>
+                      </>
+                    )}
                   />
                 )
               }
