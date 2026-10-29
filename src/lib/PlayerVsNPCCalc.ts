@@ -76,7 +76,7 @@ import {
   WEAPON_SPEC_COSTS,
 } from '@/lib/Equipment';
 import BaseCalc, { CalcOpts, InternalOpts } from '@/lib/BaseCalc';
-import { scaleMonster, scaleMonsterHpOnly } from '@/lib/MonsterScaling';
+import { scaleMonster } from '@/lib/MonsterScaling';
 import { CombatStyleType, getRangedDamageType } from '@/types/PlayerCombatStyle';
 import { range, some, sum } from 'd3-array';
 import { FeatureStatus } from '@/utils';
@@ -2239,42 +2239,51 @@ export default class PlayerVsNPCCalc extends BaseCalc {
   }
 
   /**
-   * Returns the average hits-to-kill calculation.
+   * Returns the average time-to-kill (in seconds) calculation.
    */
-  public getHtk() {
-    const dist = this.getDistribution();
-    const hist = dist.asHistogram();
+  public getTtk() {
+    let dist = this.getDistribution();
+    let hist = dist.asHistogram();
     if (hist === undefined || hist[0] === undefined || hist[0].value === undefined) {
       throw Error('empty hist1');
     }
     const startHp = this.monster.inputs.monsterCurrentHp;
-    const max = Math.min(startHp, dist.getMax());
+    let max = Math.min(startHp, dist.getMax());
     if (max === 0) {
       return 0;
     }
 
-    const htk = new Float64Array(startHp + 1); // 0 hits left to do if hp = 0
+    let speed = this.getExpectedAttackSpeed();
+
+    const isHpDependent = this.distIsCurrentHpDependent(this.player, this.monster);
+    const ttk = new Float64Array(startHp + 1);
 
     for (let hp = 1; hp <= startHp; hp++) {
-      let val = 1.0; // takes at least one hit
-      for (let hit = 1; hit <= Math.min(hp, max); hit++) {
-        const p = hist[hit];
-        if (p) {
-          val += p.value * htk[hp - hit];
+      if (isHpDependent) {
+        const hpCalc = this.subCalcAtHp(hp);
+        const hpDist = hpCalc.getDistribution();
+        if (hpDist !== dist) {
+          dist = hpDist;
+          hist = hpDist.asHistogram();
+          max = hpDist.getMax();
+
+          // Full blood moon's expected speed changes with accuracy
+          speed = hpCalc.getExpectedAttackSpeed();
         }
       }
 
-      htk[hp] = val / (1 - hist[0].value);
+      let val = speed; // takes at least one attack delay
+      for (let hit = 1; hit <= Math.min(hp, max); hit++) {
+        const p = hist[hit];
+        if (p) {
+          val += p.value * ttk[hp - hit];
+        }
+      }
+
+      ttk[hp] = val / (1 - hist[0].value);
     }
 
-    return htk[startHp];
-  }
-
-  /**
-   * Returns the average time-to-kill (in seconds) calculation.
-   */
-  public getTtk() {
-    return this.getHtk() * this.getExpectedAttackSpeed() * SECONDS_PER_TICK;
+    return ttk[startHp] * SECONDS_PER_TICK;
   }
 
   public getSpecDps(): number {
@@ -2367,8 +2376,11 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const hpHitDists = new Array<DelayedHit[]>(this.monster.skills.hp + 1);
     hpHitDists[this.monster.skills.hp] = playerDist;
     if (recalcDistOnHp) {
+      const baseDist = this.getDistribution();
+      const delayProvider = this.getWeaponDelayProvider();
       for (let hp = 0; hp <= this.monster.skills.hp; hp++) {
-        hpHitDists[hp] = this.distAtHp(playerDist, hp);
+        const hpDist = this.subCalcAtHp(hp).getDistribution();
+        hpHitDists[hp] = hpDist === baseDist ? playerDist : hpDist.zipped.withProbabilisticDelays(delayProvider);
       }
     }
 
@@ -2419,13 +2431,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     return ttks;
   }
 
-  distAtHp(baseDist: DelayedHit[], hp: number): DelayedHit[] {
+  subCalcAtHp(hp: number): PlayerVsNPCCalc {
     if (this.opts.disableMonsterScaling) {
-      return baseDist;
+      return this;
     }
 
     if (!this.distIsCurrentHpDependent(this.player, this.monster) || hp === this.monster.inputs.monsterCurrentHp) {
-      return baseDist;
+      return this;
     }
 
     // a special case for optimization, ruby bolts only change dps under 500 hp
@@ -2435,19 +2447,19 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       && ['Ruby bolts (e)', 'Ruby dragon bolts (e)'].includes(this.player.equipment.ammo?.name || '')
       && this.monster.inputs.monsterCurrentHp >= 500
       && hp >= 500) {
-      return baseDist;
+      return this;
     }
 
     // similarly, only recompute the dist for the yellow keris below 25% hp
     if (this.wearing('Keris partisan of the sun')
       && TOMBS_OF_AMASCUT_MONSTER_IDS.includes(this.monster.id)
       && hp >= Math.trunc(this.monster.skills.hp / 4)) {
-      return baseDist;
+      return this;
     }
 
-    const subCalc = this.noInitSubCalc(
+    return this.noInitSubCalc(
       this.player,
-      scaleMonsterHpOnly({
+      scaleMonster({
         ...this.baseMonster,
         inputs: {
           ...this.baseMonster.inputs,
@@ -2455,8 +2467,6 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         },
       }),
     );
-
-    return subCalc.getDistribution().zipped.withProbabilisticDelays(this.getWeaponDelayProvider());
   }
 
   // a computational shortcut for internal class use only
