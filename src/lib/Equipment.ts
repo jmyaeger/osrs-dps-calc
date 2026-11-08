@@ -14,6 +14,7 @@ import {
 } from '@/lib/constants';
 import { sum } from 'd3-array';
 import equipment from '../../cdn/json/equipment.json';
+import forkEquipment from '../../cdn/json/fork_equipment.json';
 import generatedEquipmentAliases from './EquipmentAliases';
 
 export type EquipmentBonuses = Pick<Player, 'bonuses' | 'offensive' | 'defensive' | 'attackSpeed'>;
@@ -21,7 +22,7 @@ export type EquipmentBonuses = Pick<Player, 'bonuses' | 'offensive' | 'defensive
 /**
  * All available equipment that a player can equip.
  */
-export const availableEquipment = equipment as EquipmentPiece[];
+export const availableEquipment = [...equipment, ...forkEquipment] as EquipmentPiece[];
 
 export const noStatExceptions = [
   'Castle wars bracelet',
