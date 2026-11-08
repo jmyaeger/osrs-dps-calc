@@ -1,8 +1,11 @@
 {
-  "name": "osrs-dps",
+  "name": "osrs-dps-orion",
   "version": "0.1.0",
   "private": true,
   "author": "Jayden Bailey (https://weirdgloop.org)",
+  "contributors": [
+    "Jonathan Yaeger"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -81,7 +81,7 @@ def get_monster_data():
         }
 
         r = requests.get(API_BASE + '?' + urllib.parse.urlencode(query), headers={
-            'User-Agent': 'osrs-dps-calc (https://github.com/weirdgloop/osrs-dps-calc)'
+            'User-Agent': 'Orion ( @jmyaeger on Discord)'
         })
         data = r.json()
 
@@ -339,7 +339,7 @@ def main():
 
         print(f'({idx}/{len(required_imgs)}) Fetching image: {img}')
         r = requests.get(WIKI_BASE + '/w/Special:Filepath/' + img, headers={
-            'User-Agent': 'osrs-dps-calc (https://github.com/weirdgloop/osrs-dps-calc)'
+            'User-Agent': 'Orion ( @jmyaeger on Discord)'
         })
         if r.status_code == 200:
             with open(dest_path, 'wb') as f:

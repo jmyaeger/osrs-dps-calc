@@ -88,7 +88,7 @@ def getEquipmentData():
     fields_csv = ",".join(map(repr, BUCKET_API_FIELDS))
 
     headers = {
-        'User-Agent': 'osrs-dps-calc (https://github.com/weirdgloop/osrs-dps-calc)'
+        'User-Agent': 'Orion ( @jmyaeger on Discord)'
     }
 
     while True:
@@ -295,7 +295,7 @@ def main():
 
         print(f'({idx}/{len(required_imgs)}) Fetching image: {img}')
         r = requests.get(WIKI_BASE + '/w/Special:Filepath/' + img, headers={
-            'User-Agent': 'osrs-dps-calc (https://github.com/weirdgloop/osrs-dps-calc)'
+            'User-Agent': 'Orion ( @jmyaeger on Discord)'
         })
         if r.ok:
             with open(IMG_PATH + img, 'wb') as f:

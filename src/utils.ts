@@ -61,6 +61,7 @@ export const classNames = (...classes: string[]) => classes.filter(Boolean).join
 
 const SHORTLINK_API = 'https://tools.runescape.wiki/osrs-dps/shortlink';
 const API_PROXY = 'https://oldschool.runescape.wiki/cors';
+const CDN_URL = process.env.NEXT_PUBLIC_CDN_URL || 'https://tools.runescape.wiki/osrs-dps/cdn';
 
 export const WORKER_JSON_REPLACER = (k: string, v: Map<unknown, unknown> | Set<unknown> | never) => {
   if (v instanceof Map) {
@@ -156,7 +157,7 @@ export const calculateCombatLevel = (s: PlayerSkills) => {
 
 export const getWikiImage = (filename: string) => `https://oldschool.runescape.wiki/images/${filename.replaceAll(' ', '_')}?11111`;
 
-export const getCdnImage = (filename: string) => `https://tools.runescape.wiki/osrs-dps/cdn/${filename}`;
+export const getCdnImage = (filename: string) => `${CDN_URL}/${filename}`;
 
 export const isDevServer = () => process.env.NODE_ENV === 'development';
 

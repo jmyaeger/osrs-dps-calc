@@ -6016,9 +6016,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"osrs-dps@workspace:.":
+"osrs-dps-orion@workspace:.":
   version: 0.0.0-use.local
-  resolution: "osrs-dps@workspace:."
+  resolution: "osrs-dps-orion@workspace:."
   dependencies:
     "@headlessui/react": "npm:^1.7.18"
     "@headlessui/tailwindcss": "npm:^0.2.0"

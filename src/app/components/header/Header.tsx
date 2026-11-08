@@ -1,6 +1,5 @@
 import React from 'react';
 import DpsCalcLogo from '@/app/components/header/DpsCalcLogo';
-import DiscordInvite from '@/app/components/header/DiscordInvite';
 import ShareLoadoutButton from '@/app/components/header/ShareLoadoutButton';
 
 const Header: React.FC = () => (
@@ -10,7 +9,6 @@ const Header: React.FC = () => (
         <DpsCalcLogo />
         <div className="block ml-6">
           <div className="flex text-body-200 text-xs font-medium space-x-2">
-            <DiscordInvite />
             <ShareLoadoutButton />
           </div>
         </div>
