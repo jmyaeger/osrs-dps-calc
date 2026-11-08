@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "name": "Zanik's modified crossbow",
+    "id": 99995,
+    "version": "",
+    "slot": "weapon",
+    "image": "Zanik's modified crossbow.png",
+    "speed": 6,
+    "category": "Crossbow",
+    "bonuses": {
+      "str": 0,
+      "ranged_str": 0,
+      "magic_str": 0,
+      "prayer": -5
+    },
+    "offensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 90
+    },
+    "defensive": {
+      "stab": 0,
+      "slash": 0,
+      "crush": 0,
+      "magic": 0,
+      "ranged": 0
+    },
+    "isTwoHanded": false
+  }
+]

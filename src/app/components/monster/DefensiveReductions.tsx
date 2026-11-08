@@ -14,6 +14,7 @@ import arc from '@/public/img/def_reductions/Arclight.png';
 import emberlight from '@/public/img/def_reductions/Emberlight.png';
 import seercull from '@/public/img/def_reductions/Seercull.png';
 import ayak from '@/public/img/def_reductions/Eye_of_ayak.png';
+import zanik from '@/public/img/bonuses/ranged_heavy.webp';
 import { useMonster } from '@/state/MonsterStore';
 import { useUI } from '@/state/UIStore';
 
@@ -26,6 +27,7 @@ const COUNTED_REDUCTIONS: { reduction: CountedReduction, icon: typeof dwh, label
   { reduction: 'bgs', icon: bgs, label: 'Bandos godsword damage' },
   { reduction: 'seercull', icon: seercull, label: 'Seercull damage' },
   { reduction: 'ayak', icon: ayak, label: 'Eye of ayak damage' },
+  { reduction: 'zanik', icon: zanik, label: 'Zanik\'s crossbow spec damage' },
 ];
 
 const DefensiveReductions: React.FC = observer(() => {

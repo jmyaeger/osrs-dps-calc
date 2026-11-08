@@ -4,7 +4,7 @@ import type { StaticImageData } from 'next/image';
 import NumberInput from '@/app/components/generic/NumberInput';
 import { useMonster } from '@/state/MonsterStore';
 
-export type CountedReduction = 'elderMaul' | 'dwh' | 'arclight' | 'emberlight' | 'tonalztic' | 'bgs' | 'seercull' | 'ayak';
+export type CountedReduction = 'elderMaul' | 'dwh' | 'arclight' | 'emberlight' | 'tonalztic' | 'bgs' | 'seercull' | 'ayak' | 'zanik';
 
 interface DefenceReductionInputProps {
   reduction: CountedReduction;

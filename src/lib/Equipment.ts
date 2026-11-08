@@ -166,6 +166,7 @@ const ammoForRangedWeapons: { [weapon: number]: number[] } = {
   29000: [28991], // Eclipse atlatl
   33245: commonAmmoCategories().bow_t60, // Nature's recurve
   34681: [34684, 34690, 34696, 34702, 34708], // Ascension crossbows
+  99995: commonAmmoCategories().cb_t61, // Zanik's modified crossbow
 };
 
 export enum AmmoApplicability {
@@ -462,6 +463,7 @@ export const WEAPON_SPEC_COSTS: { [canonicalName: string]: number } = {
 
   'Brine sabre': 75,
   'Zaryte crossbow': 75,
+  "Zanik's modified crossbow": 75,
 
   'Saradomin sword': 100,
   'Seercull': 100,

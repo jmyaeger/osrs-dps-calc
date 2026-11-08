@@ -96,6 +96,7 @@ import {
 import { burningClawDoT, burningClawSpec, dClawDist } from '@/lib/dists/claws';
 import getSpellMaxHit from '@/types/SpellMax';
 import { ExpectedBurnResult, getExpectedBurn } from '@/lib/Burn';
+import { INITIAL_MONSTER_INPUTS } from '@/lib/Monsters';
 
 const PARTIALLY_IMPLEMENTED_SPECS: string[] = [
   'Ancient godsword',
@@ -814,6 +815,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         maxHit = this.trackAdd(DetailKey.MAX_HIT_SPEC, maxHit, -maxReduction);
       } else if (this.wearing(['Heavy ballista', 'Light ballista'])) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [5, 4]);
+      } else if (this.wearing("Zanik's modified crossbow")) {
+        minHit = this.trackFactor(DetailKey.MIN_HIT_SPEC, maxHit, [1, 2]);
       }
     }
 
@@ -1334,6 +1337,23 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     const atk = this.getMaxAttackRoll();
     const def = this.getNPCDefenceRoll();
+
+    if (this.opts.usingSpecialAttack && this.wearing("Zanik's modified crossbow")) {
+      const unreducedDef = scaleMonster({
+        ...this.baseMonster,
+        inputs: {
+          ...this.baseMonster.inputs,
+          defenceReductions: INITIAL_MONSTER_INPUTS.defenceReductions,
+        },
+      }).skills.def;
+
+      if (
+        this.monster.inputs.monsterCurrentHp === this.monster.skills.hp
+        && this.monster.skills.def >= unreducedDef
+      ) {
+        return this.track(DetailKey.PLAYER_ACCURACY_FINAL, BaseCalc.getFixedAttackHitChance(atk, def));
+      }
+    }
 
     if (this.isMaggotKingBurnApplicable() && !this.opts.usingSpecialAttack) {
       return this.track(DetailKey.PLAYER_ACCURACY_FINAL, this.getMaggotKingBurn().expectedHitChance);

@@ -116,6 +116,7 @@ export interface Monster {
       tonalztic: number;
       seercull: number;
       ayak: number;
+      zanik: number;
     };
 
     demonbaneVulnerability?: number;
