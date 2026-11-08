@@ -88,6 +88,7 @@ import {
   onyxBolts,
   opalBolts,
   pearlBolts,
+  rubyBoltProcDamage,
   rubyBolts,
 } from '@/lib/dists/bolts';
 import { burningClawDoT, burningClawSpec, dClawDist } from '@/lib/dists/claws';
@@ -2255,12 +2256,13 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     let speed = this.getExpectedAttackSpeed();
 
-    const isHpDependent = this.distIsCurrentHpDependent(this.player, this.monster);
+    const isHpDependent = this.distIsCurrentHpDependent(this.monster);
+    const hpSubCalcs = new Map<string, PlayerVsNPCCalc>();
     const ttk = new Float64Array(startHp + 1);
 
     for (let hp = 1; hp <= startHp; hp++) {
       if (isHpDependent) {
-        const hpCalc = this.subCalcAtHp(hp);
+        const hpCalc = this.subCalcAtHp(hp, hpSubCalcs);
         const hpDist = hpCalc.getDistribution();
         if (hpDist !== dist) {
           dist = hpDist;
@@ -2372,14 +2374,15 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     let epsilon = 1.0;
 
     // if the hit dist depends on hp, we'll have to recalculate it each time, so cache the results to not repeat work
-    const recalcDistOnHp = this.distIsCurrentHpDependent(this.player, this.monster);
+    const recalcDistOnHp = this.distIsCurrentHpDependent(this.monster);
     const hpHitDists = new Array<DelayedHit[]>(this.monster.skills.hp + 1);
+    const hpSubCalcs = new Map<string, PlayerVsNPCCalc>();
     hpHitDists[this.monster.skills.hp] = playerDist;
     if (recalcDistOnHp) {
       const baseDist = this.getDistribution();
       const delayProvider = this.getWeaponDelayProvider();
       for (let hp = 0; hp <= this.monster.skills.hp; hp++) {
-        const hpDist = this.subCalcAtHp(hp).getDistribution();
+        const hpDist = this.subCalcAtHp(hp, hpSubCalcs).getDistribution();
         hpHitDists[hp] = hpDist === baseDist ? playerDist : hpDist.zipped.withProbabilisticDelays(delayProvider);
       }
     }
@@ -2431,42 +2434,51 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     return ttks;
   }
 
-  subCalcAtHp(hp: number): PlayerVsNPCCalc {
+  subCalcAtHp(hp: number, cachedSubCalcs: Map<string, PlayerVsNPCCalc>): PlayerVsNPCCalc {
     if (this.opts.disableMonsterScaling) {
       return this;
     }
 
-    if (!this.distIsCurrentHpDependent(this.player, this.monster) || hp === this.monster.inputs.monsterCurrentHp) {
+    if (!this.distIsCurrentHpDependent(this.monster) || hp === this.monster.inputs.monsterCurrentHp) {
       return this;
     }
 
-    // a special case for optimization, ruby bolts only change dps under 500 hp
-    // so for high health targets, avoid recomputing dist until then
-    if (this.player.style.type === 'ranged'
-      && this.player.equipment.weapon?.category === EquipmentCategory.CROSSBOW
-      && ['Ruby bolts (e)', 'Ruby dragon bolts (e)'].includes(this.player.equipment.ammo?.name || '')
-      && this.monster.inputs.monsterCurrentHp >= 500
-      && hp >= 500) {
+    const monster = scaleMonster({
+      ...this.baseMonster,
+      inputs: {
+        ...this.baseMonster.inputs,
+        monsterCurrentHp: hp,
+      },
+    });
+
+    const key = this.hpSubCalcKey(monster);
+    if (key === this.hpSubCalcKey(this.monster)) {
       return this;
     }
 
-    // similarly, only recompute the dist for the yellow keris below 25% hp
-    if (this.wearing('Keris partisan of the sun')
-      && TOMBS_OF_AMASCUT_MONSTER_IDS.includes(this.monster.id)
-      && hp >= Math.trunc(this.monster.skills.hp / 4)) {
-      return this;
+    let subCalc = cachedSubCalcs.get(key);
+    if (!subCalc) {
+      subCalc = this.noInitSubCalc(this.player, monster);
+      cachedSubCalcs.set(key, subCalc);
     }
 
-    return this.noInitSubCalc(
-      this.player,
-      scaleMonster({
-        ...this.baseMonster,
-        inputs: {
-          ...this.baseMonster.inputs,
-          monsterCurrentHp: hp,
-        },
-      }),
-    );
+    return subCalc;
+  }
+
+  private hpSubCalcKey(monster: Monster): string {
+    const hp = monster.inputs.monsterCurrentHp;
+    const parts: number[] = [];
+    if (monster.name === 'Vardorvis') {
+      parts.push(monster.skills.def);
+    }
+    if (this.isUsingRubyBolts()) {
+      const zcb = this.wearing('Zaryte crossbow');
+      parts.push(rubyBoltProcDamage(monster, zcb));
+    }
+    if (this.wearing('Keris partisan of the sun') && TOMBS_OF_AMASCUT_MONSTER_IDS.includes(monster.id)) {
+      parts.push(hp < Math.trunc(monster.skills.hp / 4) ? 1 : 0);
+    }
+    return parts.join(',');
   }
 
   // a computational shortcut for internal class use only
@@ -2487,13 +2499,11 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     return [percent, 100];
   }
 
-  public distIsCurrentHpDependent(loadout: Player, monster: Monster): boolean {
+  public distIsCurrentHpDependent(monster: Monster): boolean {
     if (monster.name === 'Vardorvis') {
       return true;
     }
-    if (this.player.style.type === 'ranged'
-      && loadout.equipment.weapon?.category === EquipmentCategory.CROSSBOW
-      && this.wearing(['Ruby bolts (e)', 'Ruby dragon bolts (e)'])) {
+    if (this.isUsingRubyBolts()) {
       return true;
     }
     if (this.wearing('Keris partisan of the sun') && TOMBS_OF_AMASCUT_MONSTER_IDS.includes(monster.id)) {
