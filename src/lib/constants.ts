@@ -547,6 +547,8 @@ export const MAGGOT_KING_ID = [15742];
 export const MAGGOT_KING_PHASES = ['Standard', 'Melee Punish'];
 MAGGOT_KING_ID.forEach((id) => { MONSTER_PHASES_BY_ID[id] = MAGGOT_KING_PHASES; });
 
+export const MAX_BURN_STACKS = 5;
+
 export const MAD_ANGEL_IDS = [16309, 16315, 16305, 16314];
 export const MAD_ANGEL_PHASES = ['Standard', 'Sword Cleave', 'Perfect Lightning'];
 MAD_ANGEL_IDS.forEach((id) => { MONSTER_PHASES_BY_ID[id] = MAD_ANGEL_PHASES; });

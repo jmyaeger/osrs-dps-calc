@@ -5,6 +5,7 @@ import { ConditionalKeys } from 'type-fest';
 import Spinner from '@/app/components/Spinner';
 import ResultCell from '@/app/components/results/table/ResultCell';
 import FailedCell from '@/app/components/results/table/FailedCell';
+import UserIssueWarning from '@/app/components/generic/UserIssueWarning';
 import UserIssueType from '@/enums/UserIssueType';
 import { ACCURACY_PRECISION, DPS_PRECISION, EXPECTED_HIT_PRECISION } from '@/lib/constants';
 import { BasicResult, useCalc } from '@/state/CalcStore';
@@ -16,6 +17,7 @@ interface PlayerVsNPCResultRowProps {
   calcKey: BasicResultKey;
   title: string;
   collapseSpecs?: boolean;
+  issueType?: UserIssueType;
 }
 
 const formatValue = (value: number | undefined, calcKey: BasicResultKey): React.ReactNode => {
@@ -45,7 +47,7 @@ const formatValue = (value: number | undefined, calcKey: BasicResultKey): React.
 };
 
 const PlayerVsNPCResultRow: React.FC<PropsWithChildren<PlayerVsNPCResultRowProps>> = observer(({
-  calcKey, title, collapseSpecs, children,
+  calcKey, title, collapseSpecs, issueType, children,
 }) => {
   const loadouts = useLoadouts();
   const calc = useCalc();
@@ -86,9 +88,18 @@ const PlayerVsNPCResultRow: React.FC<PropsWithChildren<PlayerVsNPCResultRowProps
           );
         }
 
+        const issue = issueType
+          ? calc.userIssues.get(uuid)?.find((is) => is.type === issueType)
+          : undefined;
+
         return (
           <ResultCell key={uuid} isBest={loadouts.loadouts.length > 1 && bestValue === value}>
-            {formatValue(value, calcKey)}
+            {issue ? (
+              <div className="flex items-center justify-center gap-1">
+                <span>{formatValue(value, calcKey)}</span>
+                <UserIssueWarning issue={issue} />
+              </div>
+            ) : formatValue(value, calcKey)}
           </ResultCell>
         );
       })}

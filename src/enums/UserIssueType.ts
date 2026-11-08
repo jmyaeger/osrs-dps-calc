@@ -6,6 +6,7 @@ enum UserIssueType {
   EQUIPMENT_WEAPON_EFFECT_UNSUPPORTED = 'equipment_slot_weapon_unsupported_effect',
   WEAPON_WRONG_MONSTER = 'equipment_slot_weapon_wrong_monster',
   EQUIPMENT_SPEC_UNSUPPORTED = 'pvm_results_weapon_unsupported_spec',
+  TTK_DOES_NOT_INCLUDE_BURN = 'pvm_results_ttk_does_not_include_burn',
   SPELL_WRONG_WEAPON = 'spell_wrong_weapon',
   SPELL_WRONG_MONSTER = 'spell_wrong_monster',
   MONSTER_UNIQUE_EFFECTS = 'monster_overall_unique_effects',

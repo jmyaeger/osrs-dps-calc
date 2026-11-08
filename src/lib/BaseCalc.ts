@@ -721,6 +721,10 @@ export default class BaseCalc {
       || IMMUNE_TO_BURN_DAMAGE_NPC_IDS.includes(this.monster.id);
   }
 
+  protected isWearingEclipseMoonSet(): boolean {
+    return this.wearingAll(['Eclipse Moon helm', 'Eclipse Moon chestplate', 'Eclipse Moon tassets', 'Eclipse atlatl']);
+  }
+
   protected isSlayerMonster(): boolean {
     return this.monster.is_slayer_monster || this.monster.id === -1;
   }
@@ -869,7 +873,6 @@ export default class BaseCalc {
     // Some set effects are currently not accounted for
     if (
       this.wearingAll(['Blue Moon helm', 'Blue Moon chestplate', 'Blue Moon tassets', 'Blue Moon spear'])
-      || this.wearingAll(['Eclipse Moon helm', 'Eclipse Moon chestplate', 'Eclipse Moon tassets', 'Eclipse atlatl'])
     ) {
       this.addIssue(UserIssueType.EQUIPMENT_SET_EFFECT_UNSUPPORTED, 'The calculator currently does not account for your equipment set effect.');
     }

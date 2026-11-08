@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import LoadoutColumnHeaders from '@/app/components/results/table/LoadoutColumnHeaders';
 import PlayerVsNPCResultRow from '@/app/components/results/playerVsNpc/PlayerVsNPCResultRow';
 import { usePreferences } from '@/state/PreferencesStore';
+import UserIssueType from '@/enums/UserIssueType';
 
 const GroupHeader: React.FC<{ title: string }> = ({ title }) => (
   <tr>
@@ -33,7 +34,7 @@ const PlayerVsNPCResultsTable: React.FC = observer(() => {
         <PlayerVsNPCResultRow calcKey="dps" title="The average damage you will deal per-second">
           DPS
         </PlayerVsNPCResultRow>
-        <PlayerVsNPCResultRow calcKey="ttk" title="The average time (in seconds) it will take to defeat the monster">
+        <PlayerVsNPCResultRow calcKey="ttk" title="The average time (in seconds) it will take to defeat the monster" issueType={UserIssueType.TTK_DOES_NOT_INCLUDE_BURN}>
           Avg. TTK
         </PlayerVsNPCResultRow>
         <PlayerVsNPCResultRow calcKey="accuracy" title="How accurate you are against the monster">

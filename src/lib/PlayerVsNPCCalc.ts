@@ -42,6 +42,7 @@ import {
   KEPHRI_OVERLORD_IDS,
   MAD_ANGEL_IDS,
   MAGGOT_KING_ID,
+  MAX_BURN_STACKS,
   NIGHTMARE_TOTEM_IDS,
   OCELLUS_P3_IDS,
   OLM_HEAD_IDS,
@@ -94,6 +95,7 @@ import {
 } from '@/lib/dists/bolts';
 import { burningClawDoT, burningClawSpec, dClawDist } from '@/lib/dists/claws';
 import getSpellMaxHit from '@/types/SpellMax';
+import { ExpectedBurnResult, getExpectedBurn } from '@/lib/Burn';
 
 const PARTIALLY_IMPLEMENTED_SPECS: string[] = [
   'Ancient godsword',
@@ -136,11 +138,16 @@ const UNIMPLEMENTED_SPECS: string[] = [
 export default class PlayerVsNPCCalc extends BaseCalc {
   private memoizedDist?: AttackDistribution;
 
+  private memoizedBurnDist?: ExpectedBurnResult;
+
   constructor(player: Player, monster: Monster, opts: Partial<CalcOpts> = {}) {
     super(player, monster, opts);
 
     if (!this.opts.noInit && this.isSpecSupported() === FeatureStatus.UNIMPLEMENTED) {
       this.addIssue(UserIssueType.EQUIPMENT_SPEC_UNSUPPORTED, 'This loadout\'s weapon special attack is not yet supported in the calculator.');
+    }
+    if (!this.opts.noInit && this.isBurnIncludedInDps()) {
+      this.addIssue(UserIssueType.TTK_DOES_NOT_INCLUDE_BURN, 'The effects of burn are included in DPS but not TTK.');
     }
   }
 
@@ -1328,6 +1335,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
     const atk = this.getMaxAttackRoll();
     const def = this.getNPCDefenceRoll();
 
+    if (this.isMaggotKingBurnApplicable() && !this.opts.usingSpecialAttack) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, this.getMaggotKingBurn().expectedHitChance);
+    }
+
     let hitChance = this.track(
       DetailKey.PLAYER_ACCURACY_BASE,
       BaseCalc.getNormalAccuracyRoll(atk, def),
@@ -1371,10 +1382,67 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
+    if (this.isWearingEclipseMoonSet() && !this.isImmuneToStrongBurns()) {
+      ret = getExpectedBurn(this.getHitChance(), this.getExpectedAttackSpeed(), {
+        burnChance: 0.2,
+        hitsPerStack: 10,
+      }).expectedBurn;
+    }
+
+    if (this.isMaggotKingBurnApplicable()) {
+      ret = this.getMaggotKingBurn().expectedBurn;
+    }
+
     if (ret !== 0) {
       this.track(DetailKey.DOT_EXPECTED, ret);
     }
     return ret;
+  }
+
+  private isMaggotKingBurnApplicable(): boolean {
+    return this.player.spell?.element === 'fire' && MAGGOT_KING_ID.includes(this.monster.id);
+  }
+
+  private isTwinflameDoubleHitSpell(): boolean {
+    return this.player.style.type === 'magic'
+      && this.player.spell?.spellbook === 'standard'
+      && this.wearing('Twinflame staff')
+      && ['Bolt', 'Blast', 'Wave'].some((spellClass) => this.player.spell?.name.includes(spellClass) ?? false);
+  }
+
+  private getMaggotKingBurn(): ExpectedBurnResult {
+    if (this.memoizedBurnDist === undefined) {
+      const attackSpeed = this.getExpectedAttackSpeed();
+      const atk = this.getMaxAttackRoll();
+      const baseMagicDef = this.monster.defensive.magic;
+      const usingConfliction = this.wearing('Confliction gauntlets') && !this.player.equipment.weapon?.isTwoHanded;
+      const normalHitChances: number[] = [];
+      const rerollHitChances: number[] = [];
+      for (let i = 0; i <= MAX_BURN_STACKS; i++) {
+        const magicDef = Math.max(0, baseMagicDef - 20 * Math.max(i, 1));
+        const def = (this.monster.skills.magic + 9) * (magicDef + 64);
+        normalHitChances[i] = BaseCalc.getNormalAccuracyRoll(atk, def);
+        rerollHitChances[i] = BaseCalc.getFangAccuracyRoll(atk, def);
+      }
+
+      this.memoizedBurnDist = getExpectedBurn(normalHitChances, attackSpeed, {
+        burnChance: 1.0,
+        hitsPerStack: 5,
+        burnStacksPerProc: this.isTwinflameDoubleHitSpell() ? 2 : 1,
+        rerollHitChance: usingConfliction ? rerollHitChances : undefined,
+      });
+    }
+
+    return this.memoizedBurnDist;
+  }
+
+  private isBurnIncludedInDps(): boolean {
+    if (this.opts.usingSpecialAttack) {
+      return false;
+    }
+
+    return (this.isWearingEclipseMoonSet() && !this.isImmuneToStrongBurns())
+      || this.isMaggotKingBurnApplicable();
   }
 
   public getDoTMax(): number {
