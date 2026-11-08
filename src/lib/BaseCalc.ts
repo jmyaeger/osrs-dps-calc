@@ -624,6 +624,12 @@ export default class BaseCalc {
     }
   }
 
+  protected isUsingRubyBolts(): boolean {
+    return this.player.style.type === 'ranged'
+      && this.player.equipment.weapon?.category === EquipmentCategory.CROSSBOW
+      && ['Ruby bolts (e)', 'Ruby dragon bolts (e)'].includes(this.player.equipment.ammo?.name || '');
+  }
+
   protected getSpellement(): Spellement | null {
     return this.player.spell?.element ?? null;
   }

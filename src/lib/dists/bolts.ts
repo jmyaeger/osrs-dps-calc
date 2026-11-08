@@ -110,19 +110,22 @@ export const onyxBolts: BoltTransformer = (ctx) => {
   };
 };
 
-export const rubyBolts: BoltTransformer = (ctx) => {
-  const { zcb, spec, monster } = ctx;
-  const chance = 0.06 * kandarinFactor(ctx);
+export const rubyBoltProcDamage = (monster: Monster, zcb: boolean): number => {
   let cap;
-
-  if (INFINITE_HEALTH_MONSTERS.includes(ctx.monster.id)) {
+  if (INFINITE_HEALTH_MONSTERS.includes(monster.id)) {
     cap = zcb ? 66 : 60;
   } else {
     cap = zcb ? 110 : 100;
   }
+  return Math.min(cap, Math.trunc(monster.inputs.monsterCurrentHp * (zcb ? 22 : 20) / 100));
+};
 
-  const effectDmg = Math.trunc(monster.inputs.monsterCurrentHp * (zcb ? 22 : 20) / 100);
-  const effectHit = HitDistribution.single(1.0, [new Hitsplat(Math.min(cap, effectDmg))]);
+export const rubyBolts: BoltTransformer = (ctx) => {
+  const { zcb, spec, monster } = ctx;
+  const chance = 0.06 * kandarinFactor(ctx);
+
+  const effectDmg = rubyBoltProcDamage(monster, zcb);
+  const effectHit = HitDistribution.single(1.0, [new Hitsplat(effectDmg)]);
 
   return (h) => {
     if (h.accurate && zcb && spec) {
