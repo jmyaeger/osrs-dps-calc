@@ -1456,7 +1456,12 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
       this.memoizedBurnDist = getExpectedBurn(normalHitChances, attackSpeed, {
         burnChance: 1.0,
-        hitsPerStack: 5,
+        // Due to a quirk of how burn works at Maggot King, the number of burn hits per stack can vary
+        // depending on the hit delay and the number of ticks since the last burn tick. For the sake of
+        // simplicity, we'll assume the hit delay is always 3 ticks (usually the case unless you're on the
+        // front row), in which case you get 5 hits if you case 0 or 1 ticks after the previous burn and 6
+        // hits if you cast 2 or 3 ticks after the previous burn.
+        hitsPerStack: [5, 5, 6, 6],
         burnStacksPerProc: this.isTwinflameDoubleHitSpell() ? 2 : 1,
         rerollHitChance: usingConfliction ? rerollHitChances : undefined,
       });

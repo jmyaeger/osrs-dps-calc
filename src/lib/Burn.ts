@@ -24,23 +24,33 @@ interface BurnStateSpace {
   steps: StateStep[];
 }
 
+// Either a fixed number of burn hits per stack, or an array of length BURN_INTERVAL where element p is
+// the number of burn hits a stack gets when it is applied p ticks after the previous burn tick
+export type HitsPerStack = number | number[];
+
 interface BurnOptions {
   burnChance: number;
-  hitsPerStack: number;
+  hitsPerStack: HitsPerStack;
   burnStacksPerProc?: number;
   rerollHitChance?: number[];
   tol?: number;
   maxIter?: number;
 }
 
+const hitsForPhase = (hitsPerStack: HitsPerStack, phase: number): number => (
+  typeof hitsPerStack === 'number' ? hitsPerStack : hitsPerStack[phase]
+);
+
+// Length of the counts array, i.e. the most hits any single stack can have remaining
+const maxHitsPerStack = (hitsPerStack: HitsPerStack): number => (
+  typeof hitsPerStack === 'number' ? hitsPerStack : Math.max(...hitsPerStack)
+);
+
 const totalStacks = (counts: number[]): number => counts.reduce((a, b) => a + b, 0);
 
-const addStacks = (hitsPerStack: number, stackCount: number, counts?: number[]): number[] => {
-  if (counts === undefined) {
-    counts = Array(hitsPerStack).fill(0);
-  }
+const addStacks = (hits: number, stackCount: number, counts: number[]): number[] => {
   const next = counts.slice();
-  next[hitsPerStack - 1] += stackCount;
+  next[hits - 1] += stackCount;
   return next;
 };
 
@@ -50,15 +60,15 @@ const burnStacksAdded = (counts: number[], burnStacksPerProc: number): number =>
 
 const applyBurnTick = (counts: number[]): number[] => [...counts.slice(1), 0];
 
-const zeroStackState = (phase: number, hitsPerStack: number, prevAttackMissed: boolean): BurnState => ({ phase, counts: Array(hitsPerStack).fill(0), prevAttackMissed });
+const zeroStackState = (phase: number, maxHits: number, prevAttackMissed: boolean): BurnState => ({ phase, counts: Array(maxHits).fill(0), prevAttackMissed });
 
 // Encode the burn state as a base-6 integer to use as a Map key
 // e.g., (previous attack missed, phase = 1, counts = 0, 0, 0, 0, 0, 0, 0, 0, 0, 1) => 110000000001 in base 6
 // This works because phase is in [0, 3] and counts are in [0, 5]
 // Note that this scheme would need to be changed if the stack cap were ever changed
-const stateToInt = (state: BurnState, hitsPerStack: number): number => {
+const stateToInt = (state: BurnState): number => {
   let key = (state.prevAttackMissed ? 1 : 0) * 6 + state.phase;
-  for (let i = 0; i < hitsPerStack; i++) {
+  for (let i = 0; i < state.counts.length; i++) {
     key = key * 6 + state.counts[i];
   }
   return key;
@@ -73,7 +83,7 @@ const burnsSinceLast = (phase: number, attackSpeed: number): number => {
   return Math.floor((attackSpeed - 1 - nextBurnOffset) / BURN_INTERVAL) + 1;
 };
 
-const applyBurnsSinceLast = (counts: number[], phase: number, attackSpeed: number, hitsPerStack: number): BurnState => {
+const applyBurnsSinceLast = (counts: number[], phase: number, attackSpeed: number): BurnState => {
   let current = counts;
   const nextPhase = (phase + attackSpeed) % BURN_INTERVAL;
   const burnCount = burnsSinceLast(phase, attackSpeed);
@@ -81,7 +91,7 @@ const applyBurnsSinceLast = (counts: number[], phase: number, attackSpeed: numbe
     current = applyBurnTick(current);
     if (totalStacks(current) === 0) {
       // prevAttackMissed is a placeholder here since it gets overwritten in nextState()
-      return zeroStackState(nextPhase, hitsPerStack, false);
+      return zeroStackState(nextPhase, counts.length, false);
     }
   }
 
@@ -92,7 +102,7 @@ const nextState = (
   state: BurnState,
   procOccurs: boolean,
   attackSpeed: number,
-  hitsPerStack: number,
+  hitsPerStack: HitsPerStack,
   burnStacksPerProc: number,
   conflictionReroll: boolean,
 ): BurnState => {
@@ -100,23 +110,23 @@ const nextState = (
   if (procOccurs) {
     const stacksToAdd = burnStacksAdded(counts, burnStacksPerProc);
     if (stacksToAdd > 0) {
-      counts = addStacks(hitsPerStack, stacksToAdd, counts);
+      counts = addStacks(hitsForPhase(hitsPerStack, state.phase), stacksToAdd, counts);
     }
   }
 
-  const next = applyBurnsSinceLast(counts, state.phase, attackSpeed, hitsPerStack);
+  const next = applyBurnsSinceLast(counts, state.phase, attackSpeed);
   const prevAttackMissed = conflictionReroll ? !procOccurs : false;
 
   return { ...next, prevAttackMissed };
 };
 
-const buildStateSpace = (attackSpeed: number, hitsPerStack: number, burnStacksPerProc: number, conflictionReroll: boolean): BurnStateSpace => {
+const buildStateSpace = (attackSpeed: number, hitsPerStack: HitsPerStack, burnStacksPerProc: number, conflictionReroll: boolean): BurnStateSpace => {
   const states: BurnState[] = [];
   const steps: StateStep[] = [];
   const stateToIndex = new Map<number, number>();
 
   const getOrAddStateIndex = (state: BurnState): number => {
-    const key = stateToInt(state, hitsPerStack);
+    const key = stateToInt(state);
     let index = stateToIndex.get(key);
     if (index === undefined) {
       // Add a new state space entry if this state hasn't been added yet
@@ -128,7 +138,7 @@ const buildStateSpace = (attackSpeed: number, hitsPerStack: number, burnStacksPe
     return index;
   };
 
-  getOrAddStateIndex(zeroStackState(0, hitsPerStack, false));
+  getOrAddStateIndex(zeroStackState(0, maxHitsPerStack(hitsPerStack), false));
 
   for (let i = 0; i < states.length; i++) {
     const state = states[i];
@@ -210,18 +220,20 @@ export const getExpectedBurn = (
   }
   const steadyStateDist = steadyStateBurnDist(stateSpace, procChances, tol, maxIter);
 
-  // Determine the expected number of stacks available to be added on a given attack (i.e.,
-  // accounting for the burn cap, proc chance, and number of stacks added per proc)
-  let expectedStacksAdded = 0;
+  // Determine the expected burn damage added on a given attack (i.e., accounting for the burn cap, proc chance,
+  // number of stacks added per proc, and number of hits each new stack gets based on the attack's phase)
+  let expectedBurn = 0;
   let expectedHitChance = 0;
   for (let i = 0; i < stateSpace.states.length; i++) {
     const p = steadyStateDist[i];
-    expectedStacksAdded += p * procChances[i] * burnStacksAdded(stateSpace.states[i].counts, burnStacksPerProc);
+    const state = stateSpace.states[i];
+    const stacksAdded = burnStacksAdded(state.counts, burnStacksPerProc);
+    expectedBurn += p * procChances[i] * stacksAdded * hitsForPhase(hitsPerStack, state.phase);
     expectedHitChance += p * (procChances[i] / burnChance);
   }
 
   return {
-    expectedBurn: hitsPerStack * expectedStacksAdded,
+    expectedBurn,
     expectedHitChance,
   };
 };
