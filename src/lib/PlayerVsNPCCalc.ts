@@ -27,6 +27,7 @@ import {
   ABYSSAL_SIRE_TRANSITION_IDS,
   ALWAYS_MAX_HIT_MONSTERS,
   BA_ATTACKER_MONSTERS,
+  BORK_IDS,
   DOOM_OF_MOKHAIOTL_IDS,
   ECLIPSE_MOON_IDS,
   GLOWING_CRYSTAL_IDS,
@@ -343,6 +344,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [2, 1]);
       } else if (this.isSunspearFinisher()) {
         attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [7, 10]);
+      } else if (this.isWearingBloodMoonSet()) {
+        // https://discord.com/channels/324132423636090880/434286997360738305/1551904700293713971
+        attackRoll = this.trackFactor(DetailKey.PLAYER_ACCURACY_SPEC, attackRoll, [5, 4]);
       }
     }
 
@@ -540,8 +544,9 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       } else if (this.wearing('Barrelchest anchor')) {
         maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [110, 100]);
       } else if (this.isWearingBloodMoonSet()) {
-        minHit = this.trackFactor(DetailKey.MIN_HIT_SPEC, maxHit, [1, 4]);
-        maxHit = this.trackAdd(DetailKey.MAX_HIT_SPEC, maxHit, minHit);
+        // the minimum hit from the blog did not make it into the game
+        // https://discord.com/channels/324132423636090880/434286997360738305/1551904700293713971
+        maxHit = this.trackFactor(DetailKey.MAX_HIT_SPEC, maxHit, [5, 4]);
       } else if (this.wearing('Soulreaper axe')) {
         const stacks = Math.max(0, Math.min(5, this.player.buffs.soulreaperStacks));
         minHit = this.trackFactor(DetailKey.MIN_HIT_SPEC, maxHit, [6 * stacks, 100]);
@@ -1335,6 +1340,10 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
     }
 
+    if (BORK_IDS.includes(this.monster.id) && this.monster.inputs.phase === 'Stunned' && this.isUsingMeleeStyle()) {
+      return this.track(DetailKey.PLAYER_ACCURACY_FINAL, 1.0);
+    }
+
     const atk = this.getMaxAttackRoll();
     const def = this.getNPCDefenceRoll();
 
@@ -1792,9 +1801,12 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       }
 
       const secondHit = HitDistribution.linear(baseAccuracy, min, Math.max(min, secondMax));
+      // the special attack rolls accuracy independently for each hitsplat
+      // https://discord.com/channels/324132423636090880/434286997360738305/1551904700293713971
+      const independentAccuracy = this.opts.usingSpecialAttack && this.isWearingBloodMoonSet();
       dist = firstHit.transform(
         (h) => {
-          if (h.accurate) {
+          if (h.accurate || independentAccuracy) {
             return new HitDistribution([new WeightedHit(1.0, [h])]).zip(secondHit);
           }
           return new HitDistribution([new WeightedHit(1.0, [h, Hitsplat.INACCURATE])]);
@@ -1920,7 +1932,7 @@ export default class PlayerVsNPCCalc extends BaseCalc {
       } else if (this.wearing('Ivandis flail')) {
         dist = doEfaritay(dist);
         dist = dist.scaleDamage(6, 5);
-      } else if (this.wearing('Rod of ivandis') && !mattrs.includes(MonsterAttribute.VAMPYRE_3)) {
+      } else if (this.wearing('Rod of Ivandis') && !mattrs.includes(MonsterAttribute.VAMPYRE_3)) {
         dist = doEfaritay(dist);
         dist = dist.scaleDamage(11, 10);
       } else if (this.isWearingSilverWeapon() && mattrs.includes(MonsterAttribute.VAMPYRE_1)) {
@@ -2140,8 +2152,8 @@ export default class PlayerVsNPCCalc extends BaseCalc {
         relevantEffects.push([multiplyTransformer(4, 5, 1)]);
       }
     }
-    if (mattrs.includes(MonsterAttribute.VAMPYRE_2)) {
-      if (!this.wearingVampyrebane(MonsterAttribute.VAMPYRE_2) && this.wearing("Efaritay's aid")) {
+    if (mattrs.includes(MonsterAttribute.VAMPYRE_2) && !this.wearingVampyrebane(MonsterAttribute.VAMPYRE_2)) {
+      if (this.wearing("Efaritay's aid")) {
         relevantEffects.push([divisionTransformer(2)]);
       } else if (this.isWearingSilverWeapon()) {
         relevantEffects.push([flatLimitTransformer(10)]);
@@ -2415,6 +2427,12 @@ export default class PlayerVsNPCCalc extends BaseCalc {
 
     if (this.isWearingBloodMoonSet()) {
       return (wh) => {
+        // the special attack always triggers the set effect if either hitsplat hits
+        // https://discord.com/channels/324132423636090880/434286997360738305/1551904700293713971
+        if (this.opts.usingSpecialAttack && wh.hitsplats.some((s) => s.accurate)) {
+          return [[1.0, baseSpeed - 1]];
+        }
+
         let chanceNoEffect = 1.0;
         for (const splat of wh.hitsplats) {
           if (splat.accurate) {
